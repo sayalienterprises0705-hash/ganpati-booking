@@ -1,25 +1,51 @@
 (() => {
   "use strict";
 
+  // Business WhatsApp number: 8856874068
+  // India country code = 91
   const OWNER_WHATSAPP = "918856874068";
+
   const prices = {
-    "Eco Ganpati": {"10":1800,"12":2500,"15":4000},
-    "Traditional Ganpati": {"10":2500,"12":3500,"15":5000},
-    "Premium Ganpati": {"10":4000,"12":6000,"15":9000}
+    "Eco Ganpati": {
+      "10": 1800,
+      "12": 2500,
+      "15": 4000
+    },
+    "Traditional Ganpati": {
+      "10": 2500,
+      "12": 3500,
+      "15": 5000
+    },
+    "Premium Ganpati": {
+      "10": 4000,
+      "12": 6000,
+      "15": 9000
+    }
   };
 
   const $ = (id) => document.getElementById(id);
-  const money = (n) => n ? "₹" + Number(n).toLocaleString("en-IN") : "—";
+
+  const money = (n) =>
+    n ? "₹" + Number(n).toLocaleString("en-IN") : "—";
 
   function makeBookingId() {
     const d = new Date();
-    const stamp = String(d.getFullYear()).slice(-2) + String(d.getMonth()+1).padStart(2,"0") + String(d.getDate()).padStart(2,"0");
-    return "SBJ" + stamp + Math.floor(1000 + Math.random()*9000);
+
+    const stamp =
+      String(d.getFullYear()).slice(-2) +
+      String(d.getMonth() + 1).padStart(2, "0") +
+      String(d.getDate()).padStart(2, "0");
+
+    return "SBJ" + stamp + Math.floor(1000 + Math.random() * 9000);
   }
 
-  // Mobile navigation
+  /* ================================
+     MOBILE MENU
+  ================================= */
+
   const menu = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".site-nav");
+
   if (menu && nav) {
     menu.addEventListener("click", () => {
       const open = nav.classList.toggle("open");
@@ -27,189 +53,503 @@
     });
   }
 
-  // Back to top
+  /* ================================
+     BACK TO TOP
+  ================================= */
+
   const topBtn = document.querySelector(".top-btn");
+
   if (topBtn) {
-    const updateTop = () => { topBtn.style.display = window.scrollY > 300 ? "block" : "none"; };
+    const updateTop = () => {
+      topBtn.style.display =
+        window.scrollY > 300 ? "block" : "none";
+    };
+
     window.addEventListener("scroll", updateTop);
-    topBtn.addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
+
+    topBtn.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+
     updateTop();
   }
 
-  // Home hero slider
-  const slides = [...document.querySelectorAll(".hero-slide")];
+  /* ================================
+     HERO SLIDER
+  ================================= */
+
+  const slides = [
+    ...document.querySelectorAll(".hero-slide")
+  ];
+
   const dots = document.querySelector(".slider-dots");
+
   if (slides.length && dots) {
     let index = 0;
+
     slides.forEach((_, i) => {
-      const b = document.createElement("button");
-      b.setAttribute("aria-label", `Show slide ${i+1}`);
-      b.addEventListener("click", () => showSlide(i));
-      dots.appendChild(b);
+      const button = document.createElement("button");
+
+      button.setAttribute(
+        "aria-label",
+        `Show slide ${i + 1}`
+      );
+
+      button.addEventListener("click", () => {
+        showSlide(i);
+      });
+
+      dots.appendChild(button);
     });
+
     const dotEls = [...dots.children];
+
     function showSlide(i) {
       index = (i + slides.length) % slides.length;
-      slides.forEach((s,n) => s.classList.toggle("active", n === index));
-      dotEls.forEach((d,n) => d.classList.toggle("active", n === index));
+
+      slides.forEach((slide, n) => {
+        slide.classList.toggle(
+          "active",
+          n === index
+        );
+      });
+
+      dotEls.forEach((dot, n) => {
+        dot.classList.toggle(
+          "active",
+          n === index
+        );
+      });
     }
+
     showSlide(0);
-    setInterval(() => showSlide(index + 1), 5000);
+
+    setInterval(() => {
+      showSlide(index + 1);
+    }, 5000);
   }
 
-  // Price page
-  const priceMurti = $("priceMurti"), priceSize = $("priceSize"), displayPrice = $("displayPrice");
+  /* ================================
+     PRICE PAGE
+  ================================= */
+
+  const priceMurti = $("priceMurti");
+  const priceSize = $("priceSize");
+  const displayPrice = $("displayPrice");
+
   function updatePricePage() {
-    if (!priceMurti || !priceSize || !displayPrice) return;
-    const value = prices[priceMurti.value]?.[priceSize.value];
-    displayPrice.textContent = value ? money(value) : "—";
-  }
-  priceMurti?.addEventListener("change", updatePricePage);
-  priceSize?.addEventListener("change", updatePricePage);
+    if (!priceMurti || !priceSize || !displayPrice) {
+      return;
+    }
 
-  // Booking page
+    const value =
+      prices[priceMurti.value]?.[priceSize.value];
+
+    displayPrice.textContent =
+      value ? money(value) : "—";
+  }
+
+  priceMurti?.addEventListener(
+    "change",
+    updatePricePage
+  );
+
+  priceSize?.addEventListener(
+    "change",
+    updatePricePage
+  );
+
+  /* ================================
+     BOOKING PAGE
+  ================================= */
+
   const form = $("bookingForm");
+
   if (form) {
     const id = makeBookingId();
-    $("bookingId").value = id;
-    $("summaryId").textContent = id;
-    sessionStorage.setItem("lastBookingId", id);
 
-    // Prefill murti from gallery link
-    const params = new URLSearchParams(location.search);
-    const requestedMurti = params.get("murti");
-    if (requestedMurti && [...$("murti").options].some(o => o.value === requestedMurti)) {
-      $("murti").value = requestedMurti;
+    if ($("bookingId")) {
+      $("bookingId").value = id;
     }
 
-    const updateSummary = () => {
-      const murti = $("murti").value;
-      const size = $("size").value;
-      const qty = Math.max(1, Number($("quantity").value || 1));
-      const unit = prices[murti]?.[size] || 0;
-      const total = unit * qty;
-      $("price").value = total ? String(total) : "";
+    if ($("summaryId")) {
       $("summaryId").textContent = id;
-      $("summaryName").textContent = $("customerName").value.trim() || "—";
-      $("summaryMurti").textContent = murti || "—";
-      $("summarySize").textContent = size ? size + " Inch" : "—";
-      $("summaryQty").textContent = qty;
-      $("summaryPrice").textContent = total ? money(total) : "—";
-      $("summaryPayment").textContent = $("paymentMode").value || "—";
+    }
+
+    sessionStorage.setItem(
+      "lastBookingId",
+      id
+    );
+
+    /* Prefill Murti from URL */
+
+    const params =
+      new URLSearchParams(location.search);
+
+    const requestedMurti =
+      params.get("murti");
+
+    if (
+      requestedMurti &&
+      $("murti") &&
+      [...$("murti").options].some(
+        (option) =>
+          option.value === requestedMurti
+      )
+    ) {
+      $("murti").value =
+        requestedMurti;
+    }
+
+    /* ================================
+       UPDATE BOOKING SUMMARY
+    ================================= */
+
+    const updateSummary = () => {
+      const murti =
+        $("murti")?.value || "";
+
+      const size =
+        $("size")?.value || "";
+
+      const qty = Math.max(
+        1,
+        Number($("quantity")?.value || 1)
+      );
+
+      const unit =
+        prices[murti]?.[size] || 0;
+
+      const total =
+        unit * qty;
+
+      if ($("price")) {
+        $("price").value =
+          total ? String(total) : "";
+      }
+
+      if ($("summaryId")) {
+        $("summaryId").textContent =
+          id;
+      }
+
+      if ($("summaryName")) {
+        $("summaryName").textContent =
+          $("customerName")?.value.trim() ||
+          "—";
+      }
+
+      if ($("summaryMurti")) {
+        $("summaryMurti").textContent =
+          murti || "—";
+      }
+
+      if ($("summarySize")) {
+        $("summarySize").textContent =
+          size ? size + " Inch" : "—";
+      }
+
+      if ($("summaryQty")) {
+        $("summaryQty").textContent =
+          qty;
+      }
+
+      if ($("summaryPrice")) {
+        $("summaryPrice").textContent =
+          total ? money(total) : "—";
+      }
+
+      if ($("summaryPayment")) {
+        $("summaryPayment").textContent =
+          $("paymentMode")?.value ||
+          "—";
+      }
     };
 
-    ["customerName","murti","size","quantity","paymentMode"].forEach(id => {
-      $(id)?.addEventListener("input", updateSummary);
-      $(id)?.addEventListener("change", updateSummary);
+    [
+      "customerName",
+      "murti",
+      "size",
+      "quantity",
+      "paymentMode"
+    ].forEach((fieldId) => {
+      $(fieldId)?.addEventListener(
+        "input",
+        updateSummary
+      );
+
+      $(fieldId)?.addEventListener(
+        "change",
+        updateSummary
+      );
     });
+
     updateSummary();
 
-    // Don't allow dates in the past
+    /* ================================
+       PREVENT PAST DATES
+    ================================= */
+
     const date = $("date");
+
     if (date) {
       const now = new Date();
-      const local = new Date(now.getTime() - now.getTimezoneOffset()*60000).toISOString().slice(0,10);
+
+      const local =
+        new Date(
+          now.getTime() -
+          now.getTimezoneOffset() * 60000
+        )
+          .toISOString()
+          .slice(0, 10);
+
       date.min = local;
     }
 
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const msg = $("formMessage");
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        msg.textContent = "Please complete all required fields.";
-        return;
-      }
+    /* ================================
+       BOOKING SUBMIT
+    ================================= */
 
-      const mobile = $("mobile").value.replace(/\D/g, "");
-      if (!/^\d{10}$/.test(mobile)) {
-        msg.textContent = "Please enter a valid 10-digit mobile number.";
-        $("mobile").focus();
-        return;
-      }
+    form.addEventListener(
+      "submit",
+      (e) => {
+        e.preventDefault();
 
-      updateSummary();
-      const murti = $("murti").value;
-      const size = $("size").value;
-      const qty = Number($("quantity").value);
-      const total = prices[murti]?.[size] ? prices[murti][size] * qty : 0;
-      const advance = Number($("advance").value || 0);
-      const note = $("note").value.trim() || "None";
-      const address = $("address").value.trim();
+        const msg =
+          $("formMessage");
 
-      const text =
+        if (!form.checkValidity()) {
+          form.reportValidity();
+
+          if (msg) {
+            msg.textContent =
+              "Please complete all required fields.";
+          }
+
+          return;
+        }
+
+        const mobile =
+          $("mobile")
+            .value
+            .replace(/\D/g, "");
+
+        if (!/^\d{10}$/.test(mobile)) {
+          if (msg) {
+            msg.textContent =
+              "Please enter a valid 10-digit mobile number.";
+          }
+
+          $("mobile").focus();
+
+          return;
+        }
+
+        updateSummary();
+
+        const customerName =
+          $("customerName")
+            .value
+            .trim();
+
+        const email =
+          $("email")?.value.trim() ||
+          "Not provided";
+
+        const murti =
+          $("murti").value;
+
+        const size =
+          $("size").value;
+
+        const qty =
+          Math.max(
+            1,
+            Number(
+              $("quantity").value || 1
+            )
+          );
+
+        const total =
+          prices[murti]?.[size]
+            ? prices[murti][size] * qty
+            : 0;
+
+        const advance =
+          Number(
+            $("advance")?.value || 0
+          );
+
+        const paymentMode =
+          $("paymentMode")?.value ||
+          "Not selected";
+
+        const delivery =
+          $("delivery")?.value ||
+          "Not selected";
+
+        const deliveryDate =
+          $("date")?.value ||
+          "Not selected";
+
+        const address =
+          $("address")?.value.trim() ||
+          "Not provided";
+
+        const note =
+          $("note")?.value.trim() ||
+          "None";
+
+        /*
+         * IMPORTANT
+         *
+         * ONLY THE BOOKING DETAILS ARE
+         * SENT TO YOUR BUSINESS WHATSAPP.
+         *
+         * NO CUSTOMER CONFIRMATION MESSAGE
+         * IS SENT AUTOMATICALLY.
+         */
+
+        const text =
 `🛕 *NEW GANPATI BOOKING*
 
 ━━━━━━━━━━━━━━
 🆔 *Booking ID:* ${id}
 
-👤 *Name:* ${$("customerName").value.trim()}
+👤 *Customer Name:* ${customerName}
 📞 *Mobile:* ${mobile}
-📧 *Email:* ${$("email").value.trim() || "Not provided"}
+📧 *Email:* ${email}
 
 🙏 *Murti:* ${murti}
 📏 *Size:* ${size} Inch
 🔢 *Quantity:* ${qty}
+
 💵 *Total Price:* ${money(total)}
 💰 *Advance:* ${money(advance)}
-💳 *Payment:* ${$("paymentMode").value}
+💳 *Payment Mode:* ${paymentMode}
 
-🚚 *Delivery:* ${$("delivery").value}
-📅 *Date:* ${$("date").value}
-📍 *Address:* ${address}
-📝 *Note:* ${note}
+🚚 *Delivery:* ${delivery}
+📅 *Delivery Date:* ${deliveryDate}
 
-⏳ *Status:* Payment/Booking Pending Approval
+📍 *Address:*
+${address}
 
-━━━━━━━━━━━━━━
+📝 *Note:*
+${note}
 
-🙏 *CUSTOMER CONFIRMATION MESSAGE*
+⏳ *Booking Status:* PENDING APPROVAL
 
-Dear ${$("customerName").value.trim()},
+━━━━━━━━━━━━━━`;
 
-Thank you for your booking request with *S.B. Joshi Enterprises*.
+        sessionStorage.setItem(
+          "lastBookingId",
+          id
+        );
 
-🆔 Booking ID: ${id}
-🙏 Murti: ${murti}
-📏 Size: ${size} Inch
-🔢 Quantity: ${qty}
-💵 Total: ${money(total)}
+        /*
+         * WhatsApp opens ONLY for your
+         * business number.
+         */
 
-⏳ *Booking Status: Pending Approval*
+        const wa =
+          `https://wa.me/${OWNER_WHATSAPP}` +
+          `?text=${encodeURIComponent(text)}`;
 
-Your booking will be confirmed after our team reviews the request.
+        if (msg) {
+          msg.textContent =
+            "Opening WhatsApp… Please press Send there to submit your booking.";
+        }
 
-📞 8856874068
+        window.open(
+          wa,
+          "_blank",
+          "noopener"
+        );
 
-Thank you 🙏
-*S.B. Joshi Enterprises*`;
+        /*
+         * Customer sees only the website
+         * Thank You page.
+         *
+         * No second WhatsApp message.
+         */
 
-      sessionStorage.setItem("lastBookingId", id);
-      const wa = `https://wa.me/${OWNER_WHATSAPP}?text=${encodeURIComponent(text)}`;
-      msg.textContent = "Opening WhatsApp… Please press Send there to submit your request.";
-      window.open(wa, "_blank", "noopener");
-
-      // Navigate only after opening the WhatsApp window.
-      setTimeout(() => {
-        location.href = `thankyou.html?id=${encodeURIComponent(id)}`;
-      }, 700);
-    });
+        setTimeout(() => {
+          location.href =
+            `thankyou.html?id=${encodeURIComponent(id)}`;
+        }, 700);
+      }
+    );
   }
 
-  // Contact form -> WhatsApp
-  const contactForm = $("contactForm");
+  /* ================================
+     CONTACT FORM
+  ================================= */
+
+  const contactForm =
+    $("contactForm");
+
   if (contactForm) {
-    contactForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      if (!contactForm.checkValidity()) { contactForm.reportValidity(); return; }
-      const name = $("contactName").value.trim();
-      const mobile = $("contactMobile").value.replace(/\D/g, "");
-      const message = $("contactMessage").value.trim();
-      const status = $("contactMessageStatus");
-      if (!/^\d{10}$/.test(mobile)) { status.textContent = "Enter a valid 10-digit mobile number."; return; }
-      const text = `Hello S.B. Joshi Enterprises,\n\nName: ${name}\nMobile: ${mobile}\n\nMessage:\n${message}`;
-      window.open(`https://wa.me/${OWNER_WHATSAPP}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
-      status.textContent = "Opening WhatsApp…";
-    });
+    contactForm.addEventListener(
+      "submit",
+      (e) => {
+        e.preventDefault();
+
+        if (!contactForm.checkValidity()) {
+          contactForm.reportValidity();
+          return;
+        }
+
+        const name =
+          $("contactName")
+            .value
+            .trim();
+
+        const mobile =
+          $("contactMobile")
+            .value
+            .replace(/\D/g, "");
+
+        const message =
+          $("contactMessage")
+            .value
+            .trim();
+
+        const status =
+          $("contactMessageStatus");
+
+        if (!/^\d{10}$/.test(mobile)) {
+          if (status) {
+            status.textContent =
+              "Enter a valid 10-digit mobile number.";
+          }
+
+          return;
+        }
+
+        const text =
+`Hello S.B. Joshi Enterprises,
+
+Name: ${name}
+Mobile: ${mobile}
+
+Message:
+${message}`;
+
+        window.open(
+          `https://wa.me/${OWNER_WHATSAPP}?text=${encodeURIComponent(text)}`,
+          "_blank",
+          "noopener"
+        );
+
+        if (status) {
+          status.textContent =
+            "Opening WhatsApp…";
+        }
+      }
+    );
   }
+
 })();
