@@ -1,30 +1,38 @@
-S.B. Joshi Enterprises — Ganpati Booking Website
-==================================================
+S.B. JOSHI ENTERPRISES – GANPATI IDOL BOOKING
+================================================
 
-This is the final GitHub Pages project.
+Final responsive GitHub Pages project.
 
-Key updates:
-- Home page Bappa photo/background
-- NEW payment QR: images/payment-qr.png
-- Gallery with 5 supplied Murti photos
-- Size-wise gallery slots for future multiple photos, sizes and prices
-- About page with Mr. Satish Joshi, started in 1998, reasonable pricing and Shadu Mati-only message
-- Shadu Mati slogans
-- Reviews page with the six customer reviews supplied by the business
-- Review reference links supplied with the reviews
-- WhatsApp booking: 8857874068
-- Address: 1237 Matruchaya Apartment, Krantivir Vasudev Balvant Phadke Road, Opp. Khunya Murlidhar Mandir, 1237 Matruchaya Apartment, Krantivir Vasudev Balvant Phadke Road, Opp. Khunya Murlidhar Mandir, Sadashiv Peth, Pune 411030 411030
-- Google Map
-- Poster files included
+Business:
+S.B. Joshi Enterprises
+Started in 1998 by Mr. Satish Joshi
 
-GitHub Pages:
+Address:
+1237 Matruchaya Apartment, Krantivir Vasudev Balvant Phadke Road,
+Opp. Khunya Murlidhar Mandir, Sadashiv Peth, Pune 411030
+
+Phone / WhatsApp:
+8857874068
+
+Website:
 https://sayalienterprises0705-hash.github.io/ganpati-booking/
 
-IMPORTANT:
-Keep the folder structure exactly as provided, especially:
-css/style.css
-js/script.js
-images/bappa-bg.jpg
-images/payment-qr.png
+Highlights:
+- Ganpati Bappa Idol booking website
+- All idols are made only in Shadu Mati
+- Responsive on desktop, tablet and mobile
+- Gallery with future multi-photo size slots
+- Customer reviews
+- Latest UPI payment QR
+- WhatsApp booking
+- Google Map
+- Advertisement poster
 
-Upload the contents of this folder to the repository root.
+
+LATEST BOOKING RULES
+- Online payment only.
+- One booking submission per browser/device (static-site limitation).
+- Shop Pickup is free.
+- Home Delivery is chargeable; charges depend on location and idol size and are confirmed before final booking.
+- Advance payment gives partial confirmation; final confirmation follows full payment.
+- Final idol photo is shared with the business through the booking share/WhatsApp flow and is not displayed publicly.
