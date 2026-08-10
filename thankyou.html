@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Booking Request Sent | S.B. Joshi Enterprises</title><link rel="stylesheet" href="css/style.css"></head>
+<body><header class="site-header"><a class="brand" href="index.html"><span class="brand-mark">ॐ</span><span>S.B. Joshi Enterprises</span></a><nav class="site-nav"><a href="index.html">Home</a><a href="booking.html">Booking</a><a href="contact.html">Contact</a></nav></header>
+<main><section class="success-card"><div class="success-icon">✓</div><p class="eyebrow">Request Received</p><h1>Booking Request Sent</h1><p>Your WhatsApp window should contain the booking details. Please press <strong>Send</strong> in WhatsApp to deliver the request to S.B. Joshi Enterprises.</p><div class="summary-status">⏳ Pending Approval</div><p>After reviewing your request, our team can manually confirm it.</p><p class="booking-id-display">Booking ID: <strong id="thankyouBookingId">—</strong></p><div class="form-actions"><a class="btn" href="booking.html">Make Another Booking</a><a class="btn btn-outline" href="index.html">Back Home</a></div></section></main>
+<footer class="site-footer"><div><strong>S.B. Joshi Enterprises</strong><p>Sadashiv Peth, Pune</p></div><div><a href="tel:+918856874068">📞 8856874068</a></div><p class="copyright">© 2026 S.B. Joshi Enterprises</p></footer>
+<script>
+const params = new URLSearchParams(location.search);
+document.getElementById('thankyouBookingId').textContent = params.get('id') || sessionStorage.getItem('lastBookingId') || '—';
+</script></body></html>
