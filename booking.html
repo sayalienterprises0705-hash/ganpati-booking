@@ -406,12 +406,37 @@ step="1">
 
 
 <!-- =================================================
-     COLLECTION
+     DELIVERY INFORMATION
 ================================================= -->
 
 <h3>
-Collection Details
+Collection & Delivery
 </h3>
+
+
+<div class="booking-warning">
+
+<strong>
+🚚 Delivery Information
+</strong>
+
+<br>
+
+🏪 <b>Shop Pickup — Free:</b>
+You may collect your Ganpati Bappa Idol directly
+from our shop at no additional charge.
+
+<br>
+
+🚚 <b>Home Delivery — Chargeable:</b>
+Home delivery is available on request and will
+attract additional charges based on the delivery
+location and idol size. Delivery charges will be
+communicated and confirmed before final booking
+confirmation.
+
+</div>
+
 
 
 <label for="delivery">
@@ -428,7 +453,11 @@ Select Option
 </option>
 
 <option value="Pickup From Shop">
-Pickup From Shop
+Shop Pickup — Free
+</option>
+
+<option value="Home Delivery">
+Home Delivery — Chargeable
 </option>
 
 </select>
@@ -459,6 +488,7 @@ Address *
 id="address"
 name="address"
 rows="4"
+autocomplete="street-address"
 placeholder="Enter your complete address"
 required></textarea>
 
@@ -468,12 +498,12 @@ required></textarea>
 
 <label for="note">
 
-Additional Note
+Special Note
 
 <textarea
 id="note"
 name="note"
-rows="4"
+rows="3"
 placeholder="Any special request or message"></textarea>
 
 </label>
@@ -481,21 +511,126 @@ placeholder="Any special request or message"></textarea>
 
 
 <!-- =================================================
-     WARNING
+     FINAL IDOL PHOTO
+================================================= -->
+
+<label for="finalPhoto">
+
+Upload Your Final Idol Photo *
+
+<input
+id="finalPhoto"
+name="finalPhoto"
+type="file"
+accept="image/*"
+required>
+
+</label>
+
+
+<p class="small">
+
+📷 The selected photo is for sending to
+S.B. Joshi Enterprises only. It will not be
+displayed publicly on the website or sent back
+to the customer.
+
+On supported phones, WhatsApp's share screen
+will let you send the photo together with your
+booking message.
+
+</p>
+
+
+
+<!-- =================================================
+     BOOKING INFORMATION
 ================================================= -->
 
 <div class="booking-warning">
 
 <strong>
-Important:
+🙏 Important Booking Information
 </strong>
 
-<p>
-Submitting this form sends your booking request to
-S.B. Joshi Enterprises through WhatsApp.
-Your booking will remain pending until it is reviewed
-and confirmed by us.
-</p>
+<br>
+
+Thank you for choosing
+<b>S.B. Joshi Enterprises</b>.
+
+<br>
+
+The amount paid at the time of booking will be
+treated as an <b>advance payment</b>, and your
+Ganpati Bappa Idol booking will therefore be
+considered <b>partially confirmed</b> at this stage.
+
+<br>
+
+Your booking will receive <b>final confirmation
+only after the complete payment has been
+received</b>.
+
+Kindly pay the remaining balance and share the
+payment confirmation with us to complete your
+booking.
+
+<br><br>
+
+Thank you for your understanding and cooperation.
+We look forward to celebrating Ganpati with you. 🙏
+
+</div>
+
+
+
+<!-- =================================================
+     IMAGE & COLOUR DISCLAIMER
+================================================= -->
+
+<div class="booking-warning">
+
+<strong>
+🖼️ Image & Colour Disclaimer
+</strong>
+
+<br>
+
+Please note that the colours, shades, decorations,
+and overall appearance of the Ganpati Bappa Idol
+shown in the images may vary slightly from the
+actual idol.
+
+Such variations may occur due to device screen
+settings, browser rendering, photography and
+lighting conditions, and display quality.
+
+The images are provided for
+<b>reference purposes only</b>.
+
+Thank you for your understanding. 🙏
+
+</div>
+
+
+
+<!-- =================================================
+     SHADU MATI INFORMATION
+================================================= -->
+
+<div class="booking-warning">
+
+<strong>
+🌿 Shadu Mati Information
+</strong>
+
+<br>
+
+All Ganpati Bappa Idols offered by
+<b>S.B. Joshi Enterprises</b> are crafted
+exclusively using <b>Shadu Mati (natural clay)</b>,
+keeping traditional craftsmanship and care for
+nature in mind.
 
 </div>
 
@@ -506,18 +641,24 @@ and confirmed by us.
 ================================================= -->
 
 <button
-type="submit"
-class="btn">
+class="btn"
+type="submit">
 
-Send Booking Request on WhatsApp
+Submit Booking on WhatsApp
 
 </button>
 
 
+<p
+id="msg"
+class="small">
+</p>
+
+
 <p class="small">
 
-Please check your details carefully before sending
-the WhatsApp message.
+Please check all your details carefully before
+submitting your booking request.
 
 </p>
 
@@ -532,38 +673,28 @@ the WhatsApp message.
      PAYMENT CARD
 ===================================================== -->
 
-<div class="card pooja-payment">
+<aside class="card pooja-payment">
 
 <p class="eyebrow">
 Online Payment
 </p>
 
 <h2>
-Pay Advance by UPI
+💳 Payment QR
 </h2>
 
 
-<p>
-Scan the QR code using GPay, PhonePe, Paytm or another
-UPI application.
-</p>
-
-
-<div class="qr-wrap">
-
 <img
 src="images/payment-qr.png"
-alt="UPI payment QR code for S.B. Joshi Enterprises"
+alt="UPI QR code for S.B. Joshi Enterprises"
 class="qr">
-
-</div>
 
 
 <p>
 
-<strong>
+<b>
 UPI ID:
-</strong>
+</b>
 
 <br>
 
@@ -572,18 +703,32 @@ UPI ID:
 </p>
 
 
+<p class="small">
+
+<b>
+Online payment only.
+</b>
+
+Pay the advance amount first.
+
+Final confirmation is issued only after
+full payment is received.
+
+</p>
+
+
 <div class="payment-note">
 
-After payment, keep your transaction screenshot
-ready if payment verification is requested.
+Please keep your payment transaction
+screenshot ready.
 
 </div>
 
 
 <p class="small">
 
-Never share your UPI PIN, OTP, ATM PIN or banking
-password with anyone.
+Never share your UPI PIN, OTP, ATM PIN or
+banking password with anyone.
 
 </p>
 
@@ -598,7 +743,7 @@ Chat on WhatsApp
 
 </a>
 
-</div>
+</aside>
 
 
 </section>
@@ -634,8 +779,9 @@ How Your Booking Works
 </h3>
 
 <p>
-Enter your name, mobile number, Murti details,
-payment information and preferred date.
+Enter your customer details, Ganpati Bappa
+details, delivery information and payment
+details.
 </p>
 
 </div>
@@ -644,12 +790,12 @@ payment information and preferred date.
 <div class="card center">
 
 <h3>
-2. Send WhatsApp
+2. Select Photo
 </h3>
 
 <p>
-Click the booking button and WhatsApp will open
-with your booking details.
+Upload the final idol photo required for your
+booking request.
 </p>
 
 </div>
@@ -658,12 +804,26 @@ with your booking details.
 <div class="card center">
 
 <h3>
-3. Confirmation
+3. Send WhatsApp
 </h3>
 
 <p>
-We review your request and contact you regarding
-availability and final confirmation.
+Submit the form and send your booking details
+to S.B. Joshi Enterprises through WhatsApp.
+</p>
+
+</div>
+
+
+<div class="card center">
+
+<h3>
+4. Final Confirmation
+</h3>
+
+<p>
+The booking becomes finally confirmed after
+the complete payment has been received.
 </p>
 
 </div>
