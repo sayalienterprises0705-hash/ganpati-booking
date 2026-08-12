@@ -3,7 +3,6 @@
    Ganpati Bappa + Pooja Articles Website
    ========================================================= */
 
-
 /* =========================================================
    ROOT VARIABLES
    ========================================================= */
@@ -22,7 +21,6 @@
   --shadow: 0 10px 30px rgba(59, 33, 24, 0.12);
 }
 
-
 /* =========================================================
    RESET
    ========================================================= */
@@ -31,39 +29,30 @@
   box-sizing: border-box;
 }
 
-
 html {
   scroll-behavior: smooth;
 }
 
-
 body {
   margin: 0;
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   color: var(--ink);
   background: var(--cream);
   line-height: 1.6;
 }
 
-
 body.no-scroll {
   overflow: hidden;
 }
-
 
 img {
   max-width: 100%;
 }
 
-
 a {
   color: var(--accent);
   text-decoration: none;
 }
-
 
 button,
 input,
@@ -71,7 +60,6 @@ select,
 textarea {
   font: inherit;
 }
-
 
 /* =========================================================
    HEADER
@@ -90,10 +78,8 @@ textarea {
 
   background: rgba(255, 255, 255, 0.97);
 
-  box-shadow:
-    0 2px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
-
 
 .brand {
   display: flex;
@@ -103,7 +89,6 @@ textarea {
   font-weight: 800;
   color: var(--ink);
 }
-
 
 .brand-mark {
   width: 38px;
@@ -120,13 +105,11 @@ textarea {
   font-size: 20px;
 }
 
-
 .site-nav {
   display: flex;
   align-items: center;
   gap: 18px;
 }
-
 
 .site-nav a {
   color: var(--ink);
@@ -134,12 +117,10 @@ textarea {
   padding: 6px 2px;
 }
 
-
 .site-nav a:hover,
 .site-nav a.active {
   color: var(--accent);
 }
-
 
 .menu-toggle {
   display: none;
@@ -152,7 +133,6 @@ textarea {
 
   cursor: pointer;
 }
-
 
 /* =========================================================
    MARQUEE
@@ -170,7 +150,6 @@ textarea {
   overflow: hidden;
   white-space: nowrap;
 }
-
 
 /* =========================================================
    GENERAL BUTTONS
@@ -199,22 +178,18 @@ textarea {
     box-shadow 0.2s ease;
 }
 
-
 .btn:hover {
   background: var(--accent-dark);
 
   transform: translateY(-2px);
 
-  box-shadow:
-    0 6px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
-
 
 .btn.light {
   background: #fff;
   color: var(--accent);
 }
-
 
 .btn-outline {
   background: transparent;
@@ -223,12 +198,10 @@ textarea {
   border: 2px solid var(--accent);
 }
 
-
 .btn-outline:hover {
   background: var(--accent);
   color: #fff;
 }
-
 
 /* =========================================================
    HERO
@@ -249,38 +222,31 @@ textarea {
   place-items: center;
 }
 
-
 .hero-content {
   text-align: center;
   color: #fff;
 
-  text-shadow:
-    0 2px 8px #000;
+  text-shadow: 0 2px 8px #000;
 
   padding: 30px;
 }
 
-
 .hero h1 {
-  font-size:
-    clamp(2.5rem, 7vw, 4.5rem);
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
 
   line-height: 1.1;
 
   margin: 15px 0;
 }
 
-
 .hero p {
   font-size: 1.15rem;
 }
-
 
 .gold {
   color: #ffe2a0;
   font-weight: bold;
 }
-
 
 /* =========================================================
    PAGE HERO
@@ -298,14 +264,11 @@ textarea {
     );
 }
 
-
 .page-hero h1 {
-  font-size:
-    clamp(2rem, 6vw, 3rem);
+  font-size: clamp(2rem, 6vw, 3rem);
 
   margin: 5px;
 }
-
 
 /* =========================================================
    SECTIONS
@@ -316,20 +279,16 @@ textarea {
 
   margin: auto;
 
-  padding:
-    55px 5%;
+  padding: 55px 5%;
 }
-
 
 .section-heading {
   text-align: center;
 
   max-width: 780px;
 
-  margin:
-    0 auto 28px;
+  margin: 0 auto 28px;
 }
-
 
 .eyebrow {
   color: var(--accent);
@@ -343,7 +302,6 @@ textarea {
   font-weight: bold;
 }
 
-
 /* =========================================================
    GENERAL CARDS
    ========================================================= */
@@ -352,11 +310,9 @@ textarea {
 .timing,
 .info-panel,
 .review-card {
-  background:
-    rgba(255, 255, 255, 0.96);
+  background: rgba(255, 255, 255, 0.96);
 
-  border:
-    1px solid var(--line);
+  border: 1px solid var(--line);
 
   border-radius: 18px;
 
@@ -365,7 +321,6 @@ textarea {
   box-shadow: var(--shadow);
 }
 
-
 /* =========================================================
    GRID
    ========================================================= */
@@ -373,29 +328,24 @@ textarea {
 .grid2 {
   display: grid;
 
-  grid-template-columns:
-    1fr 1fr;
+  grid-template-columns: 1fr 1fr;
 
   gap: 30px;
 
   align-items: center;
 }
 
-
 .cards {
   display: grid;
 
-  grid-template-columns:
-    repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 
   gap: 20px;
 }
 
-
 .center {
   text-align: center;
 }
-
 
 /* =========================================================
    TWO COLUMN
@@ -404,14 +354,12 @@ textarea {
 .two-col {
   display: grid;
 
-  grid-template-columns:
-    1fr 1fr;
+  grid-template-columns: 1fr 1fr;
 
   gap: 30px;
 
   align-items: center;
 }
-
 
 /* =========================================================
    CLAY SECTION
@@ -420,19 +368,16 @@ textarea {
 .clay-section {
   display: grid;
 
-  grid-template-columns:
-    1fr 360px;
+  grid-template-columns: 1fr 360px;
 
   gap: 30px;
 
   align-items: center;
 
-  background:
-    rgba(255, 255, 255, 0.62);
+  background: rgba(255, 255, 255, 0.62);
 
   border-radius: 18px;
 }
-
 
 .about-bappa {
   width: 100%;
@@ -441,7 +386,6 @@ textarea {
 
   box-shadow: var(--shadow);
 }
-
 
 .clay-badge {
   display: inline-block;
@@ -459,7 +403,6 @@ textarea {
   color: var(--ink);
 }
 
-
 /* =========================================================
    SLOGANS
    ========================================================= */
@@ -468,25 +411,20 @@ textarea {
   text-align: center;
 }
 
-
 .slogan-grid {
   display: grid;
 
-  grid-template-columns:
-    repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 
   gap: 18px;
 
   margin-top: 25px;
 }
 
-
 .slogan-card {
-  background:
-    rgba(255, 255, 255, 0.94);
+  background: rgba(255, 255, 255, 0.94);
 
-  border:
-    1px solid var(--line);
+  border: 1px solid var(--line);
 
   border-radius: 16px;
 
@@ -495,11 +433,9 @@ textarea {
   box-shadow: var(--shadow);
 }
 
-
 .slogan-card span {
   font-size: 2rem;
 }
-
 
 .slogan-card h3 {
   font-size: 1.05rem;
@@ -509,7 +445,6 @@ textarea {
   margin: 10px 0;
 }
 
-
 .slogan-card p {
   font-size: 0.92rem;
 
@@ -518,7 +453,6 @@ textarea {
   margin: 0;
 }
 
-
 /* =========================================================
    GALLERY
    ========================================================= */
@@ -526,14 +460,12 @@ textarea {
 .gallery {
   display: grid;
 
-  grid-template-columns:
-    500px 1fr;
+  grid-template-columns: 500px 1fr;
 
   gap: 35px;
 
   align-items: center;
 }
-
 
 .gallery img {
   width: 100%;
@@ -543,23 +475,18 @@ textarea {
   cursor: zoom-in;
 }
 
-
 .product-gallery {
   display: grid;
 
-  grid-template-columns:
-    repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 
   gap: 24px;
 }
 
-
 .product-card {
-  background:
-    rgba(255, 255, 255, 0.96);
+  background: rgba(255, 255, 255, 0.96);
 
-  border:
-    1px solid var(--line);
+  border: 1px solid var(--line);
 
   border-radius: 18px;
 
@@ -572,7 +499,6 @@ textarea {
   flex-direction: column;
 }
 
-
 .product-card img {
   width: 100%;
 
@@ -584,34 +510,27 @@ textarea {
 
   cursor: zoom-in;
 
-  transition:
-    transform 0.35s ease;
+  transition: transform 0.35s ease;
 }
-
 
 .product-card img:hover {
   transform: scale(1.03);
 }
 
-
 .product-info {
   padding: 18px;
 }
 
-
 .product-info h2 {
   font-size: 1.2rem;
 
-  margin:
-    0 0 10px;
+  margin: 0 0 10px;
 }
-
 
 .size-line,
 .price-line {
   margin: 7px 0;
 }
-
 
 .price-line {
   color: var(--accent);
@@ -621,7 +540,6 @@ textarea {
   font-weight: 700;
 }
 
-
 .gallery-note {
   margin-top: 25px;
 
@@ -629,12 +547,10 @@ textarea {
 
   background: #fff5e6;
 
-  border:
-    1px solid var(--line);
+  border: 1px solid var(--line);
 
   border-radius: 12px;
 }
-
 
 /* =========================================================
    SIZE GROUPS
@@ -643,19 +559,15 @@ textarea {
 .size-groups {
   display: grid;
 
-  grid-template-columns:
-    repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
 
   gap: 22px;
 }
 
-
 .size-group {
-  background:
-    rgba(255, 255, 255, 0.96);
+  background: rgba(255, 255, 255, 0.96);
 
-  border:
-    1px solid var(--line);
+  border: 1px solid var(--line);
 
   border-radius: 18px;
 
@@ -663,7 +575,6 @@ textarea {
 
   box-shadow: var(--shadow);
 }
-
 
 .size-head {
   display: flex;
@@ -674,19 +585,16 @@ textarea {
 
   align-items: center;
 
-  border-bottom:
-    1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 
   padding-bottom: 12px;
 
   margin-bottom: 15px;
 }
 
-
 .size-head h3 {
   margin: 0;
 }
-
 
 .size-head span {
   font-weight: 800;
@@ -694,22 +602,18 @@ textarea {
   color: var(--accent);
 }
 
-
 .photo-slots {
   display: grid;
 
-  grid-template-columns:
-    repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 
   gap: 10px;
 }
 
-
 .photo-slot {
   min-height: 110px;
 
-  border:
-    2px dashed #d9c2af;
+  border: 2px dashed #d9c2af;
 
   border-radius: 12px;
 
@@ -726,20 +630,9 @@ textarea {
   font-weight: 700;
 }
 
-
 /* =========================================================
    POOJA ARTICLES PAGE
    ========================================================= */
-
-
-/*
-  IMPORTANT:
-  Put your Pooja Thali background photo here:
-
-  images/pooja-thali.jpg
-
-  This background is applied ONLY to .pooja-page.
-*/
 
 .pooja-page {
   background:
@@ -750,7 +643,6 @@ textarea {
     url("../images/pooja-thali.jpg")
     center top / cover fixed no-repeat;
 }
-
 
 /* Pooja hero */
 
@@ -776,7 +668,6 @@ textarea {
   color: #fff;
 }
 
-
 .pooja-hero-overlay {
   max-width: 850px;
 
@@ -784,38 +675,28 @@ textarea {
 
   border-radius: 22px;
 
-  background:
-    rgba(50, 20, 10, 0.28);
+  background: rgba(50, 20, 10, 0.28);
 
-  backdrop-filter:
-    blur(2px);
+  backdrop-filter: blur(2px);
 }
-
 
 .pooja-hero h1 {
-  font-size:
-    clamp(2.4rem, 7vw, 4.3rem);
+  font-size: clamp(2.4rem, 7vw, 4.3rem);
 
-  margin:
-    8px 0 12px;
+  margin: 8px 0 12px;
 
-  text-shadow:
-    0 3px 10px #000;
+  text-shadow: 0 3px 10px #000;
 }
-
 
 .pooja-hero p {
   font-size: 1.15rem;
 
-  text-shadow:
-    0 2px 6px #000;
+  text-shadow: 0 2px 6px #000;
 }
-
 
 .hero-actions {
   margin-top: 20px;
 }
-
 
 /* =========================================================
    POOJA PRODUCT GRID
@@ -824,19 +705,15 @@ textarea {
 .pooja-products-grid {
   display: grid;
 
-  grid-template-columns:
-    repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 
   gap: 24px;
 }
 
-
 .pooja-product-card {
-  background:
-    rgba(255, 255, 255, 0.96);
+  background: rgba(255, 255, 255, 0.96);
 
-  border:
-    1px solid var(--line);
+  border: 1px solid var(--line);
 
   border-radius: 20px;
 
@@ -849,16 +726,12 @@ textarea {
     box-shadow 0.25s ease;
 }
 
-
 .pooja-product-card:hover {
-  transform:
-    translateY(-5px);
+  transform: translateY(-5px);
 
   box-shadow:
-    0 16px 35px
-    rgba(59, 33, 24, 0.18);
+    0 16px 35px rgba(59, 33, 24, 0.18);
 }
-
 
 .pooja-product-card > img {
   width: 100%;
@@ -871,33 +744,26 @@ textarea {
 
   cursor: zoom-in;
 
-  transition:
-    transform 0.35s ease;
+  transition: transform 0.35s ease;
 }
-
 
 .pooja-product-card:hover > img {
   transform: scale(1.03);
 }
 
-
 .pooja-product-card .product-info {
   padding: 20px;
 }
 
-
 .pooja-product-card h2 {
-  margin:
-    5px 0 10px;
+  margin: 5px 0 10px;
 
   color: var(--ink);
 }
 
-
 .pooja-product-card p {
   color: var(--muted);
 }
-
 
 /* =========================================================
    POOJA BOOKING
@@ -906,39 +772,32 @@ textarea {
 .pooja-booking {
   display: grid;
 
-  grid-template-columns:
-    1.25fr 0.75fr;
+  grid-template-columns: 1.25fr 0.75fr;
 
   gap: 25px;
 
   align-items: start;
 }
 
-
 .booking {
   display: grid;
 
-  grid-template-columns:
-    1.2fr 0.8fr;
+  grid-template-columns: 1.2fr 0.8fr;
 
   gap: 25px;
 }
 
-
 .form-heading {
   margin-bottom: 20px;
 }
-
 
 .card label {
   display: block;
 
   font-weight: bold;
 
-  margin:
-    12px 0;
+  margin: 12px 0;
 }
-
 
 .card input,
 .card select,
@@ -951,8 +810,7 @@ textarea {
 
   margin-top: 5px;
 
-  border:
-    1px solid #d8c3b0;
+  border: 1px solid #d8c3b0;
 
   border-radius: 9px;
 
@@ -965,18 +823,15 @@ textarea {
   outline: none;
 }
 
-
 .card input:focus,
 .card select:focus,
 .card textarea:focus {
-  border-color:
-    var(--accent);
+  border-color: var(--accent);
 
   box-shadow:
     0 0 0 3px
     rgba(143, 63, 35, 0.1);
 }
-
 
 /* =========================================================
    POOJA ITEM ROW
@@ -989,10 +844,8 @@ textarea {
 
   gap: 12px;
 
-  margin:
-    15px 0;
+  margin: 15px 0;
 }
-
 
 .pooja-item-row {
   display: grid;
@@ -1008,17 +861,14 @@ textarea {
 
   background: #fff8ef;
 
-  border:
-    1px solid var(--line);
+  border: 1px solid var(--line);
 
   border-radius: 14px;
 }
 
-
 .pooja-item-row label {
   margin: 0;
 }
-
 
 .remove-item {
   width: 42px;
@@ -1040,41 +890,35 @@ textarea {
   cursor: pointer;
 }
 
-
 .remove-item:hover {
   background: #9b301d;
 
   color: #fff;
 }
 
-
 /* =========================================================
    BOOKING INFORMATION
    ========================================================= */
 
 .booking-warning {
-  margin:
-    18px 0;
+  margin: 18px 0;
 
   padding: 15px;
 
   background: #fff4d7;
 
-  border:
-    1px solid #e8c97e;
+  border: 1px solid #e8c97e;
 
   border-radius: 12px;
 
   color: #624a22;
 }
 
-
 .small {
   font-size: 0.88rem;
 
   color: var(--muted);
 }
-
 
 /* =========================================================
    PAYMENT
@@ -1088,16 +932,13 @@ textarea {
   top: 95px;
 }
 
-
 .pooja-payment h2 {
   margin-top: 0;
 }
 
-
 .qr-wrap {
   padding-top: 10px;
 }
-
 
 .qr {
   display: block;
@@ -1110,14 +951,12 @@ textarea {
 
   border-radius: 10px;
 
-  border:
-    1px solid var(--line);
+  border: 1px solid var(--line);
 
   background: #fff;
 
   padding: 8px;
 }
-
 
 .payment-note {
   margin-top: 15px;
@@ -1132,7 +971,6 @@ textarea {
 
   color: var(--accent);
 }
-
 
 /* =========================================================
    LIGHTBOX / IMAGE ZOOM
@@ -1154,8 +992,7 @@ textarea {
 
   padding: 25px;
 
-  background:
-    rgba(20, 8, 4, 0.92);
+  background: rgba(20, 8, 4, 0.92);
 
   opacity: 0;
 
@@ -1168,7 +1005,6 @@ textarea {
     visibility 0.25s ease;
 }
 
-
 .lightbox.show,
 .pooja-lightbox.show {
   opacity: 1;
@@ -1177,7 +1013,6 @@ textarea {
 
   pointer-events: auto;
 }
-
 
 .lightbox-content,
 .lb-content {
@@ -1189,7 +1024,6 @@ textarea {
 
   position: relative;
 }
-
 
 .lightbox-content img,
 .lb-content img,
@@ -1213,7 +1047,6 @@ textarea {
     rgba(0, 0, 0, 0.5);
 }
 
-
 #lbCaption,
 .lb-caption {
   color: #fff;
@@ -1224,7 +1057,6 @@ textarea {
 
   font-size: 1rem;
 }
-
 
 .lb-close,
 .lb-prev,
@@ -1252,14 +1084,12 @@ textarea {
     background 0.2s ease;
 }
 
-
 .lb-close:hover,
 .lb-prev:hover,
 .lb-next:hover {
   background:
     rgba(255, 255, 255, 0.3);
 }
-
 
 .lb-close {
   top: 20px;
@@ -1273,14 +1103,12 @@ textarea {
   font-size: 32px;
 }
 
-
 .lb-prev {
   left: 20px;
 
   top: 50%;
 
-  transform:
-    translateY(-50%);
+  transform: translateY(-50%);
 
   width: 50px;
 
@@ -1288,15 +1116,13 @@ textarea {
 
   font-size: 42px;
 }
-
 
 .lb-next {
   right: 20px;
 
   top: 50%;
 
-  transform:
-    translateY(-50%);
+  transform: translateY(-50%);
 
   width: 50px;
 
@@ -1304,7 +1130,6 @@ textarea {
 
   font-size: 42px;
 }
-
 
 /* =========================================================
    ABOUT / REVIEW ELEMENTS
@@ -1313,12 +1138,10 @@ textarea {
 .review-grid {
   display: grid;
 
-  grid-template-columns:
-    repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 
   gap: 20px;
 }
-
 
 .stars {
   letter-spacing: 3px;
@@ -1328,12 +1151,9 @@ textarea {
   font-size: 1.2rem;
 }
 
-
 .review-card h3 {
-  margin:
-    10px 0;
+  margin: 10px 0;
 }
-
 
 .review-placeholder {
   min-height: 70px;
@@ -1341,13 +1161,11 @@ textarea {
   color: var(--muted);
 }
 
-
 .review-card span {
   font-size: 0.9rem;
 
   color: #806f63;
 }
-
 
 .review-note {
   margin-top: 25px;
@@ -1358,12 +1176,10 @@ textarea {
 
   background: #fff5e6;
 
-  border:
-    1px solid var(--line);
+  border: 1px solid var(--line);
 
   border-radius: 18px;
 }
-
 
 /* =========================================================
    QR / MAP
@@ -1372,8 +1188,7 @@ textarea {
 .qr-card {
   display: grid;
 
-  grid-template-columns:
-    1fr 290px;
+  grid-template-columns: 1fr 290px;
 
   gap: 30px;
 
@@ -1381,8 +1196,7 @@ textarea {
 
   background: #fff;
 
-  border:
-    1px solid var(--line);
+  border: 1px solid var(--line);
 
   border-radius: 18px;
 
@@ -1390,7 +1204,6 @@ textarea {
 
   box-shadow: var(--shadow);
 }
-
 
 .map {
   min-height: 340px;
@@ -1400,7 +1213,6 @@ textarea {
   overflow: hidden;
 }
 
-
 .map iframe {
   width: 100%;
 
@@ -1408,7 +1220,6 @@ textarea {
 
   border: 0;
 }
-
 
 /* =========================================================
    FAQ
@@ -1418,12 +1229,10 @@ textarea {
   max-width: 850px;
 }
 
-
 .narrow details {
   background: #fff;
 
-  border:
-    1px solid var(--line);
+  border: 1px solid var(--line);
 
   border-radius: 10px;
 
@@ -1432,13 +1241,11 @@ textarea {
   margin: 10px 0;
 }
 
-
 .narrow summary {
   font-weight: bold;
 
   cursor: pointer;
 }
-
 
 /* =========================================================
    FOOTER
@@ -1459,16 +1266,13 @@ textarea {
   padding: 35px 5%;
 }
 
-
 .site-footer a {
   color: #ffe1ad;
 }
 
-
 .site-footer p {
   margin-top: 6px;
 }
-
 
 .copyright {
   grid-column: 1 / -1;
@@ -1480,7 +1284,6 @@ textarea {
 
   margin-bottom: 0;
 }
-
 
 /* =========================================================
    WHATSAPP
@@ -1506,7 +1309,6 @@ textarea {
   cursor: pointer;
 }
 
-
 .top-btn {
   bottom: 80px;
 
@@ -1521,7 +1323,6 @@ textarea {
   box-shadow:
     0 5px 15px #0002;
 }
-
 
 .wa,
 .whatsapp-float {
@@ -1542,14 +1343,12 @@ textarea {
     rgba(0, 0, 0, 0.2);
 }
 
-
 .wa:hover,
 .whatsapp-float:hover {
   color: #fff;
 
   transform: scale(1.05);
 }
-
 
 /* =========================================================
    RESPONSIVE - TABLET
@@ -1578,16 +1377,13 @@ textarea {
       0 10px 20px #0001;
   }
 
-
   .site-nav.open {
     display: flex;
   }
 
-
   .menu-toggle {
     display: block;
   }
-
 
   .grid2,
   .two-col,
@@ -1599,21 +1395,17 @@ textarea {
     grid-template-columns: 1fr;
   }
 
-
   .hero {
     min-height: 520px;
   }
-
 
   .hero h1 {
     font-size: 2.5rem;
   }
 
-
   .site-footer {
     grid-template-columns: 1fr;
   }
-
 
   .product-gallery,
   .pooja-products-grid {
@@ -1621,26 +1413,21 @@ textarea {
       repeat(2, 1fr);
   }
 
-
   .size-groups,
   .review-grid,
   .clay-section {
     grid-template-columns: 1fr;
   }
 
-
   .slogan-grid {
     grid-template-columns:
       1fr 1fr;
   }
 
-
   .pooja-payment {
     position: static;
   }
-
 }
-
 
 /* =========================================================
    RESPONSIVE - MOBILE
@@ -1653,29 +1440,25 @@ textarea {
       10px 4%;
   }
 
-
   .brand {
     font-size: 0.92rem;
   }
 
-
   .brand-mark {
     width: 34px;
+
     height: 34px;
   }
-
 
   .section {
     padding:
       40px 4%;
   }
 
-
   .page-hero {
     padding:
       45px 4%;
   }
-
 
   .pooja-hero {
     min-height: 390px;
@@ -1684,16 +1467,13 @@ textarea {
       35px 4%;
   }
 
-
   .pooja-hero-overlay {
     padding: 22px;
   }
 
-
   .pooja-hero h1 {
     font-size: 2.4rem;
   }
-
 
   .product-gallery,
   .pooja-products-grid,
@@ -1701,28 +1481,23 @@ textarea {
     grid-template-columns: 1fr;
   }
 
-
   .photo-slots {
     grid-template-columns: 1fr;
   }
-
 
   .photo-slot {
     min-height: 80px;
   }
 
-
   .pooja-item-row {
     grid-template-columns: 1fr;
   }
-
 
   .remove-item {
     width: 100%;
 
     height: 42px;
   }
-
 
   .lb-prev {
     left: 8px;
@@ -1734,7 +1509,6 @@ textarea {
     font-size: 34px;
   }
 
-
   .lb-next {
     right: 8px;
 
@@ -1745,13 +1519,11 @@ textarea {
     font-size: 34px;
   }
 
-
   .lb-close {
     top: 10px;
 
     right: 10px;
   }
-
 
   .lightbox-content img,
   .lb-content img,
@@ -1761,14 +1533,11 @@ textarea {
     max-height: 72vh;
   }
 
-
   .site-footer {
     padding:
       30px 5%;
   }
-
 }
-
 
 /* =========================================================
    SMALL MOBILE
@@ -1782,25 +1551,20 @@ textarea {
     text-align: center;
   }
 
-
   .hero-actions .btn {
     width: auto;
   }
-
 
   .pooja-hero h1 {
     font-size: 2rem;
   }
 
-
   .top-btn {
     right: 15px;
   }
-
 
   .wa,
   .whatsapp-float {
     right: 15px;
   }
-
 }
