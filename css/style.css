@@ -1,15 +1,1806 @@
-*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#3b2118;background:#fff8f0;line-height:1.6}a{color:#8f3f23;text-decoration:none}.site-header{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:12px 5%;background:#fff;box-shadow:0 2px 12px #0001}.brand{font-weight:800;color:#3b2118;display:flex;gap:10px;align-items:center}.brand-mark{background:#8f3f23;color:#fff;border-radius:50%;width:38px;height:38px;display:grid;place-items:center}.site-nav{display:flex;gap:18px}.site-nav a{color:#3b2118}.menu-toggle{display:none;border:0;background:none;font-size:24px}.marquee{background:#8f3f23;color:#fff;padding:7px;font-weight:bold;overflow:hidden;white-space:nowrap}.hero{min-height:610px;background:linear-gradient(#1b0e0a55,#1b0e0a88),url("../images/bappa-bg.jpg") center/cover no-repeat;display:grid;place-items:center}.hero-content{text-align:center;color:#fff;text-shadow:0 2px 8px #000;padding:30px}.hero h1{font-size:clamp(2.5rem,7vw,4.5rem);line-height:1.1;margin:15px 0}.hero p{font-size:1.15rem}.gold{color:#ffe2a0;font-weight:bold}.btn{display:inline-block;background:#8f3f23;color:#fff;border:0;border-radius:9px;padding:11px 18px;font-weight:800;margin:6px;cursor:pointer}.btn.light{background:#fff;color:#8f3f23}.section{max-width:1120px;margin:auto;padding:55px 5%}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}.card,.timing{background:#fff;border:1px solid #ead7c6;border-radius:18px;padding:25px;box-shadow:0 10px 30px #3b21181c}.timing{display:flex;flex-direction:column;gap:4px}.eyebrow{color:#8f3f23;text-transform:uppercase;letter-spacing:.13em;font-size:.8rem;font-weight:bold}.qr-wrap{padding-top:10px}.qr-card{display:grid;grid-template-columns:1fr 290px;gap:30px;align-items:center;background:#fff;border:1px solid #ead7c6;border-radius:18px;padding:25px;box-shadow:0 10px 30px #3b21181c}.qr{display:block;width:100%;max-width:290px;margin:auto;border-radius:10px}.map{min-height:340px;border-radius:18px;overflow:hidden}.map iframe{width:100%;height:340px;border:0}.page-hero{text-align:center;padding:60px 5%;background:linear-gradient(#fff8f0cc,#fff8f0)}.page-hero h1{font-size:3rem;margin:5px}.gallery{display:grid;grid-template-columns:500px 1fr;gap:35px;align-items:center}.gallery img{width:100%;border-radius:18px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.center{text-align:center}.booking{display:grid;grid-template-columns:1.2fr .8fr;gap:25px}.card label{display:block;font-weight:bold;margin:12px 0}.card input,.card select,.card textarea{display:block;width:100%;padding:11px;margin-top:5px;border:1px solid #d8c3b0;border-radius:9px;font:inherit;background:#fff}.small{font-size:.88rem;color:#6e5c51}.narrow{max-width:850px}.site-footer{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:20px;background:#2c1710;color:#fff;padding:35px 5%}.site-footer a{color:#ffe1ad}.copyright{grid-column:1/-1;border-top:1px solid #ffffff33;padding-top:12px}.top-btn,.wa{position:fixed;right:20px;border:0;border-radius:50%;display:grid;place-items:center;z-index:20}.top-btn{bottom:80px;width:40px;height:40px;background:#fff;color:#8f3f23;box-shadow:0 5px 15px #0002}.wa{bottom:20px;width:52px;height:52px;background:#1b9e58;color:#fff;font-size:25px}.narrow details{background:#fff;border:1px solid #ead7c6;border-radius:10px;padding:15px;margin:10px 0}.narrow summary{font-weight:bold;cursor:pointer}@media(max-width:900px){.site-nav{display:none;position:absolute;top:62px;left:0;right:0;background:#fff;padding:15px;flex-direction:column;box-shadow:0 10px 20px #0001}.site-nav.open{display:flex}.menu-toggle{display:block}.grid2,.qr-card,.gallery,.booking,.cards{grid-template-columns:1fr}.hero{min-height:520px}.site-footer{grid-template-columns:1fr}.hero h1{font-size:2.5rem}}
-.product-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.product-card{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}.product-card img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}.product-info{padding:18px}.product-info h2{font-size:1.2rem;margin:0 0 10px}.size-line,.price-line{margin:7px 0}.price-line{color:var(--accent);font-size:1.05rem}.product-info .btn{margin-top:10px}.gallery-note{margin-top:25px;padding:18px;background:#fff5e6;border:1px solid var(--line);border-radius:12px}
-@media(max-width:900px){.product-gallery{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.product-gallery{grid-template-columns:1fr}}
-
-.section-heading{text-align:center;max-width:780px;margin:0 auto 28px}.clay-badge{display:inline-block;margin-top:16px;padding:11px 16px;background:#fff4d7;border:1px solid var(--line);border-radius:999px;color:var(--ink)}
-.size-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}.size-group{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}.size-head{display:flex;justify-content:space-between;gap:15px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:15px}.size-head h3{margin:0}.size-head span{font-weight:800;color:var(--accent)}.photo-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.photo-slot{min-height:110px;border:2px dashed #d9c2af;border-radius:12px;display:grid;place-items:center;text-align:center;color:#8a7467;background:#fffaf5;font-weight:700}.clay-section{display:grid;grid-template-columns:1fr 360px;gap:30px;align-items:center;background:rgba(255,255,255,.62);border-radius:18px}.about-bappa{width:100%;border-radius:18px;box-shadow:var(--shadow)}.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.review-card{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow)}.stars{letter-spacing:3px;color:#b78324;font-size:1.2rem}.review-card h3{margin:10px 0}.review-placeholder{min-height:70px;color:#6f5d52}.review-card span{font-size:.9rem;color:#806f63}.review-note{margin-top:25px;padding:25px;text-align:center;background:#fff5e6;border:1px solid var(--line);border-radius:18px}.review-note h2{margin-top:0}
-@media(max-width:900px){.size-groups,.review-grid,.clay-section{grid-template-columns:1fr}.photo-slots{grid-template-columns:repeat(3,1fr)}}@media(max-width:560px){.photo-slots{grid-template-columns:1fr}.photo-slot{min-height:80px}}
+/* =========================================================
+   S.B. JOSHI ENTERPRISES
+   Ganpati Bappa + Pooja Articles Website
+   ========================================================= */
 
 
-.slogans-section{text-align:center}
-.slogan-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:25px}
-.slogan-card{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow)}
-.slogan-card span{font-size:2rem}.slogan-card h3{font-size:1.05rem;color:var(--accent);margin:10px 0}.slogan-card p{font-size:.92rem;color:#6e5c51;margin:0}
-@media(max-width:900px){.slogan-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.slogan-grid{grid-template-columns:1fr}}
+/* =========================================================
+   ROOT VARIABLES
+   ========================================================= */
+
+:root {
+  --accent: #8f3f23;
+  --accent-dark: #632715;
+  --gold: #c08a24;
+  --ink: #3b2118;
+  --muted: #6e5c51;
+  --cream: #fff8f0;
+  --cream-dark: #fff1df;
+  --white: #ffffff;
+  --line: #ead7c6;
+  --green: #1b9e58;
+  --shadow: 0 10px 30px rgba(59, 33, 24, 0.12);
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+body {
+  margin: 0;
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+  color: var(--ink);
+  background: var(--cream);
+  line-height: 1.6;
+}
+
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+
+img {
+  max-width: 100%;
+}
+
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 12px 5%;
+
+  background: rgba(255, 255, 255, 0.97);
+
+  box-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-weight: 800;
+  color: var(--ink);
+}
+
+
+.brand-mark {
+  width: 38px;
+  height: 38px;
+
+  display: grid;
+  place-items: center;
+
+  background: var(--accent);
+  color: #fff;
+
+  border-radius: 50%;
+
+  font-size: 20px;
+}
+
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+
+.site-nav a {
+  color: var(--ink);
+  font-weight: 700;
+  padding: 6px 2px;
+}
+
+
+.site-nav a:hover,
+.site-nav a.active {
+  color: var(--accent);
+}
+
+
+.menu-toggle {
+  display: none;
+
+  border: 0;
+  background: transparent;
+
+  font-size: 26px;
+  color: var(--accent);
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   MARQUEE
+   ========================================================= */
+
+.marquee,
+.welcome-bar {
+  background: var(--accent);
+  color: #fff;
+
+  padding: 7px;
+
+  font-weight: bold;
+
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   GENERAL BUTTONS
+   ========================================================= */
+
+.btn {
+  display: inline-block;
+
+  background: var(--accent);
+  color: #fff;
+
+  border: 0;
+  border-radius: 9px;
+
+  padding: 11px 18px;
+
+  font-weight: 800;
+
+  margin: 6px;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.btn:hover {
+  background: var(--accent-dark);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+
+.btn.light {
+  background: #fff;
+  color: var(--accent);
+}
+
+
+.btn-outline {
+  background: transparent;
+  color: var(--accent);
+
+  border: 2px solid var(--accent);
+}
+
+
+.btn-outline:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+  min-height: 610px;
+
+  background:
+    linear-gradient(
+      rgba(27, 14, 10, 0.33),
+      rgba(27, 14, 10, 0.65)
+    ),
+    url("../images/bappa-bg.jpg")
+    center / cover no-repeat;
+
+  display: grid;
+  place-items: center;
+}
+
+
+.hero-content {
+  text-align: center;
+  color: #fff;
+
+  text-shadow:
+    0 2px 8px #000;
+
+  padding: 30px;
+}
+
+
+.hero h1 {
+  font-size:
+    clamp(2.5rem, 7vw, 4.5rem);
+
+  line-height: 1.1;
+
+  margin: 15px 0;
+}
+
+
+.hero p {
+  font-size: 1.15rem;
+}
+
+
+.gold {
+  color: #ffe2a0;
+  font-weight: bold;
+}
+
+
+/* =========================================================
+   PAGE HERO
+   ========================================================= */
+
+.page-hero {
+  text-align: center;
+
+  padding: 60px 5%;
+
+  background:
+    linear-gradient(
+      rgba(255, 248, 240, 0.94),
+      rgba(255, 248, 240, 0.94)
+    );
+}
+
+
+.page-hero h1 {
+  font-size:
+    clamp(2rem, 6vw, 3rem);
+
+  margin: 5px;
+}
+
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
+
+.section {
+  max-width: 1120px;
+
+  margin: auto;
+
+  padding:
+    55px 5%;
+}
+
+
+.section-heading {
+  text-align: center;
+
+  max-width: 780px;
+
+  margin:
+    0 auto 28px;
+}
+
+
+.eyebrow {
+  color: var(--accent);
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.13em;
+
+  font-size: 0.8rem;
+
+  font-weight: bold;
+}
+
+
+/* =========================================================
+   GENERAL CARDS
+   ========================================================= */
+
+.card,
+.timing,
+.info-panel,
+.review-card {
+  background:
+    rgba(255, 255, 255, 0.96);
+
+  border:
+    1px solid var(--line);
+
+  border-radius: 18px;
+
+  padding: 25px;
+
+  box-shadow: var(--shadow);
+}
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.grid2 {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 30px;
+
+  align-items: center;
+}
+
+
+.cards {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 20px;
+}
+
+
+.center {
+  text-align: center;
+}
+
+
+/* =========================================================
+   TWO COLUMN
+   ========================================================= */
+
+.two-col {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 30px;
+
+  align-items: center;
+}
+
+
+/* =========================================================
+   CLAY SECTION
+   ========================================================= */
+
+.clay-section {
+  display: grid;
+
+  grid-template-columns:
+    1fr 360px;
+
+  gap: 30px;
+
+  align-items: center;
+
+  background:
+    rgba(255, 255, 255, 0.62);
+
+  border-radius: 18px;
+}
+
+
+.about-bappa {
+  width: 100%;
+
+  border-radius: 18px;
+
+  box-shadow: var(--shadow);
+}
+
+
+.clay-badge {
+  display: inline-block;
+
+  margin-top: 16px;
+
+  padding: 11px 16px;
+
+  background: #fff4d7;
+
+  border: 1px solid var(--line);
+
+  border-radius: 999px;
+
+  color: var(--ink);
+}
+
+
+/* =========================================================
+   SLOGANS
+   ========================================================= */
+
+.slogans-section {
+  text-align: center;
+}
+
+
+.slogan-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 18px;
+
+  margin-top: 25px;
+}
+
+
+.slogan-card {
+  background:
+    rgba(255, 255, 255, 0.94);
+
+  border:
+    1px solid var(--line);
+
+  border-radius: 16px;
+
+  padding: 22px;
+
+  box-shadow: var(--shadow);
+}
+
+
+.slogan-card span {
+  font-size: 2rem;
+}
+
+
+.slogan-card h3 {
+  font-size: 1.05rem;
+
+  color: var(--accent);
+
+  margin: 10px 0;
+}
+
+
+.slogan-card p {
+  font-size: 0.92rem;
+
+  color: var(--muted);
+
+  margin: 0;
+}
+
+
+/* =========================================================
+   GALLERY
+   ========================================================= */
+
+.gallery {
+  display: grid;
+
+  grid-template-columns:
+    500px 1fr;
+
+  gap: 35px;
+
+  align-items: center;
+}
+
+
+.gallery img {
+  width: 100%;
+
+  border-radius: 18px;
+
+  cursor: zoom-in;
+}
+
+
+.product-gallery {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 24px;
+}
+
+
+.product-card {
+  background:
+    rgba(255, 255, 255, 0.96);
+
+  border:
+    1px solid var(--line);
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  box-shadow: var(--shadow);
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+.product-card img {
+  width: 100%;
+
+  aspect-ratio: 1 / 1;
+
+  object-fit: cover;
+
+  display: block;
+
+  cursor: zoom-in;
+
+  transition:
+    transform 0.35s ease;
+}
+
+
+.product-card img:hover {
+  transform: scale(1.03);
+}
+
+
+.product-info {
+  padding: 18px;
+}
+
+
+.product-info h2 {
+  font-size: 1.2rem;
+
+  margin:
+    0 0 10px;
+}
+
+
+.size-line,
+.price-line {
+  margin: 7px 0;
+}
+
+
+.price-line {
+  color: var(--accent);
+
+  font-size: 1.05rem;
+
+  font-weight: 700;
+}
+
+
+.gallery-note {
+  margin-top: 25px;
+
+  padding: 18px;
+
+  background: #fff5e6;
+
+  border:
+    1px solid var(--line);
+
+  border-radius: 12px;
+}
+
+
+/* =========================================================
+   SIZE GROUPS
+   ========================================================= */
+
+.size-groups {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 22px;
+}
+
+
+.size-group {
+  background:
+    rgba(255, 255, 255, 0.96);
+
+  border:
+    1px solid var(--line);
+
+  border-radius: 18px;
+
+  padding: 18px;
+
+  box-shadow: var(--shadow);
+}
+
+
+.size-head {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  align-items: center;
+
+  border-bottom:
+    1px solid var(--line);
+
+  padding-bottom: 12px;
+
+  margin-bottom: 15px;
+}
+
+
+.size-head h3 {
+  margin: 0;
+}
+
+
+.size-head span {
+  font-weight: 800;
+
+  color: var(--accent);
+}
+
+
+.photo-slots {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 10px;
+}
+
+
+.photo-slot {
+  min-height: 110px;
+
+  border:
+    2px dashed #d9c2af;
+
+  border-radius: 12px;
+
+  display: grid;
+
+  place-items: center;
+
+  text-align: center;
+
+  color: #8a7467;
+
+  background: #fffaf5;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   POOJA ARTICLES PAGE
+   ========================================================= */
+
+
+/*
+  IMPORTANT:
+  Put your Pooja Thali background photo here:
+
+  images/pooja-thali.jpg
+
+  This background is applied ONLY to .pooja-page.
+*/
+
+.pooja-page {
+  background:
+    linear-gradient(
+      rgba(255, 248, 240, 0.84),
+      rgba(255, 248, 240, 0.92)
+    ),
+    url("../images/pooja-thali.jpg")
+    center top / cover fixed no-repeat;
+}
+
+
+/* Pooja hero */
+
+.pooja-hero {
+  min-height: 430px;
+
+  display: grid;
+
+  place-items: center;
+
+  text-align: center;
+
+  padding: 55px 5%;
+
+  background:
+    linear-gradient(
+      rgba(60, 25, 10, 0.48),
+      rgba(60, 25, 10, 0.68)
+    ),
+    url("../images/pooja-thali.jpg")
+    center / cover no-repeat;
+
+  color: #fff;
+}
+
+
+.pooja-hero-overlay {
+  max-width: 850px;
+
+  padding: 35px;
+
+  border-radius: 22px;
+
+  background:
+    rgba(50, 20, 10, 0.28);
+
+  backdrop-filter:
+    blur(2px);
+}
+
+
+.pooja-hero h1 {
+  font-size:
+    clamp(2.4rem, 7vw, 4.3rem);
+
+  margin:
+    8px 0 12px;
+
+  text-shadow:
+    0 3px 10px #000;
+}
+
+
+.pooja-hero p {
+  font-size: 1.15rem;
+
+  text-shadow:
+    0 2px 6px #000;
+}
+
+
+.hero-actions {
+  margin-top: 20px;
+}
+
+
+/* =========================================================
+   POOJA PRODUCT GRID
+   ========================================================= */
+
+.pooja-products-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 24px;
+}
+
+
+.pooja-product-card {
+  background:
+    rgba(255, 255, 255, 0.96);
+
+  border:
+    1px solid var(--line);
+
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  box-shadow: var(--shadow);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.pooja-product-card:hover {
+  transform:
+    translateY(-5px);
+
+  box-shadow:
+    0 16px 35px
+    rgba(59, 33, 24, 0.18);
+}
+
+
+.pooja-product-card > img {
+  width: 100%;
+
+  height: 260px;
+
+  object-fit: cover;
+
+  display: block;
+
+  cursor: zoom-in;
+
+  transition:
+    transform 0.35s ease;
+}
+
+
+.pooja-product-card:hover > img {
+  transform: scale(1.03);
+}
+
+
+.pooja-product-card .product-info {
+  padding: 20px;
+}
+
+
+.pooja-product-card h2 {
+  margin:
+    5px 0 10px;
+
+  color: var(--ink);
+}
+
+
+.pooja-product-card p {
+  color: var(--muted);
+}
+
+
+/* =========================================================
+   POOJA BOOKING
+   ========================================================= */
+
+.pooja-booking {
+  display: grid;
+
+  grid-template-columns:
+    1.25fr 0.75fr;
+
+  gap: 25px;
+
+  align-items: start;
+}
+
+
+.booking {
+  display: grid;
+
+  grid-template-columns:
+    1.2fr 0.8fr;
+
+  gap: 25px;
+}
+
+
+.form-heading {
+  margin-bottom: 20px;
+}
+
+
+.card label {
+  display: block;
+
+  font-weight: bold;
+
+  margin:
+    12px 0;
+}
+
+
+.card input,
+.card select,
+.card textarea {
+  display: block;
+
+  width: 100%;
+
+  padding: 11px;
+
+  margin-top: 5px;
+
+  border:
+    1px solid #d8c3b0;
+
+  border-radius: 9px;
+
+  font: inherit;
+
+  background: #fff;
+
+  color: var(--ink);
+
+  outline: none;
+}
+
+
+.card input:focus,
+.card select:focus,
+.card textarea:focus {
+  border-color:
+    var(--accent);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(143, 63, 35, 0.1);
+}
+
+
+/* =========================================================
+   POOJA ITEM ROW
+   ========================================================= */
+
+#itemRows {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+
+  margin:
+    15px 0;
+}
+
+
+.pooja-item-row {
+  display: grid;
+
+  grid-template-columns:
+    1.5fr 0.6fr 0.8fr 42px;
+
+  gap: 10px;
+
+  align-items: end;
+
+  padding: 14px;
+
+  background: #fff8ef;
+
+  border:
+    1px solid var(--line);
+
+  border-radius: 14px;
+}
+
+
+.pooja-item-row label {
+  margin: 0;
+}
+
+
+.remove-item {
+  width: 42px;
+
+  height: 42px;
+
+  border: 0;
+
+  border-radius: 9px;
+
+  background: #f3dfd5;
+
+  color: #9b301d;
+
+  font-size: 24px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+
+.remove-item:hover {
+  background: #9b301d;
+
+  color: #fff;
+}
+
+
+/* =========================================================
+   BOOKING INFORMATION
+   ========================================================= */
+
+.booking-warning {
+  margin:
+    18px 0;
+
+  padding: 15px;
+
+  background: #fff4d7;
+
+  border:
+    1px solid #e8c97e;
+
+  border-radius: 12px;
+
+  color: #624a22;
+}
+
+
+.small {
+  font-size: 0.88rem;
+
+  color: var(--muted);
+}
+
+
+/* =========================================================
+   PAYMENT
+   ========================================================= */
+
+.pooja-payment {
+  text-align: center;
+
+  position: sticky;
+
+  top: 95px;
+}
+
+
+.pooja-payment h2 {
+  margin-top: 0;
+}
+
+
+.qr-wrap {
+  padding-top: 10px;
+}
+
+
+.qr {
+  display: block;
+
+  width: 100%;
+
+  max-width: 290px;
+
+  margin: auto;
+
+  border-radius: 10px;
+
+  border:
+    1px solid var(--line);
+
+  background: #fff;
+
+  padding: 8px;
+}
+
+
+.payment-note {
+  margin-top: 15px;
+
+  padding: 12px;
+
+  border-radius: 10px;
+
+  background: #fff4d7;
+
+  font-weight: bold;
+
+  color: var(--accent);
+}
+
+
+/* =========================================================
+   LIGHTBOX / IMAGE ZOOM
+   ========================================================= */
+
+.lightbox,
+.pooja-lightbox {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 3000;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 25px;
+
+  background:
+    rgba(20, 8, 4, 0.92);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
+}
+
+
+.lightbox.show,
+.pooja-lightbox.show {
+  opacity: 1;
+
+  visibility: visible;
+
+  pointer-events: auto;
+}
+
+
+.lightbox-content,
+.lb-content {
+  max-width: 90vw;
+
+  max-height: 90vh;
+
+  text-align: center;
+
+  position: relative;
+}
+
+
+.lightbox-content img,
+.lb-content img,
+#lbImage {
+  display: block;
+
+  max-width: 88vw;
+
+  max-height: 78vh;
+
+  width: auto;
+
+  height: auto;
+
+  object-fit: contain;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 20px 60px
+    rgba(0, 0, 0, 0.5);
+}
+
+
+#lbCaption,
+.lb-caption {
+  color: #fff;
+
+  font-weight: bold;
+
+  margin-top: 12px;
+
+  font-size: 1rem;
+}
+
+
+.lb-close,
+.lb-prev,
+.lb-next {
+  position: absolute;
+
+  z-index: 5;
+
+  border: 0;
+
+  background:
+    rgba(255, 255, 255, 0.16);
+
+  color: #fff;
+
+  cursor: pointer;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  transition:
+    background 0.2s ease;
+}
+
+
+.lb-close:hover,
+.lb-prev:hover,
+.lb-next:hover {
+  background:
+    rgba(255, 255, 255, 0.3);
+}
+
+
+.lb-close {
+  top: 20px;
+
+  right: 25px;
+
+  width: 48px;
+
+  height: 48px;
+
+  font-size: 32px;
+}
+
+
+.lb-prev {
+  left: 20px;
+
+  top: 50%;
+
+  transform:
+    translateY(-50%);
+
+  width: 50px;
+
+  height: 50px;
+
+  font-size: 42px;
+}
+
+
+.lb-next {
+  right: 20px;
+
+  top: 50%;
+
+  transform:
+    translateY(-50%);
+
+  width: 50px;
+
+  height: 50px;
+
+  font-size: 42px;
+}
+
+
+/* =========================================================
+   ABOUT / REVIEW ELEMENTS
+   ========================================================= */
+
+.review-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 20px;
+}
+
+
+.stars {
+  letter-spacing: 3px;
+
+  color: #b78324;
+
+  font-size: 1.2rem;
+}
+
+
+.review-card h3 {
+  margin:
+    10px 0;
+}
+
+
+.review-placeholder {
+  min-height: 70px;
+
+  color: var(--muted);
+}
+
+
+.review-card span {
+  font-size: 0.9rem;
+
+  color: #806f63;
+}
+
+
+.review-note {
+  margin-top: 25px;
+
+  padding: 25px;
+
+  text-align: center;
+
+  background: #fff5e6;
+
+  border:
+    1px solid var(--line);
+
+  border-radius: 18px;
+}
+
+
+/* =========================================================
+   QR / MAP
+   ========================================================= */
+
+.qr-card {
+  display: grid;
+
+  grid-template-columns:
+    1fr 290px;
+
+  gap: 30px;
+
+  align-items: center;
+
+  background: #fff;
+
+  border:
+    1px solid var(--line);
+
+  border-radius: 18px;
+
+  padding: 25px;
+
+  box-shadow: var(--shadow);
+}
+
+
+.map {
+  min-height: 340px;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+}
+
+
+.map iframe {
+  width: 100%;
+
+  height: 340px;
+
+  border: 0;
+}
+
+
+/* =========================================================
+   FAQ
+   ========================================================= */
+
+.narrow {
+  max-width: 850px;
+}
+
+
+.narrow details {
+  background: #fff;
+
+  border:
+    1px solid var(--line);
+
+  border-radius: 10px;
+
+  padding: 15px;
+
+  margin: 10px 0;
+}
+
+
+.narrow summary {
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.site-footer {
+  display: grid;
+
+  grid-template-columns:
+    1.5fr 1fr 1fr;
+
+  gap: 20px;
+
+  background: #2c1710;
+
+  color: #fff;
+
+  padding: 35px 5%;
+}
+
+
+.site-footer a {
+  color: #ffe1ad;
+}
+
+
+.site-footer p {
+  margin-top: 6px;
+}
+
+
+.copyright {
+  grid-column: 1 / -1;
+
+  border-top:
+    1px solid #ffffff33;
+
+  padding-top: 12px;
+
+  margin-bottom: 0;
+}
+
+
+/* =========================================================
+   WHATSAPP
+   ========================================================= */
+
+.top-btn,
+.wa,
+.whatsapp-float {
+  position: fixed;
+
+  right: 20px;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  display: grid;
+
+  place-items: center;
+
+  z-index: 2000;
+
+  cursor: pointer;
+}
+
+
+.top-btn {
+  bottom: 80px;
+
+  width: 40px;
+
+  height: 40px;
+
+  background: #fff;
+
+  color: var(--accent);
+
+  box-shadow:
+    0 5px 15px #0002;
+}
+
+
+.wa,
+.whatsapp-float {
+  bottom: 20px;
+
+  width: 52px;
+
+  height: 52px;
+
+  background: var(--green);
+
+  color: #fff;
+
+  font-size: 25px;
+
+  box-shadow:
+    0 6px 18px
+    rgba(0, 0, 0, 0.2);
+}
+
+
+.wa:hover,
+.whatsapp-float:hover {
+  color: #fff;
+
+  transform: scale(1.05);
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .site-nav {
+    display: none;
+
+    position: absolute;
+
+    top: 62px;
+
+    left: 0;
+
+    right: 0;
+
+    background: #fff;
+
+    padding: 15px;
+
+    flex-direction: column;
+
+    box-shadow:
+      0 10px 20px #0001;
+  }
+
+
+  .site-nav.open {
+    display: flex;
+  }
+
+
+  .menu-toggle {
+    display: block;
+  }
+
+
+  .grid2,
+  .two-col,
+  .qr-card,
+  .gallery,
+  .booking,
+  .pooja-booking,
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+
+  .hero {
+    min-height: 520px;
+  }
+
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+
+  .site-footer {
+    grid-template-columns: 1fr;
+  }
+
+
+  .product-gallery,
+  .pooja-products-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+
+  .size-groups,
+  .review-grid,
+  .clay-section {
+    grid-template-columns: 1fr;
+  }
+
+
+  .slogan-grid {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+
+  .pooja-payment {
+    position: static;
+  }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .site-header {
+    padding:
+      10px 4%;
+  }
+
+
+  .brand {
+    font-size: 0.92rem;
+  }
+
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+  }
+
+
+  .section {
+    padding:
+      40px 4%;
+  }
+
+
+  .page-hero {
+    padding:
+      45px 4%;
+  }
+
+
+  .pooja-hero {
+    min-height: 390px;
+
+    padding:
+      35px 4%;
+  }
+
+
+  .pooja-hero-overlay {
+    padding: 22px;
+  }
+
+
+  .pooja-hero h1 {
+    font-size: 2.4rem;
+  }
+
+
+  .product-gallery,
+  .pooja-products-grid,
+  .slogan-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .photo-slots {
+    grid-template-columns: 1fr;
+  }
+
+
+  .photo-slot {
+    min-height: 80px;
+  }
+
+
+  .pooja-item-row {
+    grid-template-columns: 1fr;
+  }
+
+
+  .remove-item {
+    width: 100%;
+
+    height: 42px;
+  }
+
+
+  .lb-prev {
+    left: 8px;
+
+    width: 42px;
+
+    height: 42px;
+
+    font-size: 34px;
+  }
+
+
+  .lb-next {
+    right: 8px;
+
+    width: 42px;
+
+    height: 42px;
+
+    font-size: 34px;
+  }
+
+
+  .lb-close {
+    top: 10px;
+
+    right: 10px;
+  }
+
+
+  .lightbox-content img,
+  .lb-content img,
+  #lbImage {
+    max-width: 92vw;
+
+    max-height: 72vh;
+  }
+
+
+  .site-footer {
+    padding:
+      30px 5%;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+  .btn {
+    width: calc(100% - 12px);
+
+    text-align: center;
+  }
+
+
+  .hero-actions .btn {
+    width: auto;
+  }
+
+
+  .pooja-hero h1 {
+    font-size: 2rem;
+  }
+
+
+  .top-btn {
+    right: 15px;
+  }
+
+
+  .wa,
+  .whatsapp-float {
+    right: 15px;
+  }
+
+}
