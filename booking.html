@@ -1,30 +1,795 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Ganpati Bappa Idol booking by S.B. Joshi Enterprises, 1237 Matruchaya Apartment, Krantivir Vasudev Balvant Phadke Road, Opp. Khunya Murlidhar Mandir, Sadashiv Peth, Pune 411030"><title>Booking | S.B. Joshi Enterprises | S.B. Joshi Enterprises – Ganpati Idol Booking</title><link rel="stylesheet" href="css/style.css"><script defer src="js/script.js"></script></head><body><header class="site-header"><a class="brand" href="index.html"><span class="brand-mark">ॐ</span><span>S.B. Joshi Enterprises</span></a><button class="menu-toggle" aria-label="Menu">☰</button><nav class="site-nav"><a href="index.html">Home</a><a href="about.html">About</a><a href="gallery.html">Gallery</a><a href="price.html">Pooja Articles</a><a href="booking.html">Booking</a><a href="reviews.html">Reviews</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></nav></header><div class="marquee">🙏 गणपती बाप्पा मोरया! Welcome to S.B. Joshi Enterprises • Shop Timing: 11:00 AM–1:00 PM | 4:00 PM–9:00 PM • Booking & Enquiries: 8857874068 • शुभ मंगलमूर्ती 🙏</div><main><section class="page-hero"><p class="eyebrow">Online Booking</p><h1>Book Your Ganpati Bappa Idol</h1><p>Submit your booking details once. Online payment is required for booking.</p></section><section class="section booking"><form id="bookingForm" class="card" enctype="multipart/form-data">
-<label>Customer Name *<input id="name" autocomplete="name" required></label>
-<label>Mobile Number *<input id="mobile" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" autocomplete="tel" required></label>
-<label>Email<input id="email" type="email" autocomplete="email"></label>
-<label>Quantity *<input id="qty" type="number" min="1" value="1" required></label>
-<label>Payment Mode *<select id="payment" required><option value="Online Payment">Online Payment</option></select></label>
-<label>Delivery Type *<select id="delivery" required>
-<option value="Shop Pickup (Free)">Shop Pickup (Free)</option>
-<option value="Home Delivery (Chargeable)">Home Delivery (Chargeable)</option>
-</select></label>
-<div class="booking-warning"><strong>🚚 Delivery Information</strong><br>
-🏪 <b>Shop Pickup — Free:</b> You may collect your Ganpati Bappa Idol directly from our shop at no additional charge.<br>
-🚚 <b>Home Delivery — Chargeable:</b> Home delivery is available on request and will attract additional charges based on the delivery location and idol size. Delivery charges will be communicated and confirmed before final booking confirmation.</div>
-<label>Preferred Date *<input id="date" type="date" required></label>
-<label>Address *<textarea id="address" required rows="4" autocomplete="street-address"></textarea></label>
-<label>Special Note<textarea id="note" rows="3"></textarea></label>
-<label>Upload Your Final Idol Photo *<input id="finalPhoto" type="file" accept="image/*" required></label>
-<p class="small">📷 The selected photo is for sending to S.B. Joshi Enterprises only. It will not be displayed publicly on the website or sent back to the customer. On supported phones, WhatsApp's share screen will let you send the photo together with your booking message.</p>
-<div class="booking-warning"><strong>🙏 Important Booking Information</strong><br>
-Thank you for choosing <b>S.B. Joshi Enterprises</b>.<br>
-The amount paid at the time of booking will be treated as an <b>advance payment</b>, and your Ganpati Bappa Idol booking will therefore be considered <b>partially confirmed</b> at this stage.<br>
-Your booking will receive <b>final confirmation only after the complete payment has been received</b>. Kindly pay the remaining balance and share the payment confirmation with us to complete your booking.<br><br>
-Thank you for your understanding and cooperation. We look forward to celebrating Ganpati with you. 🙏</div>
-<div class="booking-warning"><strong>🖼️ Image & Colour Disclaimer</strong><br>
-Please note that the colours, shades, decorations, and overall appearance of the Ganpati Bappa Idol shown in the images may vary slightly from the actual idol. Such variations may occur due to device screen settings, browser rendering, photography and lighting conditions, and display quality. The images are provided for <b>reference purposes only</b>. Thank you for your understanding. 🙏</div>
-<div class="booking-warning"><strong>🌿 Shadu Mati Information</strong><br>
-All Ganpati Bappa Idols offered by <b>S.B. Joshi Enterprises</b> are crafted exclusively using <b>Shadu Mati (natural clay)</b>, keeping traditional craftsmanship and care for nature in mind.</div>
-<button class="btn" type="submit">Submit Booking on WhatsApp</button>
-<p id="msg" class="small"></p>
-</form><aside class="card"><h2>💳 Payment QR</h2><img src="images/payment-qr.png" alt="UPI QR code" class="qr"><p><b>UPI ID:</b> 8857874068@okbizaxis</p><p class="small"><b>Online payment only.</b> Pay the advance amount first. Final confirmation is issued only after full payment is received.</p></aside></section></main><footer class="site-footer"><div><h3>S.B. Joshi Enterprises</h3><p>1237 Matruchaya Apartment, Krantivir Vasudev Balvant Phadke Road, Opp. Khunya Murlidhar Mandir, Sadashiv Peth, Pune 411030</p></div><div><p>📞 <a href="tel:+918857874068">8857874068</a></p><p>✉️ <a href="mailto:sayalij.joshi7@gmail.com">sayalij.joshi7@gmail.com</a></p></div><div><p><a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a></p></div><p class="copyright">© 2026 S.B. Joshi Enterprises · Ganpati Bappa Morya 🙏</p></footer><button class="top-btn" aria-label="Back to top">↑</button><a class="wa" href="https://wa.me/918857874068" target="_blank" rel="noopener">◉</a></body></html>
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1">
+
+<meta name="description"
+content="Ganpati Bappa and Pooja Articles booking form by S.B. Joshi Enterprises, Sadashiv Peth, Pune.">
+
+<title>
+Booking | S.B. Joshi Enterprises
+</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<script defer src="js/script.js"></script>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="site-header">
+
+<a class="brand" href="index.html">
+
+<span class="brand-mark">ॐ</span>
+
+<span>S.B. Joshi Enterprises</span>
+
+</a>
+
+
+<button
+class="menu-toggle"
+aria-label="Menu"
+aria-expanded="false">
+
+☰
+
+</button>
+
+
+<nav class="site-nav">
+
+<a href="index.html">
+Home
+</a>
+
+<a href="about.html">
+About
+</a>
+
+<a href="gallery.html">
+Gallery
+</a>
+
+<a href="price.html">
+Pooja Articles
+</a>
+
+<a href="booking.html"
+class="active">
+Booking
+</a>
+
+<a href="reviews.html">
+Reviews
+</a>
+
+<a href="faq.html">
+FAQ
+</a>
+
+<a href="contact.html">
+Contact
+</a>
+
+</nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     WELCOME BAR
+===================================================== -->
+
+<div class="marquee">
+
+🙏 गणपती बाप्पा मोरया! •
+
+Welcome to S.B. Joshi Enterprises •
+
+Booking & Enquiries: 8857874068 •
+
+Shop Timing: 11:00 AM–1:00 PM | 4:00 PM–9:00 PM •
+
+🙏 शुभ मंगलमूर्ती 🙏
+
+</div>
+
+
+
+<!-- =====================================================
+     PAGE HERO
+===================================================== -->
+
+<section class="page-hero">
+
+<p class="eyebrow">
+Booking
+</p>
+
+<h1>
+Book Your Ganpati Bappa
+</h1>
+
+<p>
+Fill in your details and send your booking request
+directly through WhatsApp.
+</p>
+
+</section>
+
+
+
+<!-- =====================================================
+     BOOKING AREA
+===================================================== -->
+
+<section class="section">
+
+<div class="booking">
+
+
+<!-- =================================================
+     BOOKING FORM
+================================================= -->
+
+<div class="card">
+
+<div class="form-heading">
+
+<p class="eyebrow">
+Customer Details
+</p>
+
+<h2>
+Booking Form
+</h2>
+
+<p class="small">
+Please enter correct information before submitting.
+</p>
+
+</div>
+
+
+<form id="bookingForm">
+
+
+<!-- CUSTOMER NAME -->
+
+<label for="customerName">
+
+Customer Name
+
+<input
+type="text"
+id="customerName"
+name="customerName"
+placeholder="Enter your full name"
+required>
+
+</label>
+
+
+
+<!-- MOBILE -->
+
+<label for="mobile">
+
+Mobile Number
+
+<input
+type="tel"
+id="mobile"
+name="mobile"
+placeholder="Enter 10 digit mobile number"
+inputmode="numeric"
+pattern="[0-9]{10}"
+maxlength="10"
+required>
+
+</label>
+
+
+
+<!-- EMAIL -->
+
+<label for="email">
+
+Email
+
+<input
+type="email"
+id="email"
+name="email"
+placeholder="Enter your email address">
+
+</label>
+
+
+
+<!-- MURTI TYPE -->
+
+<label for="murtiType">
+
+Murti Type
+
+<select
+id="murtiType"
+name="murtiType"
+required>
+
+<option value="">
+Select Murti Type
+</option>
+
+<option value="Eco Ganpati">
+Eco Ganpati
+</option>
+
+<option value="Traditional Ganpati">
+Traditional Ganpati
+</option>
+
+<option value="Ganpati Bappa Idol">
+Ganpati Bappa Idol
+</option>
+
+<option value="Other">
+Other
+</option>
+
+</select>
+
+</label>
+
+
+
+<!-- SIZE -->
+
+<label for="murtiSize">
+
+Murti Size
+
+<select
+id="murtiSize"
+name="murtiSize"
+required>
+
+<option value="">
+Select Size
+</option>
+
+<option value="6 inch">
+6 inch
+</option>
+
+<option value="8 inch">
+8 inch
+</option>
+
+<option value="10 inch">
+10 inch
+</option>
+
+<option value="12 inch">
+12 inch
+</option>
+
+<option value="15 inch">
+15 inch
+</option>
+
+<option value="18 inch">
+18 inch
+</option>
+
+<option value="2 feet">
+2 feet
+</option>
+
+<option value="3 feet">
+3 feet
+</option>
+
+<option value="Other">
+Other
+</option>
+
+</select>
+
+</label>
+
+
+
+<!-- PRICE -->
+
+<label for="price">
+
+Price
+
+<input
+type="number"
+id="price"
+name="price"
+placeholder="Enter price"
+min="0">
+
+</label>
+
+
+
+<!-- QUANTITY -->
+
+<label for="quantity">
+
+Quantity
+
+<input
+type="number"
+id="quantity"
+name="quantity"
+value="1"
+min="1"
+required>
+
+</label>
+
+
+
+<!-- PAYMENT MODE -->
+
+<label for="paymentMode">
+
+Payment Mode
+
+<select
+id="paymentMode"
+name="paymentMode"
+required>
+
+<option value="">
+Select Payment Mode
+</option>
+
+<option value="Cash">
+Cash
+</option>
+
+<option value="GPay">
+GPay
+</option>
+
+<option value="PhonePe">
+PhonePe
+</option>
+
+</select>
+
+</label>
+
+
+
+<!-- ADVANCE -->
+
+<label for="advance">
+
+Advance Amount
+
+<input
+type="number"
+id="advance"
+name="advance"
+placeholder="Enter advance amount"
+min="0">
+
+</label>
+
+
+
+<!-- DELIVERY -->
+
+<label for="delivery">
+
+Delivery / Collection
+
+<select
+id="delivery"
+name="delivery"
+required>
+
+<option value="">
+Select Option
+</option>
+
+<option value="Pickup From Shop">
+Pickup From Shop
+</option>
+
+</select>
+
+</label>
+
+
+
+<!-- DATE -->
+
+<label for="bookingDate">
+
+Preferred Date
+
+<input
+type="date"
+id="bookingDate"
+name="bookingDate"
+required>
+
+</label>
+
+
+
+<!-- ADDRESS -->
+
+<label for="address">
+
+Address
+
+<textarea
+id="address"
+name="address"
+rows="4"
+placeholder="Enter your address"
+required></textarea>
+
+</label>
+
+
+
+<!-- NOTE -->
+
+<label for="note">
+
+Additional Note
+
+<textarea
+id="note"
+name="note"
+rows="4"
+placeholder="Any special request or note"></textarea>
+
+</label>
+
+
+
+<!-- WARNING -->
+
+<div class="booking-warning">
+
+<b>Important:</b>
+
+Please check your name, mobile number, Murti details,
+payment mode and date before submitting the booking.
+
+After clicking the submit button, WhatsApp will open
+with your booking details.
+
+</div>
+
+
+
+<!-- SUBMIT -->
+
+<button
+type="submit"
+class="btn">
+
+Submit Booking on WhatsApp
+
+</button>
+
+
+</form>
+
+</div>
+
+
+
+<!-- =================================================
+     PAYMENT INFORMATION
+================================================= -->
+
+<aside class="card pooja-payment">
+
+<p class="eyebrow">
+Digital Payment
+</p>
+
+<h2>
+Pay Advance
+</h2>
+
+<p>
+You can pay the advance using GPay, PhonePe or
+another supported UPI application.
+</p>
+
+
+<div class="qr-wrap">
+
+<img
+src="images/payment-qr.png"
+alt="UPI payment QR code"
+class="qr">
+
+</div>
+
+
+<p>
+<b>UPI ID:</b>
+<br>
+
+8857874068@okbizaxis
+
+</p>
+
+
+<div class="payment-note">
+
+After payment, keep your transaction screenshot
+ready.
+
+</div>
+
+
+<p class="small">
+
+Payment status will be verified before final
+booking confirmation.
+
+</p>
+
+</aside>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     BOOKING PROCESS
+===================================================== -->
+
+<section class="section">
+
+<div class="section-heading">
+
+<p class="eyebrow">
+Simple Process
+</p>
+
+<h2>
+How Booking Works
+</h2>
+
+</div>
+
+
+<div class="cards">
+
+
+<div class="card center">
+
+<h3>
+1️⃣ Fill Form
+</h3>
+
+<p>
+Enter your name, mobile number, idol details
+and booking information.
+</p>
+
+</div>
+
+
+<div class="card center">
+
+<h3>
+2️⃣ Send on WhatsApp
+</h3>
+
+<p>
+Click the submit button. WhatsApp will open
+with your booking information.
+</p>
+
+</div>
+
+
+<div class="card center">
+
+<h3>
+3️⃣ Confirmation
+</h3>
+
+<p>
+We will review your request and contact you
+for booking confirmation.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SHOP INFORMATION
+===================================================== -->
+
+<section class="section">
+
+<div class="card center">
+
+<p class="eyebrow">
+Need Help?
+</p>
+
+<h2>
+Contact S.B. Joshi Enterprises
+</h2>
+
+<p>
+If you have any questions about idol size, price,
+availability or booking, contact us directly.
+</p>
+
+<a
+class="btn"
+href="tel:+918857874068">
+
+Call 8857874068
+
+</a>
+
+
+<a
+class="btn light"
+href="https://wa.me/918857874068"
+target="_blank"
+rel="noopener">
+
+WhatsApp
+
+</a>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="site-footer">
+
+
+<div>
+
+<h3>
+S.B. Joshi Enterprises
+</h3>
+
+<p>
+1237 Matruchaya Apartment,<br>
+Krantivir Vasudev Balvant Phadke Road,<br>
+Opp. Khunya Murlidhar Mandir,<br>
+Sadashiv Peth, Pune 411030
+</p>
+
+</div>
+
+
+<div>
+
+<p>
+📞
+<a href="tel:+918857874068">
+8857874068
+</a>
+</p>
+
+<p>
+✉️
+<a href="mailto:sayalij.joshi7@gmail.com">
+sayalij.joshi7@gmail.com
+</a>
+</p>
+
+</div>
+
+
+<div>
+
+<p>
+
+<a href="terms.html">
+Terms
+</a>
+
+·
+
+<a href="privacy.html">
+Privacy
+</a>
+
+</p>
+
+</div>
+
+
+<p class="copyright">
+
+© 2026 S.B. Joshi Enterprises ·
+Ganpati Bappa Morya 🙏
+
+</p>
+
+
+</footer>
+
+
+
+<!-- =====================================================
+     BACK TO TOP
+===================================================== -->
+
+<button
+class="top-btn"
+aria-label="Back to top">
+
+↑
+
+</button>
+
+
+
+<!-- =====================================================
+     WHATSAPP FLOATING BUTTON
+===================================================== -->
+
+<a
+class="wa"
+href="https://wa.me/918857874068"
+target="_blank"
+rel="noopener"
+aria-label="Contact us on WhatsApp">
+
+◉
+
+</a>
+
+
+</body>
+
+</html>
