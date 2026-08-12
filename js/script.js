@@ -1,1064 +1,1149 @@
+/* =========================================================
+   S.B. JOSHI ENTERPRISES
+   Main Website JavaScript
+   ========================================================= */
+
+
+/* =========================================================
+   BUSINESS SETTINGS
+========================================================= */
+
+const WHATSAPP_NUMBER = "918857874068";
+
+
+/* =========================================================
+   PAGE READY
+========================================================= */
+
 document.addEventListener("DOMContentLoaded", function () {
 
-  /* =====================================================
-     MOBILE MENU
-  ====================================================== */
+    setupMobileMenu();
 
-  const menuToggle = document.querySelector(".menu-toggle");
-  const siteNav = document.querySelector(".site-nav");
+    setupBackToTop();
 
-  if (menuToggle && siteNav) {
+    setupBookingForm();
 
-    menuToggle.addEventListener("click", function () {
+    setupImageLightbox();
 
-      siteNav.classList.toggle("open");
+    setupGalleryImages();
 
-      const expanded =
-        siteNav.classList.contains("open");
+    setMinimumBookingDate();
 
-      menuToggle.setAttribute(
-        "aria-expanded",
-        expanded ? "true" : "false"
-      );
+});
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+function setupMobileMenu() {
+
+    const menuButton = document.querySelector(".menu-toggle");
+    const nav = document.querySelector(".site-nav");
+
+    if (!menuButton || !nav) {
+        return;
+    }
+
+    menuButton.addEventListener("click", function () {
+
+        const isOpen = nav.classList.toggle("open");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            isOpen ? "true" : "false"
+        );
+
+        document.body.classList.toggle(
+            "no-scroll",
+            isOpen
+        );
 
     });
 
-  }
 
+    /* Close menu after clicking a navigation link */
 
-  /* =====================================================
-     BACK TO TOP
-  ====================================================== */
+    const navLinks = nav.querySelectorAll("a");
 
-  const topButton =
-    document.querySelector(".top-btn");
+    navLinks.forEach(function (link) {
 
-  if (topButton) {
+        link.addEventListener("click", function () {
 
-    topButton.addEventListener(
-      "click",
-      function () {
+            nav.classList.remove("open");
 
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
+            menuButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            document.body.classList.remove(
+                "no-scroll"
+            );
+
         });
 
-      }
-    );
+    });
 
-  }
-
-
-  /* =====================================================
-     PRODUCT OPTIONS
-  ====================================================== */
-
-  const productOptions = `
-    <option value="">Select Product</option>
-    <option value="Agarbatti">Agarbatti</option>
-    <option value="Dhup">Dhup</option>
-    <option value="Kapoor">Kapoor</option>
-    <option value="Wati">Wati</option>
-    <option value="Halad">Halad</option>
-    <option value="Kunku">Kunku</option>
-    <option value="Attar">Attar</option>
-    <option value="Ashtgandha">Ashtgandha</option>
-    <option value="Vastramal">Vastramal</option>
-  `;
+}
 
 
-  /* =====================================================
-     POOJA PRODUCT ROW
-  ====================================================== */
+/* =========================================================
+   BACK TO TOP
+========================================================= */
 
-  const itemRows =
-    document.getElementById("itemRows");
+function setupBackToTop() {
 
-  const addProductButton =
-    document.getElementById("addPoojaItem");
+    const topButton =
+        document.querySelector(".top-btn");
 
-
-  function addRemoveButton(row) {
-
-    const removeButton =
-      row.querySelector(".remove-item");
-
-    if (!removeButton) {
-      return;
+    if (!topButton) {
+        return;
     }
 
 
-    removeButton.addEventListener(
-      "click",
-      function () {
+    /* Hide button initially */
 
-        if (
-          itemRows &&
-          itemRows.children.length > 1
-        ) {
+    topButton.style.opacity = "0";
+    topButton.style.pointerEvents = "none";
 
-          row.remove();
+
+    window.addEventListener("scroll", function () {
+
+        if (window.scrollY > 300) {
+
+            topButton.style.opacity = "1";
+            topButton.style.pointerEvents = "auto";
 
         } else {
 
-          const product =
-            row.querySelector(".poojaProduct");
-
-          const quantity =
-            row.querySelector(".poojaQty");
-
-          if (product) {
-            product.value = "";
-          }
-
-          if (quantity) {
-            quantity.value = "1";
-          }
+            topButton.style.opacity = "0";
+            topButton.style.pointerEvents = "none";
 
         }
-
-      }
-    );
-
-  }
-
-
-  /* =====================================================
-     EXISTING PRODUCT ROWS
-  ====================================================== */
-
-  if (itemRows) {
-
-    const rows =
-      itemRows.querySelectorAll(
-        ".pooja-item-row"
-      );
-
-    rows.forEach(function (row) {
-
-      addRemoveButton(row);
 
     });
 
-  }
+
+    topButton.addEventListener("click", function () {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+
+}
 
 
-  /* =====================================================
-     ADD ANOTHER PRODUCT
-  ====================================================== */
+/* =========================================================
+   BOOKING FORM
+========================================================= */
 
-  if (
-    addProductButton &&
-    itemRows
-  ) {
+function setupBookingForm() {
 
-    addProductButton.addEventListener(
-      "click",
-      function () {
+    const form =
+        document.getElementById("bookingForm");
 
-        const newRow =
-          document.createElement("div");
-
-        newRow.className =
-          "pooja-item-row";
+    if (!form) {
+        return;
+    }
 
 
-        newRow.innerHTML = `
-
-          <label>
-
-            Product Name *
-
-            <select
-              class="poojaProduct"
-              required
-            >
-
-              ${productOptions}
-
-            </select>
-
-          </label>
-
-
-          <label>
-
-            Qty *
-
-            <input
-              class="poojaQty"
-              type="number"
-              min="1"
-              value="1"
-              required
-            >
-
-          </label>
-
-
-          <label>
-
-            Size
-
-            <select
-              class="poojaSize"
-            >
-
-              <option value="">
-                Select Size
-              </option>
-
-              <option value="Small">
-                Small
-              </option>
-
-              <option value="Medium">
-                Medium
-              </option>
-
-              <option value="Large">
-                Large
-              </option>
-
-              <option value="100 gm">
-                100 gm
-              </option>
-
-              <option value="200 gm">
-                200 gm
-              </option>
-
-              <option value="500 gm">
-                500 gm
-              </option>
-
-              <option value="1 kg">
-                1 kg
-              </option>
-
-            </select>
-
-          </label>
-
-
-          <button
-            type="button"
-            class="remove-item"
-            aria-label="Remove product"
-          >
-
-            ×
-
-          </button>
-
-        `;
-
-
-        itemRows.appendChild(newRow);
-
-        addRemoveButton(newRow);
-
-      }
-    );
-
-  }
-
-
-  /* =====================================================
-     NORMAL GANPATI BOOKING
-  ====================================================== */
-
-  const bookingForm =
-    document.getElementById("bookingForm");
-
-
-  if (bookingForm) {
-
-    bookingForm.addEventListener(
-      "submit",
-      function (event) {
+    form.addEventListener("submit", function (event) {
 
         event.preventDefault();
 
 
-        if (!bookingForm.checkValidity()) {
-
-          bookingForm.reportValidity();
-
-          return;
-
-        }
-
-
-        function value(id) {
-
-          const element =
-            document.getElementById(id);
-
-          return element
-            ? element.value.trim()
-            : "";
-
-        }
-
+        /* =============================================
+           GET FORM VALUES
+        ============================================= */
 
         const customerName =
-          value("name");
-
+            getValue("customerName");
 
         const mobile =
-          value("mobile");
-
+            getValue("mobile");
 
         const email =
-          value("email");
+            getValue("email");
 
+        const murtiType =
+            getValue("murtiType");
 
-        const murti =
-          value("murti");
+        const murtiSize =
+            getValue("murtiSize");
 
-
-        const size =
-          value("size");
-
+        const price =
+            getValue("price");
 
         const quantity =
-          value("qty") || "1";
+            getValue("quantity");
 
-
-        const payment =
-          value("payment");
-
+        const paymentMode =
+            getValue("paymentMode");
 
         const advance =
-          value("advance");
-
+            getValue("advance");
 
         const delivery =
-          value("delivery");
+            getValue("delivery");
 
-
-        const date =
-          value("date");
-
+        const bookingDate =
+            getValue("bookingDate");
 
         const address =
-          value("address");
-
+            getValue("address");
 
         const note =
-          value("note");
+            getValue("note");
 
 
-        const message =
+        /* =============================================
+           BASIC VALIDATION
+        ============================================= */
 
-`🙏 NEW GANPATI BOOKING
+        if (!customerName) {
 
-Customer Name: ${customerName}
+            alert(
+                "Please enter customer name."
+            );
 
-Mobile: ${mobile}
+            focusField("customerName");
 
-Email: ${email || "Not provided"}
-
-Murti: ${murti || "Not specified"}
-
-Size: ${size || "Not specified"}
-
-Quantity: ${quantity}
-
-Payment: ${payment || "Payment Pending"}
-
-Advance: ${advance || "Not specified"}
-
-Delivery: ${delivery || "Not specified"}
-
-Date: ${date || "Not specified"}
-
-Address: ${address || "Not provided"}
-
-Note: ${note || "None"}
-
-Status: Pending manual confirmation
-
-S.B. Joshi Enterprises
-Ganpati Bappa Morya 🙏`;
+            return;
+        }
 
 
-        const messageBox =
-          document.getElementById("msg");
+        if (!mobile) {
+
+            alert(
+                "Please enter mobile number."
+            );
+
+            focusField("mobile");
+
+            return;
+        }
 
 
-        if (messageBox) {
+        /* Mobile number validation */
 
-          messageBox.textContent =
-            "Opening WhatsApp…";
+        const cleanMobile =
+            mobile.replace(/\D/g, "");
+
+
+        if (cleanMobile.length !== 10) {
+
+            alert(
+                "Please enter a valid 10 digit mobile number."
+            );
+
+            focusField("mobile");
+
+            return;
+        }
+
+
+        if (!murtiType) {
+
+            alert(
+                "Please select Murti Type."
+            );
+
+            focusField("murtiType");
+
+            return;
+        }
+
+
+        if (!murtiSize) {
+
+            alert(
+                "Please select Murti Size."
+            );
+
+            focusField("murtiSize");
+
+            return;
+        }
+
+
+        if (!quantity || Number(quantity) < 1) {
+
+            alert(
+                "Please enter a valid quantity."
+            );
+
+            focusField("quantity");
+
+            return;
+        }
+
+
+        if (!paymentMode) {
+
+            alert(
+                "Please select Payment Mode."
+            );
+
+            focusField("paymentMode");
+
+            return;
+        }
+
+
+        if (!delivery) {
+
+            alert(
+                "Please select Delivery / Collection option."
+            );
+
+            focusField("delivery");
+
+            return;
+        }
+
+
+        if (!bookingDate) {
+
+            alert(
+                "Please select your preferred date."
+            );
+
+            focusField("bookingDate");
+
+            return;
+        }
+
+
+        if (!address) {
+
+            alert(
+                "Please enter your address."
+            );
+
+            focusField("address");
+
+            return;
+        }
+
+
+        /* =============================================
+           FORMAT DATE
+        ============================================= */
+
+        const formattedDate =
+            formatDate(bookingDate);
+
+
+        /* =============================================
+           PREPARE WHATSAPP MESSAGE
+        ============================================= */
+
+        let message = "";
+
+        message +=
+            "🙏 *NEW GANPATI BOOKING REQUEST* 🙏\n\n";
+
+        message +=
+            "*S.B. Joshi Enterprises*\n\n";
+
+
+        message +=
+            "👤 *Customer Details*\n";
+
+        message +=
+            "Name: " +
+            customerName +
+            "\n";
+
+        message +=
+            "Mobile: " +
+            cleanMobile +
+            "\n";
+
+
+        if (email) {
+
+            message +=
+                "Email: " +
+                email +
+                "\n";
 
         }
 
 
-        window.open(
-
-          "https://wa.me/918857874068?text=" +
-          encodeURIComponent(message),
-
-          "_blank"
-
-        );
-
-      }
-    );
-
-  }
+        message +=
+            "\n";
 
 
-  /* =====================================================
-     POOJA ARTICLES BOOKING
-  ====================================================== */
+        message +=
+            "🪔 *Murti Details*\n";
 
-  const poojaForm =
-    document.getElementById(
-      "poojaBookingForm"
-    );
+        message +=
+            "Murti: " +
+            murtiType +
+            "\n";
+
+        message +=
+            "Size: " +
+            murtiSize +
+            "\n";
+
+        message +=
+            "Price: " +
+            (price ? "₹" + price : "Not specified") +
+            "\n";
+
+        message +=
+            "Quantity: " +
+            quantity +
+            "\n";
 
 
-  if (poojaForm) {
-
-    poojaForm.addEventListener(
-      "submit",
-      function (event) {
-
-        event.preventDefault();
+        message +=
+            "\n";
 
 
-        if (!poojaForm.checkValidity()) {
+        message +=
+            "💳 *Payment Details*\n";
 
-          poojaForm.reportValidity();
+        message +=
+            "Payment Mode: " +
+            paymentMode +
+            "\n";
 
-          return;
+        message +=
+            "Advance: " +
+            (advance ? "₹" + advance : "Not specified") +
+            "\n";
+
+
+        message +=
+            "\n";
+
+
+        message +=
+            "📦 *Collection Details*\n";
+
+        message +=
+            "Delivery: " +
+            delivery +
+            "\n";
+
+        message +=
+            "Preferred Date: " +
+            formattedDate +
+            "\n";
+
+
+        message +=
+            "\n";
+
+
+        message +=
+            "📍 *Address*\n";
+
+        message +=
+            address +
+            "\n";
+
+
+        if (note) {
+
+            message +=
+                "\n";
+
+            message +=
+                "📝 *Note*\n";
+
+            message +=
+                note +
+                "\n";
 
         }
 
 
-        function poojaValue(id) {
+        message +=
+            "\n";
 
-          const element =
-            document.getElementById(id);
+        message +=
+            "━━━━━━━━━━━━━━━━━━\n";
 
-          return element
-            ? element.value.trim()
-            : "";
+        message +=
+            "Booking Status: *Pending Approval*\n";
 
-        }
+        message +=
+            "━━━━━━━━━━━━━━━━━━\n\n";
 
-
-        const customerName =
-          poojaValue("poojaName");
-
-
-        const mobile =
-          poojaValue("poojaMobile");
+        message +=
+            "Ganpati Bappa Morya! 🙏";
 
 
-        /* 10 digit validation */
+        /* =============================================
+           CREATE WHATSAPP URL
+        ============================================= */
 
-        if (!/^[0-9]{10}$/.test(mobile)) {
+        const whatsappURL =
+            "https://wa.me/" +
+            WHATSAPP_NUMBER +
+            "?text=" +
+            encodeURIComponent(message);
 
-          const messageBox =
-            document.getElementById(
-              "poojaMsg"
+
+        /* =============================================
+           CONFIRM BEFORE OPENING WHATSAPP
+        ============================================= */
+
+        const confirmed =
+            window.confirm(
+                "Your booking details are ready.\n\n" +
+                "Click OK to open WhatsApp and send your booking request."
             );
 
 
-          if (messageBox) {
-
-            messageBox.textContent =
-              "Please enter a valid 10-digit contact number.";
-
-          }
-
-          return;
-
+        if (!confirmed) {
+            return;
         }
 
 
-        /* =================================================
-           COLLECT ALL PRODUCTS
-        ================================================== */
+        /* =============================================
+           OPEN WHATSAPP
+        ============================================= */
 
-        const rows =
-          Array.from(
-            document.querySelectorAll(
-              ".pooja-item-row"
-            )
-          );
+        window.open(
+            whatsappURL,
+            "_blank",
+            "noopener"
+        );
 
+    });
 
-        const products = [];
-
-
-        rows.forEach(
-          function (row) {
-
-            const product =
-              row.querySelector(
-                ".poojaProduct"
-              );
+}
 
 
-            const quantity =
-              row.querySelector(
-                ".poojaQty"
-              );
+/* =========================================================
+   GET FORM VALUE
+========================================================= */
+
+function getValue(id) {
+
+    const element =
+        document.getElementById(id);
+
+    if (!element) {
+        return "";
+    }
+
+    return element.value.trim();
+
+}
 
 
-            const size =
-              row.querySelector(
-                ".poojaSize"
-              );
+/* =========================================================
+   FOCUS FIELD
+========================================================= */
 
+function focusField(id) {
+
+    const element =
+        document.getElementById(id);
+
+    if (element) {
+
+        element.focus();
+
+    }
+
+}
+
+
+/* =========================================================
+   FORMAT DATE
+========================================================= */
+
+function formatDate(dateString) {
+
+    if (!dateString) {
+        return "";
+    }
+
+
+    const parts =
+        dateString.split("-");
+
+
+    if (parts.length !== 3) {
+        return dateString;
+    }
+
+
+    return (
+        parts[2] +
+        "-" +
+        parts[1] +
+        "-" +
+        parts[0]
+    );
+
+}
+
+
+/* =========================================================
+   MINIMUM BOOKING DATE
+========================================================= */
+
+function setMinimumBookingDate() {
+
+    const dateInput =
+        document.getElementById("bookingDate");
+
+    if (!dateInput) {
+        return;
+    }
+
+
+    const today =
+        new Date();
+
+
+    const year =
+        today.getFullYear();
+
+
+    const month =
+        String(
+            today.getMonth() + 1
+        ).padStart(2, "0");
+
+
+    const day =
+        String(
+            today.getDate()
+        ).padStart(2, "0");
+
+
+    const minimumDate =
+        year +
+        "-" +
+        month +
+        "-" +
+        day;
+
+
+    dateInput.min =
+        minimumDate;
+
+}
+
+
+/* =========================================================
+   IMAGE LIGHTBOX
+========================================================= */
+
+function setupImageLightbox() {
+
+    const images =
+        document.querySelectorAll(
+            ".gallery img, " +
+            ".product-gallery img, " +
+            ".pooja-products-grid img, " +
+            ".about-bappa"
+        );
+
+
+    if (!images.length) {
+        return;
+    }
+
+
+    createLightbox();
+
+
+    images.forEach(function (image) {
+
+        image.addEventListener(
+            "click",
+            function () {
+
+                openLightbox(
+                    image.src,
+                    image.alt
+                );
+
+            }
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   CREATE LIGHTBOX
+========================================================= */
+
+function createLightbox() {
+
+    if (
+        document.getElementById(
+            "siteLightbox"
+        )
+    ) {
+        return;
+    }
+
+
+    const lightbox =
+        document.createElement("div");
+
+
+    lightbox.id =
+        "siteLightbox";
+
+
+    lightbox.className =
+        "lightbox";
+
+
+    lightbox.innerHTML = `
+
+        <button
+            class="lb-close"
+            type="button"
+            aria-label="Close image">
+            ×
+        </button>
+
+        <button
+            class="lb-prev"
+            type="button"
+            aria-label="Previous image">
+            ‹
+        </button>
+
+        <div class="lightbox-content">
+
+            <img
+                id="lbImage"
+                src=""
+                alt="">
+
+            <div
+                id="lbCaption"
+                class="lb-caption">
+            </div>
+
+        </div>
+
+        <button
+            class="lb-next"
+            type="button"
+            aria-label="Next image">
+            ›
+        </button>
+
+    `;
+
+
+    document.body.appendChild(
+        lightbox
+    );
+
+
+    /* Close button */
+
+    const closeButton =
+        lightbox.querySelector(
+            ".lb-close"
+        );
+
+
+    closeButton.addEventListener(
+        "click",
+        closeLightbox
+    );
+
+
+    /* Click background to close */
+
+    lightbox.addEventListener(
+        "click",
+        function (event) {
 
             if (
-              product &&
-              product.value.trim() !== ""
+                event.target === lightbox
             ) {
 
-              products.push({
-
-                name:
-                  product.value.trim(),
-
-                quantity:
-                  quantity
-                    ? quantity.value
-                    : "1",
-
-                size:
-                  size &&
-                  size.value
-                    ? size.value
-                    : "Not specified"
-
-              });
+                closeLightbox();
 
             }
 
-          }
+        }
+    );
+
+
+    /* Previous / next */
+
+    const previousButton =
+        lightbox.querySelector(
+            ".lb-prev"
         );
 
 
-        if (products.length === 0) {
-
-          const messageBox =
-            document.getElementById(
-              "poojaMsg"
-            );
+    const nextButton =
+        lightbox.querySelector(
+            ".lb-next"
+        );
 
 
-          if (messageBox) {
+    previousButton.addEventListener(
+        "click",
+        showPreviousImage
+    );
 
-            messageBox.textContent =
-              "Please select at least one Pooja Article.";
 
-          }
+    nextButton.addEventListener(
+        "click",
+        showNextImage
+    );
 
-          return;
+
+    /* Keyboard controls */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                !lightbox.classList.contains(
+                    "show"
+                )
+            ) {
+                return;
+            }
+
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                closeLightbox();
+
+            }
+
+
+            if (
+                event.key === "ArrowLeft"
+            ) {
+
+                showPreviousImage();
+
+            }
+
+
+            if (
+                event.key === "ArrowRight"
+            ) {
+
+                showNextImage();
+
+            }
 
         }
+    );
+
+}
 
 
-        /* =================================================
-           PRODUCT MESSAGE
-        ================================================== */
+/* =========================================================
+   LIGHTBOX STATE
+========================================================= */
 
-        const productMessage =
-          products
-            .map(
-              function (product, index) {
+let currentImageIndex = 0;
+
+let lightboxImages = [];
+
+
+/* =========================================================
+   OPEN LIGHTBOX
+========================================================= */
+
+function openLightbox(
+    source,
+    caption
+) {
+
+    const lightbox =
+        document.getElementById(
+            "siteLightbox"
+        );
+
+
+    if (!lightbox) {
+        return;
+    }
+
+
+    lightboxImages =
+        Array.from(
+            document.querySelectorAll(
+                ".gallery img, " +
+                ".product-gallery img, " +
+                ".pooja-products-grid img, " +
+                ".about-bappa"
+            )
+        );
+
+
+    currentImageIndex =
+        lightboxImages.findIndex(
+            function (image) {
 
                 return (
-
-                  `${index + 1}. ` +
-                  `${product.name} ` +
-                  `— Qty: ${product.quantity} ` +
-                  `— Size: ${product.size}`
-
+                    image.src === source
                 );
 
-              }
-            )
-            .join("\n");
-
-
-        const delivery =
-          poojaValue(
-            "poojaDelivery"
-          );
-
-
-        const address =
-          poojaValue(
-            "poojaAddress"
-          );
-
-
-        const note =
-          poojaValue(
-            "poojaNote"
-          );
-
-
-        /* =================================================
-           WHATSAPP MESSAGE
-        ================================================== */
-
-        const message =
-
-`🙏 NEW POOJA SAHITYA BOOKING
-
-Customer Name:
-${customerName}
-
-Contact Number:
-${mobile}
-
-PRODUCTS:
-
-${productMessage}
-
-Delivery:
-${delivery || "Not specified"}
-
-Address:
-${address || "Not provided"}
-
-Note:
-${note || "None"}
-
-Status:
-Pending manual confirmation
-
-S.B. Joshi Enterprises
-Ganpati Bappa Morya 🙏`;
-
-
-        const messageBox =
-          document.getElementById(
-            "poojaMsg"
-          );
-
-
-        if (messageBox) {
-
-          messageBox.textContent =
-            "Opening WhatsApp…";
-
-        }
-
-
-        window.open(
-
-          "https://wa.me/918857874068?text=" +
-          encodeURIComponent(message),
-
-          "_blank"
-
+            }
         );
 
-      }
-    );
-
-  }
-
-
-  /* =====================================================
-     IMAGE LIGHTBOX / ZOOM
-  ====================================================== */
-
-  const lightbox =
-    document.getElementById(
-      "poojaLightbox"
-    );
-
-
-  const lightboxImage =
-    document.getElementById(
-      "lbImage"
-    );
-
-
-  const lightboxCaption =
-    document.getElementById(
-      "lbCaption"
-    );
-
-
-  /*
-     Supports BOTH:
-     data-lightbox="gallery"
-     data-lightbox="pooja"
-  */
-
-  const galleryImages =
-    Array.from(
-      document.querySelectorAll(
-        "img[data-lightbox]"
-      )
-    );
-
-
-  let currentImage = 0;
-
-
-  /* =====================================================
-     OPEN LIGHTBOX
-  ====================================================== */
-
-  function openLightbox(index) {
 
     if (
-      !lightbox ||
-      !lightboxImage ||
-      galleryImages.length === 0
+        currentImageIndex < 0
     ) {
 
-      return;
+        currentImageIndex = 0;
 
     }
 
 
-    currentImage =
-      (
-        index +
-        galleryImages.length
-      ) %
-      galleryImages.length;
-
-
-    const image =
-      galleryImages[currentImage];
-
-
-    lightboxImage.src =
-      image.currentSrc ||
-      image.src;
-
-
-    lightboxImage.alt =
-      image.alt || "";
-
-
-    if (lightboxCaption) {
-
-      lightboxCaption.textContent =
-
-        image.dataset.caption ||
-        image.alt ||
-        "";
-
-    }
+    updateLightbox();
 
 
     lightbox.classList.add(
-      "show"
-    );
-
-
-    lightbox.setAttribute(
-      "aria-hidden",
-      "false"
+        "show"
     );
 
 
     document.body.classList.add(
-      "no-scroll"
+        "no-scroll"
     );
 
-  }
+}
 
 
-  /* =====================================================
-     CLOSE LIGHTBOX
-  ====================================================== */
+/* =========================================================
+   UPDATE LIGHTBOX
+========================================================= */
 
-  function closeLightbox() {
+function updateLightbox() {
+
+    const lightbox =
+        document.getElementById(
+            "siteLightbox"
+        );
+
 
     if (!lightbox) {
+        return;
+    }
 
-      return;
 
+    if (!lightboxImages.length) {
+        return;
+    }
+
+
+    const image =
+        lightboxImages[
+            currentImageIndex
+        ];
+
+
+    const lightboxImage =
+        document.getElementById(
+            "lbImage"
+        );
+
+
+    const caption =
+        document.getElementById(
+            "lbCaption"
+        );
+
+
+    lightboxImage.src =
+        image.src;
+
+
+    lightboxImage.alt =
+        image.alt || "Image";
+
+
+    caption.textContent =
+        image.alt || "";
+
+
+    /* Hide arrows when there is only one image */
+
+    const previousButton =
+        lightbox.querySelector(
+            ".lb-prev"
+        );
+
+
+    const nextButton =
+        lightbox.querySelector(
+            ".lb-next"
+        );
+
+
+    if (
+        lightboxImages.length <= 1
+    ) {
+
+        previousButton.style.display =
+            "none";
+
+        nextButton.style.display =
+            "none";
+
+    } else {
+
+        previousButton.style.display =
+            "grid";
+
+        nextButton.style.display =
+            "grid";
+
+    }
+
+}
+
+
+/* =========================================================
+   CLOSE LIGHTBOX
+========================================================= */
+
+function closeLightbox() {
+
+    const lightbox =
+        document.getElementById(
+            "siteLightbox"
+        );
+
+
+    if (!lightbox) {
+        return;
     }
 
 
     lightbox.classList.remove(
-      "show"
-    );
-
-
-    lightbox.setAttribute(
-      "aria-hidden",
-      "true"
+        "show"
     );
 
 
     document.body.classList.remove(
-      "no-scroll"
+        "no-scroll"
     );
 
-  }
+}
 
 
-  /* =====================================================
-     NEXT IMAGE
-  ====================================================== */
+/* =========================================================
+   PREVIOUS IMAGE
+========================================================= */
 
-  function nextImage() {
+function showPreviousImage() {
 
-    if (
-      galleryImages.length === 0
-    ) {
-
-      return;
-
-    }
-
-
-    openLightbox(
-      currentImage + 1
-    );
-
-  }
-
-
-  /* =====================================================
-     PREVIOUS IMAGE
-  ====================================================== */
-
-  function previousImage() {
-
-    if (
-      galleryImages.length === 0
-    ) {
-
-      return;
-
-    }
-
-
-    openLightbox(
-      currentImage - 1
-    );
-
-  }
-
-
-  /* =====================================================
-     IMAGE CLICK
-  ====================================================== */
-
-  galleryImages.forEach(
-    function (image, index) {
-
-      image.style.cursor =
-        "zoom-in";
-
-
-      image.addEventListener(
-        "click",
-        function () {
-
-          openLightbox(index);
-
-        }
-      );
-
-    }
-  );
-
-
-  /* =====================================================
-     LIGHTBOX BUTTONS
-  ====================================================== */
-
-  if (lightbox) {
-
-
-    const closeButton =
-      lightbox.querySelector(
-        ".lb-close"
-      );
-
-
-    if (closeButton) {
-
-      closeButton.addEventListener(
-        "click",
-        closeLightbox
-      );
-
-    }
-
-
-    const previousButton =
-      lightbox.querySelector(
-        ".lb-prev"
-      );
-
-
-    if (previousButton) {
-
-      previousButton.addEventListener(
-        "click",
-        previousImage
-      );
-
-    }
-
-
-    const nextButton =
-      lightbox.querySelector(
-        ".lb-next"
-      );
-
-
-    if (nextButton) {
-
-      nextButton.addEventListener(
-        "click",
-        nextImage
-      );
-
-    }
-
-
-    /* Click outside image */
-
-    lightbox.addEventListener(
-      "click",
-      function (event) {
-
-        if (
-          event.target === lightbox
-        ) {
-
-          closeLightbox();
-
-        }
-
-      }
-    );
-
-  }
-
-
-  /* =====================================================
-     KEYBOARD CONTROLS
-  ====================================================== */
-
-  document.addEventListener(
-    "keydown",
-    function (event) {
-
-      if (
-        !lightbox ||
-        !lightbox.classList.contains(
-          "show"
-        )
-      ) {
-
+    if (!lightboxImages.length) {
         return;
-
-      }
-
-
-      if (
-        event.key === "Escape"
-      ) {
-
-        closeLightbox();
-
-      }
+    }
 
 
-      if (
-        event.key === "ArrowRight"
-      ) {
-
-        nextImage();
-
-      }
+    currentImageIndex--;
 
 
-      if (
-        event.key === "ArrowLeft"
-      ) {
+    if (
+        currentImageIndex < 0
+    ) {
 
-        previousImage();
-
-      }
+        currentImageIndex =
+            lightboxImages.length - 1;
 
     }
-  );
 
 
-  /* =====================================================
-     TOUCH SWIPE FOR MOBILE
-  ====================================================== */
+    updateLightbox();
 
-  let touchStartX = 0;
-  let touchEndX = 0;
+}
 
 
-  if (lightbox) {
+/* =========================================================
+   NEXT IMAGE
+========================================================= */
 
-    lightbox.addEventListener(
-      "touchstart",
-      function (event) {
+function showNextImage() {
 
-        touchStartX =
-          event.changedTouches[0].screenX;
-
-      },
-      { passive: true }
-    );
+    if (!lightboxImages.length) {
+        return;
+    }
 
 
-    lightbox.addEventListener(
-      "touchend",
-      function (event) {
-
-        touchEndX =
-          event.changedTouches[0].screenX;
+    currentImageIndex++;
 
 
-        const difference =
-          touchEndX - touchStartX;
+    if (
+        currentImageIndex >=
+        lightboxImages.length
+    ) {
+
+        currentImageIndex = 0;
+
+    }
 
 
-        if (
-          Math.abs(difference) < 50
-        ) {
+    updateLightbox();
 
-          return;
-
-        }
+}
 
 
-        if (difference < 0) {
+/* =========================================================
+   GALLERY IMAGE FALLBACK
+========================================================= */
 
-          nextImage();
+function setupGalleryImages() {
 
-        } else {
-
-          previousImage();
-
-        }
-
-      },
-      { passive: true }
-    );
-
-  }
+    const images =
+        document.querySelectorAll(
+            "img"
+        );
 
 
-});
+    images.forEach(function (image) {
+
+        image.addEventListener(
+            "error",
+            function () {
+
+                /*
+                 Do not repeatedly trigger
+                 the error event.
+                */
+
+                image.dataset.imageError =
+                    "true";
+
+            }
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   END OF SCRIPT
+========================================================= */
