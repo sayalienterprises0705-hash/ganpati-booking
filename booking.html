@@ -9,7 +9,7 @@
 content="width=device-width,initial-scale=1">
 
 <meta name="description"
-content="Ganpati Bappa and Pooja Articles booking form by S.B. Joshi Enterprises, Sadashiv Peth, Pune.">
+content="Book your Ganpati Bappa Idol with S.B. Joshi Enterprises. Submit your booking request directly through WhatsApp.">
 
 <title>
 Booking | S.B. Joshi Enterprises
@@ -42,6 +42,7 @@ Booking | S.B. Joshi Enterprises
 
 <button
 class="menu-toggle"
+type="button"
 aria-label="Menu"
 aria-expanded="false">
 
@@ -92,7 +93,7 @@ Contact
 
 
 <!-- =====================================================
-     WELCOME BAR
+     MARQUEE
 ===================================================== -->
 
 <div class="marquee">
@@ -101,9 +102,9 @@ Contact
 
 Welcome to S.B. Joshi Enterprises •
 
-Booking & Enquiries: 8857874068 •
-
 Shop Timing: 11:00 AM–1:00 PM | 4:00 PM–9:00 PM •
+
+Booking & Enquiries: 8857874068 •
 
 🙏 शुभ मंगलमूर्ती 🙏
 
@@ -118,16 +119,16 @@ Shop Timing: 11:00 AM–1:00 PM | 4:00 PM–9:00 PM •
 <section class="page-hero">
 
 <p class="eyebrow">
-Booking
+Ganpati Booking
 </p>
 
 <h1>
-Book Your Ganpati Bappa
+Book Your Ganpati Bappa Idol
 </h1>
 
 <p>
 Fill in your details and send your booking request
-directly through WhatsApp.
+directly to us on WhatsApp.
 </p>
 
 </section>
@@ -135,32 +136,31 @@ directly through WhatsApp.
 
 
 <!-- =====================================================
-     BOOKING AREA
+     BOOKING SECTION
 ===================================================== -->
 
-<section class="section">
-
-<div class="booking">
+<section class="section booking">
 
 
-<!-- =================================================
+<!-- =====================================================
      BOOKING FORM
-================================================= -->
+===================================================== -->
 
 <div class="card">
 
 <div class="form-heading">
 
 <p class="eyebrow">
-Customer Details
+Booking Form
 </p>
 
 <h2>
-Booking Form
+Customer & Idol Details
 </h2>
 
 <p class="small">
-Please enter correct information before submitting.
+Please enter correct information before submitting
+your booking request.
 </p>
 
 </div>
@@ -169,64 +169,74 @@ Please enter correct information before submitting.
 <form id="bookingForm">
 
 
-<!-- CUSTOMER NAME -->
+<!-- =================================================
+     CUSTOMER DETAILS
+================================================= -->
+
+<h3>
+Customer Details
+</h3>
+
 
 <label for="customerName">
 
-Customer Name
+Customer Name *
 
 <input
 type="text"
 id="customerName"
 name="customerName"
 placeholder="Enter your full name"
+autocomplete="name"
 required>
 
 </label>
 
 
-
-<!-- MOBILE -->
-
 <label for="mobile">
 
-Mobile Number
+Mobile Number *
 
 <input
 type="tel"
 id="mobile"
 name="mobile"
-placeholder="Enter 10 digit mobile number"
+placeholder="10 digit mobile number"
 inputmode="numeric"
-pattern="[0-9]{10}"
 maxlength="10"
+autocomplete="tel"
 required>
 
 </label>
 
 
-
-<!-- EMAIL -->
-
 <label for="email">
 
-Email
+Email Address
 
 <input
 type="email"
 id="email"
 name="email"
-placeholder="Enter your email address">
+placeholder="example@email.com"
+autocomplete="email">
 
 </label>
 
 
 
-<!-- MURTI TYPE -->
+<!-- =================================================
+     MURTI DETAILS
+================================================= -->
+
+<h3>
+Ganpati Bappa Details
+</h3>
+
 
 <label for="murtiType">
 
-Murti Type
+Murti Type *
 
 <select
 id="murtiType"
@@ -245,12 +255,12 @@ Eco Ganpati
 Traditional Ganpati
 </option>
 
-<option value="Ganpati Bappa Idol">
-Ganpati Bappa Idol
+<option value="Bal Ganesh">
+Bal Ganesh
 </option>
 
-<option value="Other">
-Other
+<option value="Other Ganpati">
+Other Ganpati
 </option>
 
 </select>
@@ -259,11 +269,9 @@ Other
 
 
 
-<!-- SIZE -->
-
 <label for="murtiSize">
 
-Murti Size
+Murti Size *
 
 <select
 id="murtiSize"
@@ -272,14 +280,6 @@ required>
 
 <option value="">
 Select Size
-</option>
-
-<option value="6 inch">
-6 inch
-</option>
-
-<option value="8 inch">
-8 inch
 </option>
 
 <option value="10 inch">
@@ -298,16 +298,16 @@ Select Size
 18 inch
 </option>
 
-<option value="2 feet">
-2 feet
+<option value="21 inch">
+21 inch
 </option>
 
-<option value="3 feet">
-3 feet
+<option value="24 inch">
+24 inch
 </option>
 
-<option value="Other">
-Other
+<option value="Other Size">
+Other Size
 </option>
 
 </select>
@@ -315,8 +315,6 @@ Other
 </label>
 
 
-
-<!-- PRICE -->
 
 <label for="price">
 
@@ -327,17 +325,16 @@ type="number"
 id="price"
 name="price"
 placeholder="Enter price"
-min="0">
+min="0"
+step="1">
 
 </label>
 
 
 
-<!-- QUANTITY -->
-
 <label for="quantity">
 
-Quantity
+Quantity *
 
 <input
 type="number"
@@ -345,17 +342,25 @@ id="quantity"
 name="quantity"
 value="1"
 min="1"
+step="1"
 required>
 
 </label>
 
 
 
-<!-- PAYMENT MODE -->
+<!-- =================================================
+     PAYMENT DETAILS
+================================================= -->
+
+<h3>
+Payment Details
+</h3>
+
 
 <label for="paymentMode">
 
-Payment Mode
+Payment Mode *
 
 <select
 id="paymentMode"
@@ -384,8 +389,6 @@ PhonePe
 
 
 
-<!-- ADVANCE -->
-
 <label for="advance">
 
 Advance Amount
@@ -395,17 +398,25 @@ type="number"
 id="advance"
 name="advance"
 placeholder="Enter advance amount"
-min="0">
+min="0"
+step="1">
 
 </label>
 
 
 
-<!-- DELIVERY -->
+<!-- =================================================
+     COLLECTION
+================================================= -->
+
+<h3>
+Collection Details
+</h3>
+
 
 <label for="delivery">
 
-Delivery / Collection
+Delivery / Collection *
 
 <select
 id="delivery"
@@ -426,11 +437,9 @@ Pickup From Shop
 
 
 
-<!-- DATE -->
-
 <label for="bookingDate">
 
-Preferred Date
+Preferred Date *
 
 <input
 type="date"
@@ -442,24 +451,20 @@ required>
 
 
 
-<!-- ADDRESS -->
-
 <label for="address">
 
-Address
+Address *
 
 <textarea
 id="address"
 name="address"
 rows="4"
-placeholder="Enter your address"
+placeholder="Enter your complete address"
 required></textarea>
 
 </label>
 
 
-
-<!-- NOTE -->
 
 <label for="note">
 
@@ -469,37 +474,52 @@ Additional Note
 id="note"
 name="note"
 rows="4"
-placeholder="Any special request or note"></textarea>
+placeholder="Any special request or message"></textarea>
 
 </label>
 
 
 
-<!-- WARNING -->
+<!-- =================================================
+     WARNING
+================================================= -->
 
 <div class="booking-warning">
 
-<b>Important:</b>
+<strong>
+Important:
+</strong>
 
-Please check your name, mobile number, Murti details,
-payment mode and date before submitting the booking.
-
-After clicking the submit button, WhatsApp will open
-with your booking details.
+<p>
+Submitting this form sends your booking request to
+S.B. Joshi Enterprises through WhatsApp.
+Your booking will remain pending until it is reviewed
+and confirmed by us.
+</p>
 
 </div>
 
 
 
-<!-- SUBMIT -->
+<!-- =================================================
+     SUBMIT
+================================================= -->
 
 <button
 type="submit"
 class="btn">
 
-Submit Booking on WhatsApp
+Send Booking Request on WhatsApp
 
 </button>
+
+
+<p class="small">
+
+Please check your details carefully before sending
+the WhatsApp message.
+
+</p>
 
 
 </form>
@@ -508,23 +528,24 @@ Submit Booking on WhatsApp
 
 
 
-<!-- =================================================
-     PAYMENT INFORMATION
-================================================= -->
+<!-- =====================================================
+     PAYMENT CARD
+===================================================== -->
 
-<aside class="card pooja-payment">
+<div class="card pooja-payment">
 
 <p class="eyebrow">
-Digital Payment
+Online Payment
 </p>
 
 <h2>
-Pay Advance
+Pay Advance by UPI
 </h2>
 
+
 <p>
-You can pay the advance using GPay, PhonePe or
-another supported UPI application.
+Scan the QR code using GPay, PhonePe, Paytm or another
+UPI application.
 </p>
 
 
@@ -532,14 +553,18 @@ another supported UPI application.
 
 <img
 src="images/payment-qr.png"
-alt="UPI payment QR code"
+alt="UPI payment QR code for S.B. Joshi Enterprises"
 class="qr">
 
 </div>
 
 
 <p>
-<b>UPI ID:</b>
+
+<strong>
+UPI ID:
+</strong>
+
 <br>
 
 8857874068@okbizaxis
@@ -550,22 +575,31 @@ class="qr">
 <div class="payment-note">
 
 After payment, keep your transaction screenshot
-ready.
+ready if payment verification is requested.
 
 </div>
 
 
 <p class="small">
 
-Payment status will be verified before final
-booking confirmation.
+Never share your UPI PIN, OTP, ATM PIN or banking
+password with anyone.
 
 </p>
 
-</aside>
 
+<a
+class="btn"
+href="https://wa.me/918857874068"
+target="_blank"
+rel="noopener">
+
+Chat on WhatsApp
+
+</a>
 
 </div>
+
 
 </section>
 
@@ -584,7 +618,7 @@ Simple Process
 </p>
 
 <h2>
-How Booking Works
+How Your Booking Works
 </h2>
 
 </div>
@@ -596,12 +630,12 @@ How Booking Works
 <div class="card center">
 
 <h3>
-1️⃣ Fill Form
+1. Fill Form
 </h3>
 
 <p>
-Enter your name, mobile number, idol details
-and booking information.
+Enter your name, mobile number, Murti details,
+payment information and preferred date.
 </p>
 
 </div>
@@ -610,12 +644,12 @@ and booking information.
 <div class="card center">
 
 <h3>
-2️⃣ Send on WhatsApp
+2. Send WhatsApp
 </h3>
 
 <p>
-Click the submit button. WhatsApp will open
-with your booking information.
+Click the booking button and WhatsApp will open
+with your booking details.
 </p>
 
 </div>
@@ -624,12 +658,12 @@ with your booking information.
 <div class="card center">
 
 <h3>
-3️⃣ Confirmation
+3. Confirmation
 </h3>
 
 <p>
-We will review your request and contact you
-for booking confirmation.
+We review your request and contact you regarding
+availability and final confirmation.
 </p>
 
 </div>
@@ -647,37 +681,72 @@ for booking confirmation.
 
 <section class="section">
 
-<div class="card center">
-
-<p class="eyebrow">
-Need Help?
-</p>
+<div class="card">
 
 <h2>
-Contact S.B. Joshi Enterprises
+Visit Our Shop
 </h2>
 
 <p>
-If you have any questions about idol size, price,
-availability or booking, contact us directly.
+
+<strong>
+S.B. Joshi Enterprises
+</strong>
+
 </p>
 
-<a
-class="btn"
-href="tel:+918857874068">
+<p>
 
-Call 8857874068
+1237 Matruchaya Apartment,<br>
+
+Krantivir Vasudev Balvant Phadke Road,<br>
+
+Opp. Khunya Murlidhar Mandir,<br>
+
+Sadashiv Peth, Pune 411030
+
+</p>
+
+
+<p>
+
+📞
+
+<a href="tel:+918857874068">
+
+8857874068
 
 </a>
 
+</p>
+
+
+<p>
+
+🕐
+
+<strong>
+Shop Timing
+</strong>
+
+<br>
+
+Morning:
+11:00 AM – 1:00 PM
+
+<br>
+
+Evening:
+4:00 PM – 9:00 PM
+
+</p>
+
 
 <a
-class="btn light"
-href="https://wa.me/918857874068"
-target="_blank"
-rel="noopener">
+class="btn"
+href="contact.html">
 
-WhatsApp
+View Contact & Map
 
 </a>
 
@@ -701,10 +770,15 @@ S.B. Joshi Enterprises
 </h3>
 
 <p>
+
 1237 Matruchaya Apartment,<br>
+
 Krantivir Vasudev Balvant Phadke Road,<br>
+
 Opp. Khunya Murlidhar Mandir,<br>
+
 Sadashiv Peth, Pune 411030
+
 </p>
 
 </div>
@@ -713,17 +787,24 @@ Sadashiv Peth, Pune 411030
 <div>
 
 <p>
+
 📞
+
 <a href="tel:+918857874068">
 8857874068
 </a>
+
 </p>
 
+
 <p>
+
 ✉️
+
 <a href="mailto:sayalij.joshi7@gmail.com">
 sayalij.joshi7@gmail.com
 </a>
+
 </p>
 
 </div>
@@ -766,6 +847,7 @@ Ganpati Bappa Morya 🙏
 
 <button
 class="top-btn"
+type="button"
 aria-label="Back to top">
 
 ↑
@@ -783,7 +865,7 @@ class="wa"
 href="https://wa.me/918857874068"
 target="_blank"
 rel="noopener"
-aria-label="Contact us on WhatsApp">
+aria-label="Contact S.B. Joshi Enterprises on WhatsApp">
 
 ◉
 
