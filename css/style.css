@@ -1568,3 +1568,60 @@ textarea {
     right: 15px;
   }
 }
+/* =========================================================
+   COMPACT POOJA ARTICLES HERO
+   ========================================================= */
+
+.pooja-hero {
+  min-height: 260px;
+}
+
+.pooja-hero-overlay {
+  padding: 30px 20px;
+}
+
+.pooja-hero-overlay h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  margin: 8px 0;
+}
+
+.pooja-hero-overlay > p:not(.eyebrow) {
+  font-size: 15px;
+  margin: 8px auto 18px;
+}
+
+.pooja-hero .hero-actions {
+  gap: 10px;
+}
+
+.pooja-hero .btn {
+  padding: 10px 18px;
+  font-size: 14px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+  .pooja-hero {
+    min-height: 220px;
+  }
+
+  .pooja-hero-overlay {
+    padding: 24px 15px;
+  }
+
+  .pooja-hero-overlay h1 {
+    font-size: 30px;
+  }
+
+  .pooja-hero-overlay > p:not(.eyebrow) {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .pooja-hero .btn {
+    padding: 9px 14px;
+    font-size: 13px;
+  }
+
+}
