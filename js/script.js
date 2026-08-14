@@ -1,3081 +1,1094 @@
-/* =========================================================
-   S.B. JOSHI ENTERPRISES - WEBSITE JAVASCRIPT
-   FINAL VERSION
-   WhatsApp + Mobile Number Fix
-========================================================= */
+<!doctype html>
+<html lang="en">
 
-const WHATSAPP_NUMBER = "918856874068";
+<head>
 
+<meta charset="utf-8">
 
-/* =========================================================
-   COMMON HELPERS
-========================================================= */
+<meta name="viewport"
+      content="width=device-width,initial-scale=1">
 
-function getValue(id) {
-    const el = document.getElementById(id);
-    return el ? el.value.trim() : "";
-}
+<meta name="description"
+      content="Ganpati Bappa Murti Booking by S.B. Joshi Enterprises. Book your Ganpati Murti online and submit your booking request on WhatsApp.">
 
-function focusField(id) {
-    const el = document.getElementById(id);
-    if (el) el.focus();
-}
+<title>Booking | S.B. Joshi Enterprises</title>
 
-function formatDate(dateString) {
-    if (!dateString) return "";
+<link rel="stylesheet" href="css/style.css">
 
-    const parts = dateString.split("-");
+<script src="js/script.js" defer></script>
 
-    return parts.length === 3
-        ? `${parts[2]}-${parts[1]}-${parts[0]}`
-        : dateString;
-}
+</head>
 
 
-/* =========================================================
-   MOBILE NUMBER NORMALIZER
-========================================================= */
+<body class="booking-page">
 
-function normalizeMobileNumber(value) {
 
-    let mobile = String(value || "").replace(/\D/g, "");
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-    /*
-       Accept:
-       8856874068
-       918856874068
-       +91 8856874068
-    */
+<header class="site-header">
 
-    if (mobile.startsWith("91") && mobile.length === 12) {
-        mobile = mobile.substring(2);
-    }
+<a class="brand" href="index.html">
 
-    return mobile;
-}
+<span class="brand-mark">ॐ</span>
 
-function isValidIndianMobile(mobile) {
-    return mobile.length === 10 && /^[6-9]\d{9}$/.test(mobile);
-}
+<span>S.B. Joshi Enterprises</span>
 
+</a>
 
-/* =========================================================
-   MINIMUM BOOKING DATE
-========================================================= */
 
-function setMinimumBookingDate() {
+<button
+class="menu-toggle"
+type="button"
+aria-label="Open menu"
+aria-expanded="false">
 
-    const input =
-        document.getElementById("bookingDate");
+☰
 
-    if (!input) return;
+</button>
 
-    const d = new Date();
 
-    input.min =
-        `${d.getFullYear()}-` +
-        `${String(d.getMonth() + 1).padStart(2, "0")}-` +
-        `${String(d.getDate()).padStart(2, "0")}`;
-}
+<nav class="site-nav">
 
+<a href="index.html">
+Home
+</a>
 
-/* =========================================================
-   WHATSAPP
-========================================================= */
+<a href="about.html">
+About
+</a>
 
-function openWhatsApp(message) {
+<a href="gallery.html">
+Gallery
+</a>
 
-    const url =
-        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+<a href="price.html">
+Pooja Articles
+</a>
 
-    window.location.href = url;
-}
+<a href="booking.html" class="active">
+Booking
+</a>
 
+<a href="reviews.html">
+Reviews
+</a>
 
-/* =========================================================
-   MOBILE MENU
-========================================================= */
+<a href="faq.html">
+FAQ
+</a>
 
-function setupMobileMenu() {
+<a href="contact.html">
+Contact
+</a>
 
-    const button =
-        document.querySelector(".menu-toggle");
+</nav>
 
-    const nav =
-        document.querySelector(".site-nav");
+</header>
 
-    if (!button || !nav) return;
 
-    button.addEventListener("click", () => {
+<!-- =====================================================
+     MARQUEE
+===================================================== -->
 
-        const open =
-            nav.classList.toggle("open");
+<div class="marquee">
 
-        button.setAttribute(
-            "aria-expanded",
-            open ? "true" : "false"
-        );
+🙏 गणपती बाप्पा मोरया! •
 
-        document.body.classList.toggle(
-            "no-scroll",
-            open
-        );
-    });
+Ganpati Murti Booking Open •
 
-    nav.querySelectorAll("a").forEach(link => {
+S.B. Joshi Enterprises •
 
-        link.addEventListener("click", () => {
+Booking & Enquiries: 8856874068 •
 
-            nav.classList.remove("open");
+🙏 शुभ मंगलमूर्ती 🙏
 
-            button.setAttribute(
-                "aria-expanded",
-                "false"
-            );
+</div>
 
-            document.body.classList.remove(
-                "no-scroll"
-            );
-        });
 
-    });
-}
+<main>
 
 
-/* =========================================================
-   BACK TO TOP
-========================================================= */
+<!-- =====================================================
+     BOOKING HERO
+===================================================== -->
 
-function setupBackToTop() {
+<section class="pooja-hero booking-hero">
 
-    const button =
-        document.querySelector(".top-btn");
+<div class="pooja-hero-overlay">
 
-    if (!button) return;
+<p class="eyebrow">
+Ganpati Bappa • Booking 2026
+</p>
 
-    const update = () => {
+<h1>
+🙏 Book Your Ganpati Murti
+</h1>
 
-        const visible =
-            window.scrollY > 300;
+<p>
+आपल्या आवडत्या गणपती बाप्पाची मूर्ती
+आत्ताच बुक करा.
+</p>
 
-        button.style.opacity =
-            visible ? "1" : "0";
+<div class="hero-actions">
 
-        button.style.pointerEvents =
-            visible ? "auto" : "none";
-    };
+<a
+class="btn"
+href="#bookingFormSection">
 
-    update();
+Book Now
 
-    window.addEventListener(
-        "scroll",
-        update
-    );
+</a>
 
-    button.addEventListener(
-        "click",
-        () => {
+<a
+class="btn light"
+href="gallery.html">
 
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+View Gallery
 
-        }
-    );
-}
+</a>
 
+</div>
 
-/* =========================================================
-   GANPATI BOOKING FORM
-========================================================= */
+</div>
 
-function setupBookingForm() {
+</section>
 
-    const form =
-        document.getElementById("bookingForm");
 
-    if (!form) return;
+<!-- =====================================================
+     INTRODUCTION
+===================================================== -->
 
-    form.noValidate = true;
+<section class="section section-heading">
 
-    form.addEventListener(
-        "submit",
-        function (event) {
+<p class="eyebrow">
+Ganpati Murti Booking
+</p>
 
-            event.preventDefault();
+<h2>
+Reserve Your Bappa With Us
+</h2>
 
+<p>
 
-            /* -------------------------
-               GET FORM VALUES
-            ------------------------- */
+Select your Murti details, enter your contact
+information and submit your booking request.
 
-            const customerName =
-                getValue("customerName");
+</p>
 
-            const mobile =
-                normalizeMobileNumber(
-                    getValue("mobile")
-                );
+<div class="clay-badge">
 
-            const email =
-                getValue("email");
+🙏 भक्ती • परंपरा • विश्वास • गणपती बाप्पा मोरया 🙏
 
-            const murtiType =
-                getValue("murtiType");
+</div>
 
-            const murtiSize =
-                getValue("murtiSize");
+</section>
 
-            const price =
-                getValue("price");
 
-            const quantity =
-                getValue("quantity");
+<!-- =====================================================
+     BOOKING SECTION
+===================================================== -->
 
-            const paymentMode =
-                getValue("paymentMode");
+<section
+class="section booking"
+id="bookingFormSection">
 
-            const advance =
-                getValue("advance");
 
-            const delivery =
-                getValue("delivery");
+<!-- =====================================================
+     BOOKING FORM
+===================================================== -->
 
-            const bookingDate =
-                getValue("bookingDate");
+<form
+id="bookingForm"
+class="card">
 
-            const address =
-                getValue("address");
 
-            const note =
-                getValue("note");
+<div class="section-heading form-heading">
 
-            const photoInput =
-                document.getElementById(
-                    "finalPhoto"
-                );
+<p class="eyebrow">
+Ganpati Murti Booking Form
+</p>
 
+<h2>
+Book Your Ganpati Murti
+</h2>
 
-            /* -------------------------
-               VALIDATION
-            ------------------------- */
+<p>
 
-            if (!customerName) {
+Please enter correct details.
+Your booking request will be sent to
+S.B. Joshi Enterprises on WhatsApp.
 
-                alert(
-                    "Please enter customer name."
-                );
+</p>
 
-                focusField(
-                    "customerName"
-                );
+</div>
 
-                return;
-            }
 
+<!-- CUSTOMER NAME -->
 
-            if (!isValidIndianMobile(mobile)) {
+<label>
 
-                alert(
-                    "Please enter a valid 10 digit Indian mobile number."
-                );
+Customer Name *
 
-                focusField("mobile");
+<input
+id="customerName"
+name="customerName"
+type="text"
+autocomplete="name"
+placeholder="Enter your full name"
+required>
 
-                return;
-            }
+</label>
 
 
-            if (!murtiType) {
+<!-- MOBILE -->
 
-                alert(
-                    "Please select Murti Type."
-                );
+<label>
 
-                focusField("murtiType");
+Contact Number *
 
-                return;
-            }
+<input
+id="mobile"
+name="mobile"
+type="tel"
+inputmode="numeric"
+maxlength="10"
+pattern="[6-9][0-9]{9}"
+autocomplete="tel"
+placeholder="10 digit mobile number"
+required>
 
+</label>
 
-            if (!murtiSize) {
 
-                alert(
-                    "Please select Murti Size."
-                );
+<!-- EMAIL -->
 
-                focusField("murtiSize");
+<label>
 
-                return;
-            }
+Email Address
 
+<input
+id="email"
+name="email"
+type="email"
+autocomplete="email"
+placeholder="Enter your email address">
 
-            if (
-                !quantity ||
-                Number(quantity) < 1
-            ) {
+</label>
 
-                alert(
-                    "Please enter a valid quantity."
-                );
 
-                focusField("quantity");
+<!-- MURTI -->
 
-                return;
-            }
+<label>
 
+Murti Type *
 
-            if (!paymentMode) {
+<select
+id="murtiType"
+name="murtiType"
+required>
 
-                alert(
-                    "Please select Payment Mode."
-                );
+<option value="">
+Select Murti Type
+</option>
 
-                focusField("paymentMode");
+<option value="Eco Ganpati">
+Eco Ganpati
+</option>
 
-                return;
-            }
+<option value="Shadu Mati Ganpati">
+Shadu Mati Ganpati
+</option>
 
+<option value="Traditional Ganpati">
+Traditional Ganpati
+</option>
 
-            if (
-                !advance ||
-                Number(advance) < 1
-            ) {
+</select>
 
-                alert(
-                    "Please enter the advance amount."
-                );
+</label>
 
-                focusField("advance");
 
-                return;
-            }
+<!-- SIZE -->
 
+<label>
 
-            if (!delivery) {
+Murti Size *
 
-                alert(
-                    "Please select Delivery / Collection option."
-                );
+<select
+id="murtiSize"
+name="murtiSize"
+required>
 
-                focusField("delivery");
+<option value="">
+Select Size
+</option>
 
-                return;
-            }
+<option value="10 Inch">
+10 Inch
+</option>
 
+<option value="12 Inch">
+12 Inch
+</option>
 
-            if (!bookingDate) {
+<option value="15 Inch">
+15 Inch
+</option>
 
-                alert(
-                    "Please select your preferred date."
-                );
+<option value="18 Inch">
+18 Inch
+</option>
 
-                focusField("bookingDate");
+<option value="21 Inch">
+21 Inch
+</option>
 
-                return;
-            }
+<option value="24 Inch">
+24 Inch
+</option>
 
+</select>
 
-            if (!address) {
+</label>
 
-                alert(
-                    "Please enter your address."
-                );
 
-                focusField("address");
+<!-- PRICE -->
 
-                return;
-            }
+<label>
 
+Price
 
-            /* -------------------------
-               PHOTO VALIDATION
-            ------------------------- */
+<input
+id="price"
+name="price"
+type="text"
+placeholder="Price will be confirmed manually">
 
-            if (
-                photoInput &&
-                photoInput.required &&
-                !photoInput.files.length
-            ) {
+</label>
 
-                alert(
-                    "Please upload the Final Idol Photo before submitting the booking."
-                );
 
-                photoInput.focus();
+<!-- QUANTITY -->
 
-                return;
-            }
+<label>
 
+Quantity *
 
-            /* -------------------------
-               WHATSAPP MESSAGE
-            ------------------------- */
+<input
+id="quantity"
+name="quantity"
+type="number"
+min="1"
+value="1"
+required>
 
-            let message =
-                "🙏 *NEW GANPATI BOOKING REQUEST* 🙏\n\n";
+</label>
 
-            message +=
-                "*S.B. Joshi Enterprises*\n\n";
 
+<!-- PAYMENT -->
 
-            message +=
-                "👤 *Customer Details*\n";
+<label>
 
-            message +=
-                `Name: ${customerName}\n`;
+Payment Option *
 
-            message +=
-                `Mobile: ${mobile}\n`;
+<select
+id="paymentMode"
+name="paymentMode"
+required>
 
+<option value="">
+Select Payment Option
+</option>
 
-            if (email) {
+<option value="Online Payment">
+Online Payment
+</option>
 
-                message +=
-                    `Email: ${email}\n`;
-            }
+</select>
 
+</label>
 
-            message += "\n";
 
+<!-- ADVANCE -->
 
-            message +=
-                "🪔 *Murti Details*\n";
+<label>
 
-            message +=
-                `Murti: ${murtiType}\n`;
+Advance Amount *
 
-            message +=
-                `Size: ${murtiSize}\n`;
+<input
+id="advance"
+name="advance"
+type="number"
+min="1"
+placeholder="Enter advance amount"
+required>
 
-            message +=
-                `Price: ${
-                    price
-                        ? "₹" + price
-                        : "Not specified"
-                }\n`;
+</label>
 
-            message +=
-                `Quantity: ${quantity}\n`;
 
+<!-- DELIVERY -->
 
-            message += "\n";
+<label>
 
+Delivery / Collection *
 
-            message +=
-                "💳 *Payment Details*\n";
+<select
+id="delivery"
+name="delivery"
+required>
 
-            message +=
-                `Payment Mode: ${paymentMode}\n`;
+<option value="">
+Select Delivery / Collection
+</option>
 
-            message +=
-                `Advance: ${
-                    advance
-                        ? "₹" + advance
-                        : "Not specified"
-                }\n`;
+<option value="Shop Pickup — Free">
+Shop Pickup — Free
+</option>
 
+<option value="Home Delivery — Chargeable">
+Home Delivery — Chargeable
+</option>
 
-            message += "\n";
+</select>
 
+</label>
 
-            message +=
-                "📦 *Collection Details*\n";
 
-            message +=
-                `Delivery: ${delivery}\n`;
+<!-- DATE -->
 
-            message +=
-                `Preferred Date: ${formatDate(bookingDate)}\n`;
+<label>
 
+Required Date *
 
-            message += "\n";
+<input
+id="bookingDate"
+name="bookingDate"
+type="date"
+required>
 
+</label>
 
-            message +=
-                "📍 *Address*\n";
 
-            message +=
-                `${address}\n`;
+<!-- ADDRESS -->
 
+<label>
 
-            if (note) {
+Address *
 
-                message += "\n";
+<textarea
+id="address"
+name="address"
+rows="4"
+placeholder="Enter your complete address"
+required></textarea>
 
-                message +=
-                    "📝 *Note*\n";
+</label>
 
-                message +=
-                    `${note}\n`;
-            }
 
+<!-- NOTE -->
 
-            if (
-                photoInput &&
-                photoInput.files.length
-            ) {
+<label>
 
-                message += "\n";
+Special Note
 
-                message +=
-                    `📷 Final Idol Photo: ${photoInput.files[0].name}\n`;
-            }
+<textarea
+id="note"
+name="note"
+rows="4"
+placeholder="Any special requirement"></textarea>
 
+</label>
 
-            message += "\n";
 
-            message +=
-                "━━━━━━━━━━━━━━━━━━\n";
+<!-- =====================================================
+     FINAL IDOL PHOTO
+===================================================== -->
 
-            message +=
-                "Booking Status: *Pending Approval*\n";
+<label>
 
-            message +=
-                "━━━━━━━━━━━━━━━━━━\n\n";
+Upload Your Final Idol Photo *
 
-            message +=
-                "Ganpati Bappa Morya! 🙏";
+<input
+id="finalPhoto"
+name="finalPhoto"
+type="file"
+accept="image/*"
+required>
 
+</label>
 
-            /* -------------------------
-               CONFIRM
-            ------------------------- */
 
-            const confirmed =
-                window.confirm(
-                    "Your booking details are ready.\n\n" +
-                    "Click OK to open WhatsApp and send your booking request."
-                );
+<div class="booking-warning">
 
+<strong>
+📷 Upload Your Final Idol Photo
+</strong>
 
-            if (!confirmed) return;
+<br><br>
 
+The selected photo is for sending to
+S.B. Joshi Enterprises only.
 
-            const msg =
-                document.getElementById(
-                    "msg"
-                );
+It will not be displayed publicly on the website
+or sent back to the customer.
 
+<br><br>
 
-            if (msg) {
+On supported phones, WhatsApp's share screen
+may allow you to send the photo together with
+your booking message.
 
-                msg.textContent =
-                    "Opening WhatsApp with your booking details…";
-            }
+</div>
 
 
-            /* -------------------------
-               OPEN WHATSAPP
-            ------------------------- */
+<!-- =====================================================
+     DELIVERY INFORMATION
+===================================================== -->
 
-            openWhatsApp(message);
+<div class="booking-warning">
 
-        }
-    );
-}
+<strong>
+🚚 Delivery Information
+</strong>
 
+<br><br>
 
-/* =========================================================
-   POOJA ARTICLE BOOKING FORM
-========================================================= */
+🏪 <b>Shop Pickup — Free:</b>
 
-function setupPoojaBookingForm() {
+You may collect your Ganpati Bappa Idol
+directly from our shop at no additional charge.
 
-    const form =
-        document.getElementById(
-            "poojaBookingForm"
-        );
+<br><br>
 
-    if (!form) return;
+🚚 <b>Home Delivery — Chargeable:</b>
 
-    form.noValidate = true;
+Home delivery is available on request and will
+attract additional charges based on the delivery
+location and idol size.
 
+<br><br>
 
-    const rows =
-        document.getElementById(
-            "itemRows"
-        );
+Delivery charges will be communicated and confirmed
+before final booking confirmation.
 
+</div>
 
-    const addButton =
-        document.getElementById(
-            "addPoojaItem"
-        );
 
+<!-- =====================================================
+     PAYMENT INFORMATION
+===================================================== -->
 
-    /* -------------------------
-       ROW HANDLER
-    ------------------------- */
+<div class="booking-warning">
 
-    function bindRow(row) {
+<strong>
+💳 Online Payment Information
+</strong>
 
-        const remove =
-            row.querySelector(
-                ".remove-item"
-            );
+<br><br>
 
+Payment option:
 
-        if (remove) {
+<b>
+Online Payment
+</b>
 
-            remove.addEventListener(
-                "click",
-                () => {
+<br><br>
 
-                    const all =
-                        rows.querySelectorAll(
-                            ".pooja-item-row"
-                        );
+The amount paid at the time of booking will be
+treated as an <b>advance payment</b>.
 
+<br><br>
 
-                    if (all.length === 1) {
+Please make payment only after your booking details
+and final amount are confirmed by
+S.B. Joshi Enterprises.
 
-                        const product =
-                            row.querySelector(
-                                ".poojaProduct"
-                            );
+<br><br>
 
-                        const qty =
-                            row.querySelector(
-                                ".poojaQty"
-                            );
+Payment status will be verified manually.
 
-                        const size =
-                            row.querySelector(
-                                ".poojaSize"
-                            );
+</div>
 
 
-                        if (product)
-                            product.value = "";
+<!-- =====================================================
+     IMPORTANT BOOKING INFORMATION
+===================================================== -->
 
+<div class="booking-warning">
 
-                        if (qty)
-                            qty.value = "1";
+<strong>
+🙏 Important Booking Information
+</strong>
 
+<br><br>
 
-                        if (size)
-                            size.selectedIndex = 0;
+Thank you for choosing
+<b>S.B. Joshi Enterprises.</b>
 
-                    } else {
+<br><br>
 
-                        row.remove();
-                    }
+The amount paid at the time of booking will be
+treated as an <b>advance payment</b>, and your
+Ganpati Bappa Idol booking will therefore be
+considered <b>partially confirmed</b> at this stage.
 
-                }
-            );
-        }
-    }
+<br><br>
 
+Your booking will receive <b>final confirmation
+only after the complete payment has been received.</b>
 
-    if (rows) {
+Kindly pay the remaining balance and share the
+payment confirmation with us to complete your booking.
 
-        rows
-            .querySelectorAll(
-                ".pooja-item-row"
-            )
-            .forEach(bindRow);
-    }
+<br><br>
 
+Thank you for your understanding and cooperation.
+We look forward to celebrating Ganpati with you. 🙏
 
-    /* -------------------------
-       ADD POOJA ITEM
-    ------------------------- */
+</div>
 
-    if (addButton && rows) {
 
-        addButton.addEventListener(
-            "click",
-            () => {
+<!-- =====================================================
+     IMAGE & COLOUR DISCLAIMER
+===================================================== -->
 
-                const first =
-                    rows.querySelector(
-                        ".pooja-item-row"
-                    );
+<div class="booking-warning">
 
-                if (!first) return;
+<strong>
+🖼️ Image & Colour Disclaimer
+</strong>
 
+<br><br>
 
-                const clone =
-                    first.cloneNode(true);
+Please note that the colours, shades, decorations,
+and overall appearance of the Ganpati Bappa Idol
+shown in the images may vary slightly from the
+actual idol.
 
+<br><br>
 
-                const product =
-                    clone.querySelector(
-                        ".poojaProduct"
-                    );
+Such variations may occur due to device screen
+settings, browser rendering, photography and
+lighting conditions, and display quality.
 
+<br><br>
 
-                const qty =
-                    clone.querySelector(
-                        ".poojaQty"
-                    );
+The images are provided for
+<b>reference purposes only.</b>
 
+<br><br>
 
-                const size =
-                    clone.querySelector(
-                        ".poojaSize"
-                    );
+Thank you for your understanding. 🙏
 
+</div>
 
-                if (product)
-                    product.value = "";
 
+<!-- =====================================================
+     SHADU MATI INFORMATION
+===================================================== -->
 
-                if (qty)
-                    qty.value = "1";
+<div class="booking-warning">
 
+<strong>
+🌿 Shadu Mati Information
+</strong>
 
-                if (size)
-                    size.selectedIndex = 0;
+<br><br>
 
+All Ganpati Bappa Idols offered by
+<b>S.B. Joshi Enterprises</b> are crafted exclusively
+using <b>Shadu Mati (natural clay)</b>, keeping
+traditional craftsmanship and care for nature
+in mind.
 
-                rows.appendChild(clone);
+<br><br>
 
-                bindRow(clone);
+🙏 गणपती बाप्पा मोरया 🙏
 
+</div>
 
-                if (product)
-                    product.focus();
 
-            }
-        );
-    }
+<!-- =====================================================
+     WHATSAPP SUBMISSION INFORMATION
+===================================================== -->
 
+<div class="booking-warning">
 
-    /* -------------------------
-       SUBMIT POOJA BOOKING
-    ------------------------- */
+<strong>
+📲 WhatsApp Booking Submission
+</strong>
 
-    form.addEventListener(
-        "submit",
-        function (event) {
+<br><br>
 
-            event.preventDefault();
+After clicking the submit button, WhatsApp will
+open with your booking details.
 
+<br><br>
 
-            const name =
-                getValue("poojaName");
+Please press <b>Send</b> on WhatsApp to submit
+your booking request.
 
+<br><br>
 
-            const mobile =
-                normalizeMobileNumber(
-                    getValue("poojaMobile")
-                );
+Your booking request will be sent to:
 
+<b>
+8856874068
+</b>
 
-            const delivery =
-                getValue("poojaDelivery");
+<br><br>
 
+Your booking is not finally confirmed immediately.
+Final confirmation will be provided manually by
+S.B. Joshi Enterprises.
 
-            const address =
-                getValue("poojaAddress");
+</div>
 
 
-            const note =
-                getValue("poojaNote");
+<!-- =====================================================
+     SUBMIT
+===================================================== -->
 
+<button
+class="btn"
+type="submit">
 
-            const rowsList =
-                rows
-                    ? Array.from(
-                        rows.querySelectorAll(
-                            ".pooja-item-row"
-                        )
-                    )
-                    : [];
+Submit Booking on WhatsApp
 
+</button>
 
-            /* -------------------------
-               VALIDATION
-            ------------------------- */
 
-            if (!name) {
+<p
+id="msg"
+class="small"
+aria-live="polite">
+</p>
 
-                alert(
-                    "Please enter customer name."
-                );
 
-                focusField("poojaName");
+</form>
 
-                return;
-            }
 
+<!-- =====================================================
+     PAYMENT CARD
+===================================================== -->
 
-            if (!isValidIndianMobile(mobile)) {
+<aside class="card pooja-payment">
 
-                alert(
-                    "Please enter a valid 10 digit Indian mobile number."
-                );
 
-                focusField(
-                    "poojaMobile"
-                );
+<h2>
+💳 Online Payment
+</h2>
 
-                return;
-            }
 
+<img
+src="images/payment-qr.png"
+alt="Online payment UPI QR code"
+class="qr">
 
-            if (!rowsList.length) {
 
-                alert(
-                    "Please add at least one product."
-                );
+<p>
 
-                return;
-            }
+<b>
+UPI ID:
+</b>
 
+<br>
 
-            /* -------------------------
-               PRODUCTS
-            ------------------------- */
+8856874068@okbizaxis
 
-            const products = [];
+</p>
 
 
-            for (
-                let i = 0;
-                i < rowsList.length;
-                i++
-            ) {
+<p class="small">
 
-                const product =
-                    rowsList[i]
-                        .querySelector(
-                            ".poojaProduct"
-                        )
-                        ?.value
-                        .trim();
+Online Payment / UPI
 
+</p>
 
-                const qty =
-                    rowsList[i]
-                        .querySelector(
-                            ".poojaQty"
-                        )
-                        ?.value
-                        .trim();
 
+<div class="payment-note">
 
-                const size =
-                    rowsList[i]
-                        .querySelector(
-                            ".poojaSize"
-                        )
-                        ?.value
-                        .trim();
+🙏 Please confirm your booking amount
+before making payment.
 
+</div>
 
-                if (!product) {
 
-                    alert(
-                        `Please select Product ${i + 1}.`
-                    );
+<p class="small">
 
-                    rowsList[i]
-                        .querySelector(
-                            ".poojaProduct"
-                        )
-                        ?.focus();
+After payment, keep your transaction
+screenshot ready for verification.
 
-                    return;
-                }
+</p>
 
 
-                if (
-                    !qty ||
-                    Number(qty) < 1
-                ) {
+<a
+class="btn"
+href="https://wa.me/91885687068"
+target="_blank"
+rel="noopener">
 
-                    alert(
-                        `Please enter a valid quantity for ${product}.`
-                    );
+Send Payment Screenshot on WhatsApp
 
-                    rowsList[i]
-                        .querySelector(
-                            ".poojaQty"
-                        )
-                        ?.focus();
+</a>
 
-                    return;
-                }
 
+</aside>
 
-                products.push(
-                    `${i + 1}. ${product} | Qty: ${qty} | Size: ${size}`
-                );
-            }
 
+</section>
 
-            /* -------------------------
-               DELIVERY
-            ------------------------- */
 
-            if (
-                delivery.includes(
-                    "Home Delivery"
-                ) &&
-                !address
-            ) {
+<!-- =====================================================
+     BOOKING PROCESS
+===================================================== -->
 
-                alert(
-                    "Please enter the delivery address for Home Delivery."
-                );
+<section class="section">
 
-                focusField(
-                    "poojaAddress"
-                );
+<div class="section-heading">
 
-                return;
-            }
+<p class="eyebrow">
+Simple Booking Process
+</p>
 
+<h2>
+How Booking Works
+</h2>
 
-            /* -------------------------
-               WHATSAPP MESSAGE
-            ------------------------- */
+</div>
 
-            let message =
-                "🙏 *NEW POOJA ARTICLE BOOKING REQUEST* 🙏\n\n";
 
+<div class="slogan-grid">
 
-            message +=
-                "*S.B. Joshi Enterprises*\n\n";
 
+<article class="slogan-card">
 
-            message +=
-                "👤 *Customer Details*\n";
+<span>
+📝
+</span>
 
+<h3>
+1. Fill the Form
+</h3>
 
-            message +=
-                `Name: ${name}\n`;
+<p>
 
+Enter your name, mobile number,
+Murti details and booking information.
 
-            message +=
-                `Mobile: ${mobile}\n\n`;
+</p>
 
+</article>
 
-            message +=
-                "🪔 *Selected Pooja Articles*\n";
 
+<article class="slogan-card">
 
-            message +=
-                products.join("\n");
+<span>
+📲
+</span>
 
+<h3>
+2. Submit on WhatsApp
+</h3>
 
-            message += "\n\n";
+<p>
 
+WhatsApp will open with your booking
+details. Press Send to submit.
 
-            message +=
-                `📦 *Delivery*\n${delivery}\n`;
+</p>
 
+</article>
 
-            if (address) {
 
-                message += "\n";
+<article class="slogan-card">
 
-                message +=
-                    "📍 *Address*\n";
+<span>
+🙏
+</span>
 
-                m    if (!input) return;
+<h3>
+3. Manual Confirmation
+</h3>
 
-    const d = new Date();
+<p>
 
-    input.min =
-        `${d.getFullYear()}-` +
-        `${String(d.getMonth() + 1).padStart(2, "0")}-` +
-        `${String(d.getDate()).padStart(2, "0")}`;
-}
+S.B. Joshi Enterprises will check
+availability and confirm your booking.
 
+</p>
 
-/* =========================================================
-   WHATSAPP
-========================================================= */
+</article>
 
-function openWhatsApp(message) {
 
-    const url =
-        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+</div>
 
-    window.location.href = url;
-}
+</section>
 
 
-/* =========================================================
-   MOBILE MENU
-========================================================= */
+<!-- =====================================================
+     CONTACT CTA
+===================================================== -->
 
-function setupMobileMenu() {
+<section class="section section-heading">
 
-    const button =
-        document.querySelector(".menu-toggle");
+<p class="eyebrow">
+Need Help?
+</p>
 
-    const nav =
-        document.querySelector(".site-nav");
+<h2>
+Contact S.B. Joshi Enterprises
+</h2>
 
-    if (!button || !nav) return;
+<p>
 
-    button.addEventListener("click", () => {
+For Murti availability, price, delivery
+or booking questions, contact us directly.
 
-        const open =
-            nav.classList.toggle("open");
+</p>
 
-        button.setAttribute(
-            "aria-expanded",
-            open ? "true" : "false"
-        );
 
-        document.body.classList.toggle(
-            "no-scroll",
-            open
-        );
-    });
+<div class="hero-actions">
 
-    nav.querySelectorAll("a").forEach(link => {
+<a
+class="btn"
+href="tel:+91885687068">
 
-        link.addEventListener("click", () => {
+📞 Call 8856874068
 
-            nav.classList.remove("open");
+</a>
 
-            button.setAttribute(
-                "aria-expanded",
-                "false"
-            );
 
-            document.body.classList.remove(
-                "no-scroll"
-            );
-        });
+<a
+class="btn light"
+href="https://wa.me/91885687068"
+target="_blank"
+rel="noopener">
 
-    });
-}
+💬 WhatsApp Us
 
+</a>
 
-/* =========================================================
-   BACK TO TOP
-========================================================= */
+</div>
 
-function setupBackToTop() {
+</section>
 
-    const button =
-        document.querySelector(".top-btn");
 
-    if (!button) return;
+</main>
 
-    const update = () => {
 
-        const visible =
-            window.scrollY > 300;
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
-        button.style.opacity =
-            visible ? "1" : "0";
+<footer class="site-footer">
 
-        button.style.pointerEvents =
-            visible ? "auto" : "none";
-    };
 
-    update();
+<div>
 
-    window.addEventListener(
-        "scroll",
-        update
-    );
+<h3>
+S.B. Joshi Enterprises
+</h3>
 
-    button.addEventListener(
-        "click",
-        () => {
+<p>
 
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+1237 Matruchaya Apartment,
+Krantivir Vasudev Balvant Phadke Road,
+Opp. Khunya Murlidhar Mandir,
+Sadashiv Peth, Pune 411030
 
-        }
-    );
-}
+</p>
 
+</div>
 
-/* =========================================================
-   GANPATI BOOKING FORM
-========================================================= */
 
-function setupBookingForm() {
+<div>
 
-    const form =
-        document.getElementById("bookingForm");
+<p>
 
-    if (!form) return;
+📞
 
-    form.noValidate = true;
+<a href="tel:+91885687068">
+8856874068
+</a>
 
-    form.addEventListener(
-        "submit",
-        function (event) {
+</p>
 
-            event.preventDefault();
 
+<p>
 
-            /* -------------------------
-               GET FORM VALUES
-            ------------------------- */
+✉️
 
-            const customerName =
-                getValue("customerName");
+<a href="mailto:sayalij.joshi7@gmail.com">
+sayalij.joshi7@gmail.com
+</a>
 
-            const mobile =
-                normalizeMobileNumber(
-                    getValue("mobile")
-                );
+</p>
 
-            const email =
-                getValue("email");
+</div>
 
-            const murtiType =
-                getValue("murtiType");
 
-            const murtiSize =
-                getValue("murtiSize");
+<div>
 
-            const price =
-                getValue("price");
+<p>
 
-            const quantity =
-                getValue("quantity");
+<a href="terms.html">
+Terms
+</a>
 
-            const paymentMode =
-                getValue("paymentMode");
+·
 
-            const advance =
-                getValue("advance");
+<a href="privacy.html">
+Privacy
+</a>
 
-            const delivery =
-                getValue("delivery");
+</p>
 
-            const bookingDate =
-                getValue("bookingDate");
+</div>
 
-            const address =
-                getValue("address");
 
-            const note =
-                getValue("note");
+<p class="copyright">
 
-            const photoInput =
-                document.getElementById(
-                    "finalPhoto"
-                );
+© 2026 S.B. Joshi Enterprises ·
+Ganpati Bappa Morya 🙏
 
+</p>
 
-            /* -------------------------
-               VALIDATION
-            ------------------------- */
 
-            if (!customerName) {
+</footer>
 
-                alert(
-                    "Please enter customer name."
-                );
 
-                focusField(
-                    "customerName"
-                );
+<!-- =====================================================
+     BACK TO TOP
+===================================================== -->
 
-                return;
-            }
+<button
+class="top-btn"
+type="button"
+aria-label="Back to top">
 
+↑
 
-            if (!isValidIndianMobile(mobile)) {
+</button>
 
-                alert(
-                    "Please enter a valid 10 digit Indian mobile number."
-                );
 
-                focusField("mobile");
+<!-- =====================================================
+     WHATSAPP FLOATING BUTTON
+===================================================== -->
 
-                return;
-            }
+<a
+class="wa"
+href="https://wa.me/91885687068"
+target="_blank"
+rel="noopener"
+aria-label="Contact S.B. Joshi Enterprises on WhatsApp">
 
+◉
 
-            if (!murtiType) {
+</a>
 
-                alert(
-                    "Please select Murti Type."
-                );
 
-                focusField("murtiType");
+</body>
 
-                return;
-            }
-
-
-            if (!murtiSize) {
-
-                alert(
-                    "Please select Murti Size."
-                );
-
-                focusField("murtiSize");
-
-                return;
-            }
-
-
-            if (
-                !quantity ||
-                Number(quantity) < 1
-            ) {
-
-                alert(
-                    "Please enter a valid quantity."
-                );
-
-                focusField("quantity");
-
-                return;
-            }
-
-
-            if (!paymentMode) {
-
-                alert(
-                    "Please select Payment Mode."
-                );
-
-                focusField("paymentMode");
-
-                return;
-            }
-
-
-            if (
-                !advance ||
-                Number(advance) < 1
-            ) {
-
-                alert(
-                    "Please enter the advance amount."
-                );
-
-                focusField("advance");
-
-                return;
-            }
-
-
-            if (!delivery) {
-
-                alert(
-                    "Please select Delivery / Collection option."
-                );
-
-                focusField("delivery");
-
-                return;
-            }
-
-
-            if (!bookingDate) {
-
-                alert(
-                    "Please select your preferred date."
-                );
-
-                focusField("bookingDate");
-
-                return;
-            }
-
-
-            if (!address) {
-
-                alert(
-                    "Please enter your address."
-                );
-
-                focusField("address");
-
-                return;
-            }
-
-
-            /* -------------------------
-               PHOTO VALIDATION
-            ------------------------- */
-
-            if (
-                photoInput &&
-                photoInput.required &&
-                !photoInput.files.length
-            ) {
-
-                alert(
-                    "Please upload the Final Idol Photo before submitting the booking."
-                );
-
-                photoInput.focus();
-
-                return;
-            }
-
-
-            /* -------------------------
-               WHATSAPP MESSAGE
-            ------------------------- */
-
-            let message =
-                "🙏 *NEW GANPATI BOOKING REQUEST* 🙏\n\n";
-
-            message +=
-                "*S.B. Joshi Enterprises*\n\n";
-
-
-            message +=
-                "👤 *Customer Details*\n";
-
-            message +=
-                `Name: ${customerName}\n`;
-
-            message +=
-                `Mobile: ${mobile}\n`;
-
-
-            if (email) {
-
-                message +=
-                    `Email: ${email}\n`;
-            }
-
-
-            message += "\n";
-
-
-            message +=
-                "🪔 *Murti Details*\n";
-
-            message +=
-                `Murti: ${murtiType}\n`;
-
-            message +=
-                `Size: ${murtiSize}\n`;
-
-            message +=
-                `Price: ${
-                    price
-                        ? "₹" + price
-                        : "Not specified"
-                }\n`;
-
-            message +=
-                `Quantity: ${quantity}\n`;
-
-
-            message += "\n";
-
-
-            message +=
-                "💳 *Payment Details*\n";
-
-            message +=
-                `Payment Mode: ${paymentMode}\n`;
-
-            message +=
-                `Advance: ${
-                    advance
-                        ? "₹" + advance
-                        : "Not specified"
-                }\n`;
-
-
-            message += "\n";
-
-
-            message +=
-                "📦 *Collection Details*\n";
-
-            message +=
-                `Delivery: ${delivery}\n`;
-
-            message +=
-                `Preferred Date: ${formatDate(bookingDate)}\n`;
-
-
-            message += "\n";
-
-
-            message +=
-                "📍 *Address*\n";
-
-            message +=
-                `${address}\n`;
-
-
-            if (note) {
-
-                message += "\n";
-
-                message +=
-                    "📝 *Note*\n";
-
-                message +=
-                    `${note}\n`;
-            }
-
-
-            if (
-                photoInput &&
-                photoInput.files.length
-            ) {
-
-                message += "\n";
-
-                message +=
-                    `📷 Final Idol Photo: ${photoInput.files[0].name}\n`;
-            }
-
-
-            message += "\n";
-
-            message +=
-                "━━━━━━━━━━━━━━━━━━\n";
-
-            message +=
-                "Booking Status: *Pending Approval*\n";
-
-            message +=
-                "━━━━━━━━━━━━━━━━━━\n\n";
-
-            message +=
-                "Ganpati Bappa Morya! 🙏";
-
-
-            /* -------------------------
-               CONFIRM
-            ------------------------- */
-
-            const confirmed =
-                window.confirm(
-                    "Your booking details are ready.\n\n" +
-                    "Click OK to open WhatsApp and send your booking request."
-                );
-
-
-            if (!confirmed) return;
-
-
-            const msg =
-                document.getElementById(
-                    "msg"
-                );
-
-
-            if (msg) {
-
-                msg.textContent =
-                    "Opening WhatsApp with your booking details…";
-            }
-
-
-            /* -------------------------
-               OPEN WHATSAPP
-            ------------------------- */
-
-            openWhatsApp(message);
-
-        }
-    );
-}
-
-
-/* =========================================================
-   POOJA ARTICLE BOOKING FORM
-========================================================= */
-
-function setupPoojaBookingForm() {
-
-    const form =
-        document.getElementById(
-            "poojaBookingForm"
-        );
-
-    if (!form) return;
-
-    form.noValidate = true;
-
-
-    const rows =
-        document.getElementById(
-            "itemRows"
-        );
-
-
-    const addButton =
-        document.getElementById(
-            "addPoojaItem"
-        );
-
-
-    /* -------------------------
-       ROW HANDLER
-    ------------------------- */
-
-    function bindRow(row) {
-
-        const remove =
-            row.querySelector(
-                ".remove-item"
-            );
-
-
-        if (remove) {
-
-            remove.addEventListener(
-                "click",
-                () => {
-
-                    const all =
-                        rows.querySelectorAll(
-                            ".pooja-item-row"
-                        );
-
-
-                    if (all.length === 1) {
-
-                        const product =
-                            row.querySelector(
-                                ".poojaProduct"
-                            );
-
-                        const qty =
-                            row.querySelector(
-                                ".poojaQty"
-                            );
-
-                        const size =
-                            row.querySelector(
-                                ".poojaSize"
-                            );
-
-
-                        if (product)
-                            product.value = "";
-
-
-                        if (qty)
-                            qty.value = "1";
-
-
-                        if (size)
-                            size.selectedIndex = 0;
-
-                    } else {
-
-                        row.remove();
-                    }
-
-                }
-            );
-        }
-    }
-
-
-    if (rows) {
-
-        rows
-            .querySelectorAll(
-                ".pooja-item-row"
-            )
-            .forEach(bindRow);
-    }
-
-
-    /* -------------------------
-       ADD POOJA ITEM
-    ------------------------- */
-
-    if (addButton && rows) {
-
-        addButton.addEventListener(
-            "click",
-            () => {
-
-                const first =
-                    rows.querySelector(
-                        ".pooja-item-row"
-                    );
-
-                if (!first) return;
-
-
-                const clone =
-                    first.cloneNode(true);
-
-
-                const product =
-                    clone.querySelector(
-                        ".poojaProduct"
-                    );
-
-
-                const qty =
-                    clone.querySelector(
-                        ".poojaQty"
-                    );
-
-
-                const size =
-                    clone.querySelector(
-                        ".poojaSize"
-                    );
-
-
-                if (product)
-                    product.value = "";
-
-
-                if (qty)
-                    qty.value = "1";
-
-
-                if (size)
-                    size.selectedIndex = 0;
-
-
-                rows.appendChild(clone);
-
-                bindRow(clone);
-
-
-                if (product)
-                    product.focus();
-
-            }
-        );
-    }
-
-
-    /* -------------------------
-       SUBMIT POOJA BOOKING
-    ------------------------- */
-
-    form.addEventListener(
-        "submit",
-        function (event) {
-
-            event.preventDefault();
-
-
-            const name =
-                getValue("poojaName");
-
-
-            const mobile =
-                normalizeMobileNumber(
-                    getValue("poojaMobile")
-                );
-
-
-            const delivery =
-                getValue("poojaDelivery");
-
-
-            const address =
-                getValue("poojaAddress");
-
-
-            const note =
-                getValue("poojaNote");
-
-
-            const rowsList =
-                rows
-                    ? Array.from(
-                        rows.querySelectorAll(
-                            ".pooja-item-row"
-                        )
-                    )
-                    : [];
-
-
-            /* -------------------------
-               VALIDATION
-            ------------------------- */
-
-            if (!name) {
-
-                alert(
-                    "Please enter customer name."
-                );
-
-                focusField("poojaName");
-
-                return;
-            }
-
-
-            if (!isValidIndianMobile(mobile)) {
-
-                alert(
-                    "Please enter a valid 10 digit Indian mobile number."
-                );
-
-                focusField(
-                    "poojaMobile"
-                );
-
-                return;
-            }
-
-
-            if (!rowsList.length) {
-
-                alert(
-                    "Please add at least one product."
-                );
-
-                return;
-            }
-
-
-            /* -------------------------
-               PRODUCTS
-            ------------------------- */
-
-            const products = [];
-
-
-            for (
-                let i = 0;
-                i < rowsList.length;
-                i++
-            ) {
-
-                const product =
-                    rowsList[i]
-                        .querySelector(
-                            ".poojaProduct"
-                        )
-                        ?.value
-                        .trim();
-
-
-                const qty =
-                    rowsList[i]
-                        .querySelector(
-                            ".poojaQty"
-                        )
-                        ?.value
-                        .trim();
-
-
-                const size =
-                    rowsList[i]
-                        .querySelector(
-                            ".poojaSize"
-                        )
-                        ?.value
-                        .trim();
-
-
-                if (!product) {
-
-                    alert(
-                        `Please select Product ${i + 1}.`
-                    );
-
-                    rowsList[i]
-                        .querySelector(
-                            ".poojaProduct"
-                        )
-                        ?.focus();
-
-                    return;
-                }
-
-
-                if (
-                    !qty ||
-                    Number(qty) < 1
-                ) {
-
-                    alert(
-                        `Please enter a valid quantity for ${product}.`
-                    );
-
-                    rowsList[i]
-                        .querySelector(
-                            ".poojaQty"
-                        )
-                        ?.focus();
-
-                    return;
-                }
-
-
-                products.push(
-                    `${i + 1}. ${product} | Qty: ${qty} | Size: ${size}`
-                );
-            }
-
-
-            /* -------------------------
-               DELIVERY
-            ------------------------- */
-
-            if (
-                delivery.includes(
-                    "Home Delivery"
-                ) &&
-                !address
-            ) {
-
-                alert(
-                    "Please enter the delivery address for Home Delivery."
-                );
-
-                focusField(
-                    "poojaAddress"
-                );
-
-                return;
-            }
-
-
-            /* -------------------------
-               WHATSAPP MESSAGE
-            ------------------------- */
-
-            let message =
-                "🙏 *NEW POOJA ARTICLE BOOKING REQUEST* 🙏\n\n";
-
-
-            message +=
-                "*S.B. Joshi Enterprises*\n\n";
-
-
-            message +=
-                "👤 *Customer Details*\n";
-
-
-            message +=
-                `Name: ${name}\n`;
-
-
-            message +=
-                `Mobile: ${mobile}\n\n`;
-
-
-            message +=
-                "🪔 *Selected Pooja Articles*\n";
-
-
-            message +=
-                products.join("\n");
-
-
-            message += "\n\n";
-
-
-            message +=
-                `📦 *Delivery*\n${delivery}\n`;
-
-
-            if (address) {
-
-                message += "\n";
-
-                message +=
-                    "📍 *Address*\n";
-
-                m
-function setMinimumBookingDate() {
-    const input = document.getElementById("bookingDate");
-
-    if (!input) return;
-
-    const d = new Date();
-
-    input.min =
-        `${d.getFullYear()}-` +
-        `${String(d.getMonth() + 1).padStart(2, "0")}-` +
-        `${String(d.getDate()).padStart(2, "0")}`;
-}
-
-
-/* =========================================================
-   WHATSAPP HELPER
-========================================================= */
-
-function openWhatsApp(message) {
-
-    const url =
-        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-
-    /*
-       Use location.href instead of window.open().
-       This works more reliably on mobile browsers
-       and avoids popup-blocker problems.
-    */
-
-    window.location.href = url;
-}
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-function setupMobileMenu() {
-
-    const button = document.querySelector(".menu-toggle");
-    const nav = document.querySelector(".site-nav");
-
-    if (!button || !nav) return;
-
-    button.addEventListener("click", () => {
-
-        const open = nav.classList.toggle("open");
-
-        button.setAttribute(
-            "aria-expanded",
-            open ? "true" : "false"
-        );
-
-        document.body.classList.toggle("no-scroll", open);
-    });
-
-    nav.querySelectorAll("a").forEach(link => {
-
-        link.addEventListener("click", () => {
-
-            nav.classList.remove("open");
-
-            button.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-            document.body.classList.remove("no-scroll");
-        });
-
-    });
-}
-
-
-/* =========================================================
-   BACK TO TOP
-========================================================= */
-
-function setupBackToTop() {
-
-    const button = document.querySelector(".top-btn");
-
-    if (!button) return;
-
-    const update = () => {
-
-        const visible = window.scrollY > 300;
-
-        button.style.opacity = visible ? "1" : "0";
-
-        button.style.pointerEvents =
-            visible ? "auto" : "none";
-    };
-
-    update();
-
-    window.addEventListener("scroll", update);
-
-    button.addEventListener("click", () => {
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    });
-}
-
-
-/* =========================================================
-   GANPATI BOOKING FORM
-========================================================= */
-
-function setupBookingForm() {
-
-    const form = document.getElementById("bookingForm");
-
-    if (!form) return;
-
-    form.noValidate = true;
-
-    form.addEventListener("submit", function (event) {
-
-        event.preventDefault();
-
-
-        /* -------------------------
-           GET FORM VALUES
-        ------------------------- */
-
-        const customerName =
-            getValue("customerName");
-
-        const mobile =
-            getValue("mobile").replace(/\D/g, "");
-
-        const email =
-            getValue("email");
-
-        const murtiType =
-            getValue("murtiType");
-
-        const murtiSize =
-            getValue("murtiSize");
-
-        const price =
-            getValue("price");
-
-        const quantity =
-            getValue("quantity");
-
-        const paymentMode =
-            getValue("paymentMode");
-
-        const advance =
-            getValue("advance");
-
-        const delivery =
-            getValue("delivery");
-
-        const bookingDate =
-            getValue("bookingDate");
-
-        const address =
-            getValue("address");
-
-        const note =
-            getValue("note");
-
-        const photoInput =
-            document.getElementById("finalPhoto");
-
-
-        /* -------------------------
-           VALIDATION
-        ------------------------- */
-
-        if (!customerName) {
-
-            alert("Please enter customer name.");
-
-            focusField("customerName");
-
-            return;
-        }
-
-        if (mobile.length !== 10) {
-
-            alert(
-                "Please enter a valid 10 digit mobile number."
-            );
-
-            focusField("mobile");
-
-            return;
-        }
-
-        if (!murtiType) {
-
-            alert("Please select Murti Type.");
-
-            focusField("murtiType");
-
-            return;
-        }
-
-        if (!murtiSize) {
-
-            alert("Please select Murti Size.");
-
-            focusField("murtiSize");
-
-            return;
-        }
-
-        if (!quantity || Number(quantity) < 1) {
-
-            alert("Please enter a valid quantity.");
-
-            focusField("quantity");
-
-            return;
-        }
-
-        if (!paymentMode) {
-
-            alert("Please select Payment Mode.");
-
-            focusField("paymentMode");
-
-            return;
-        }
-
-        if (!advance || Number(advance) < 1) {
-
-            alert("Please enter the advance amount.");
-
-            focusField("advance");
-
-            return;
-        }
-
-        if (!delivery) {
-
-            alert(
-                "Please select Delivery / Collection option."
-            );
-
-            focusField("delivery");
-
-            return;
-        }
-
-        if (!bookingDate) {
-
-            alert(
-                "Please select your preferred date."
-            );
-
-            focusField("bookingDate");
-
-            return;
-        }
-
-        if (!address) {
-
-            alert(
-                "Please enter your address."
-            );
-
-            focusField("address");
-
-            return;
-        }
-
-        if (
-            photoInput &&
-            photoInput.required &&
-            !photoInput.files.length
-        ) {
-
-            alert(
-                "Please upload the Final Idol Photo before submitting the booking."
-            );
-
-            photoInput.focus();
-
-            return;
-        }
-
-
-        /* -------------------------
-           CREATE WHATSAPP MESSAGE
-        ------------------------- */
-
-        let message =
-            "🙏 *NEW GANPATI BOOKING REQUEST* 🙏\n\n";
-
-        message +=
-            "*S.B. Joshi Enterprises*\n\n";
-
-        message +=
-            "👤 *Customer Details*\n";
-
-        message +=
-            `Name: ${customerName}\n`;
-
-        message +=
-            `Mobile: ${mobile}\n`;
-
-        if (email) {
-
-            message +=
-                `Email: ${email}\n`;
-        }
-
-        message += "\n";
-
-        message +=
-            "🪔 *Murti Details*\n";
-
-        message +=
-            `Murti: ${murtiType}\n`;
-
-        message +=
-            `Size: ${murtiSize}\n`;
-
-        message +=
-            `Price: ${
-                price
-                    ? "₹" + price
-                    : "Not specified"
-            }\n`;
-
-        message +=
-            `Quantity: ${quantity}\n`;
-
-        message += "\n";
-
-        message +=
-            "💳 *Payment Details*\n";
-
-        message +=
-            `Payment Mode: ${paymentMode}\n`;
-
-        message +=
-            `Advance: ${
-                advance
-                    ? "₹" + advance
-                    : "Not specified"
-            }\n`;
-
-        message += "\n";
-
-        message +=
-            "📦 *Collection Details*\n";
-
-        message +=
-            `Delivery: ${delivery}\n`;
-
-        message +=
-            `Preferred Date: ${formatDate(bookingDate)}\n`;
-
-        message += "\n";
-
-        message +=
-            "📍 *Address*\n";
-
-        message +=
-            `${address}\n`;
-
-        if (note) {
-
-            message += "\n";
-
-            message +=
-                "📝 *Note*\n";
-
-            message +=
-                `${note}\n`;
-        }
-
-        /*
-           A local photo cannot be attached automatically
-           through a wa.me URL.
-           We therefore include its filename.
-        */
-
-        if (
-            photoInput &&
-            photoInput.files.length
-        ) {
-
-            message += "\n";
-
-            message +=
-                `📷 Final Idol Photo: ${photoInput.files[0].name}\n`;
-        }
-
-        message += "\n";
-
-        message +=
-            "━━━━━━━━━━━━━━━━━━\n";
-
-        message +=
-            "Booking Status: *Pending Approval*\n";
-
-        message +=
-            "━━━━━━━━━━━━━━━━━━\n\n";
-
-        message +=
-            "Ganpati Bappa Morya! 🙏";
-
-
-        /* -------------------------
-           CONFIRM BEFORE WHATSAPP
-        ------------------------- */
-
-        const confirmed = window.confirm(
-            "Your booking details are ready.\n\n" +
-            "Click OK to open WhatsApp and send your booking request."
-        );
-
-        if (!confirmed) return;
-
-
-        /* -------------------------
-           STATUS MESSAGE
-        ------------------------- */
-
-        const msg =
-            document.getElementById("msg");
-
-        if (msg) {
-
-            msg.textContent =
-                "Opening WhatsApp with your booking details…";
-        }
-
-
-        /* -------------------------
-           OPEN WHATSAPP
-        ------------------------- */
-
-        openWhatsApp(message);
-
-    });
-}
-
-
-/* =========================================================
-   POOJA ARTICLE BOOKING FORM
-========================================================= */
-
-function setupPoojaBookingForm() {
-
-    const form =
-        document.getElementById("poojaBookingForm");
-
-    if (!form) return;
-
-    form.noValidate = true;
-
-    const rows =
-        document.getElementById("itemRows");
-
-    const addButton =
-        document.getElementById("addPoojaItem");
-
-
-    /* -------------------------
-       BIND PRODUCT ROW
-    ------------------------- */
-
-    function bindRow(row) {
-
-        const remove =
-            row.querySelector(".remove-item");
-
-        if (remove) {
-
-            remove.addEventListener(
-                "click",
-                () => {
-
-                    const all =
-                        rows.querySelectorAll(
-                            ".pooja-item-row"
-                        );
-
-                    if (all.length === 1) {
-
-                        const product =
-                            row.querySelector(
-                                ".poojaProduct"
-                            );
-
-                        const qty =
-                            row.querySelector(
-                                ".poojaQty"
-                            );
-
-                        const size =
-                            row.querySelector(
-                                ".poojaSize"
-                            );
-
-                        if (product)
-                            product.value = "";
-
-                        if (qty)
-                            qty.value = "1";
-
-                        if (size)
-                            size.selectedIndex = 0;
-
-                    } else {
-
-                        row.remove();
-                    }
-
-                }
-            );
-        }
-    }
-
-
-    /* -------------------------
-       INITIAL ROWS
-    ------------------------- */
-
-    if (rows) {
-
-        rows
-            .querySelectorAll(".pooja-item-row")
-            .forEach(bindRow);
-    }
-
-
-    /* -------------------------
-       ADD PRODUCT
-    ------------------------- */
-
-    if (addButton && rows) {
-
-        addButton.addEventListener(
-            "click",
-            () => {
-
-                const first =
-                    rows.querySelector(
-                        ".pooja-item-row"
-                    );
-
-                if (!first) return;
-
-                const clone =
-                    first.cloneNode(true);
-
-                const product =
-                    clone.querySelector(
-                        ".poojaProduct"
-                    );
-
-                const qty =
-                    clone.querySelector(
-                        ".poojaQty"
-                    );
-
-                const size =
-                    clone.querySelector(
-                        ".poojaSize"
-                    );
-
-                if (product)
-                    product.value = "";
-
-                if (qty)
-                    qty.value = "1";
-
-                if (size)
-                    size.selectedIndex = 0;
-
-                rows.appendChild(clone);
-
-                bindRow(clone);
-
-                if (product)
-                    product.focus();
-
-            }
-        );
-    }
-
-
-    /* -------------------------
-       SUBMIT POOJA BOOKING
-    ------------------------- */
-
-    form.addEventListener(
-        "submit",
-        function (event) {
-
-            event.preventDefault();
-
-
-            const name =
-                getValue("poojaName");
-
-            const mobile =
-                getValue("poojaMobile")
-                    .replace(/\D/g, "");
-
-            const delivery =
-                getValue("poojaDelivery");
-
-            const address =
-                getValue("poojaAddress");
-
-            const note =
-                getValue("poojaNote");
-
-            const rowsList =
-                rows
-                    ? Array.from(
-                        rows.querySelectorAll(
-                            ".pooja-item-row"
-                        )
-                    )
-                    : [];
-
-
-            /* -------------------------
-               VALIDATION
-            ------------------------- */
-
-            if (!name) {
-
-                alert(
-                    "Please enter customer name."
-                );
-
-                focusField("poojaName");
-
-                return;
-            }
-
-            if (mobile.length !== 10) {
-
-                alert(
-                    "Please enter a valid 10 digit mobile number."
-                );
-
-                focusField("poojaMobile");
-
-                return;
-            }
-
-            if (!rowsList.length) {
-
-                alert(
-                    "Please add at least one product."
-                );
-
-                return;
-            }
-
-
-            /* -------------------------
-               COLLECT PRODUCTS
-            ------------------------- */
-
-            const products = [];
-
-            for (
-                let i = 0;
-                i < rowsList.length;
-                i++
-            ) {
-
-                const product =
-                    rowsList[i]
-                        .querySelector(".poojaProduct")
-                        ?.value
-                        .trim();
-
-                const qty =
-                    rowsList[i]
-                        .querySelector(".poojaQty")
-                        ?.value
-                        .trim();
-
-                const size =
-                    rowsList[i]
-                        .querySelector(".poojaSize")
-                        ?.value
-                        .trim();
-
-
-                if (!product) {
-
-                    alert(
-                        `Please select Product ${i + 1}.`
-                    );
-
-                    rowsList[i]
-                        .querySelector(".poojaProduct")
-                        ?.focus();
-
-                    return;
-                }
-
-
-                if (!qty || Number(qty) < 1) {
-
-                    alert(
-                        `Please enter a valid quantity for ${product}.`
-                    );
-
-                    rowsList[i]
-                        .querySelector(".poojaQty")
-                        ?.focus();
-
-                    return;
-                }
-
-
-                products.push(
-                    `${i + 1}. ${product} | Qty: ${qty} | Size: ${size}`
-                );
-            }
-
-
-            /* -------------------------
-               DELIVERY VALIDATION
-            ------------------------- */
-
-            if (
-                delivery.includes("Home Delivery") &&
-                !address
-            ) {
-
-                alert(
-                    "Please enter the delivery address for Home Delivery."
-                );
-
-                focusField("poojaAddress");
-
-                return;
-            }
-
-
-            /* -------------------------
-               CREATE MESSAGE
-            ------------------------- */
-
-            let message =
-                "🙏 *NEW POOJA ARTICLE BOOKING REQUEST* 🙏\n\n";
-
-            message +=
-                "*S.B. Joshi Enterprises*\n\n";
-
-            message +=
-                "👤 *Customer Details*\n";
-
-            message +=
-                `Name: ${name}\n`;
-
-            message +=
-                `Mobile: ${mobile}\n\n`;
-
-            message +=
-                "🪔 *Selected Pooja Articles*\n";
-
-            message +=
-                products.join("\n");
-
-            message += "\n\n";
-
-            message +=
-                `📦 *Delivery*\n${delivery}\n`;
-
-            if (address) {
-
-                message += "\n";
-
-                message +=
-                    "📍 *Address*\n";
-
-                message +=
-                    `${address}\n`;
-            }
-
-            if (note) {
-
-                message += "\n";
-
-                message +=
-                    "📝 *Special Note*\n";
-
-                message +=
-                    `${note}\n`;
-            }
-
-            message += "\n";
-
-            message +=
-                "━━━━━━━━━━━━━━━━━━\n";
-
-            message +=
-                "Booking Status: *Pending Approval*\n";
-
-            message +=
-                "Final product price, availability and delivery charges will be confirmed manually.\n";
-
-            message +=
-                "━━━━━━━━━━━━━━━━━━\n\n";
-
-            message +=
-                "Ganpati Bappa Morya! 🙏";
-
-
-            /* -------------------------
-               CONFIRM
-            ------------------------- */
-
-            const confirmed =
-                window.confirm(
-                    "Your Pooja Article booking details are ready.\n\n" +
-                    "Click OK to open WhatsApp. " +
-                    "Then press Send to submit your booking request."
-                );
-
-            if (!confirmed) return;
-
-
-            /* -------------------------
-               STATUS
-            ------------------------- */
-
-            const msg =
-                document.getElementById(
-                    "poojaMsg"
-                );
-
-            if (msg) {
-
-                msg.textContent =
-                    "Opening WhatsApp with your Pooja Article booking…";
-            }
-
-
-            /* -------------------------
-               OPEN WHATSAPP
-            ------------------------- */
-
-            openWhatsApp(message);
-
-        }
-    );
-}
-
-
-/* =========================================================
-   IMAGE LIGHTBOX
-========================================================= */
-
-let currentImageIndex = 0;
-
-let lightboxImages = [];
-
-
-function setupImageLightbox() {
-
-    const images =
-        document.querySelectorAll(
-            ".gallery img, " +
-            ".product-gallery img, " +
-            ".pooja-products-grid img, " +
-            ".about-bappa, " +
-            "[data-lightbox]"
-        );
-
-    if (!images.length) return;
-
-    createLightbox();
-
-    images.forEach(
-        image =>
-            image.addEventListener(
-                "click",
-                () => openLightbox(image)
-            )
-    );
-}
-
-
-function createLightbox() {
-
-    if (
-        document.getElementById(
-            "siteLightbox"
-        )
-    ) return;
-
-
-    const box =
-        document.createElement("div");
-
-    box.id = "siteLightbox";
-
-    box.className = "lightbox";
-
-    box.innerHTML = `
-        <button class="lb-close"
-                type="button"
-                aria-label="Close image">×</button>
-
-        <button class="lb-prev"
-                type="button"
-                aria-label="Previous image">‹</button>
-
-        <div class="lightbox-content">
-            <img id="lbImage"
-                 src=""
-                 alt="">
-
-            <div id="lbCaption"
-                 class="lb-caption"></div>
-        </div>
-
-        <button class="lb-next"
-                type="button"
-                aria-label="Next image">›</button>
-    `;
-
-    document.body.appendChild(box);
-
-
-    box.querySelector(
-        ".lb-close"
-    ).addEventListener(
-        "click",
-        closeLightbox
-    );
-
-
-    box.querySelector(
-        ".lb-prev"
-    ).addEventListener(
-        "click",
-        showPreviousImage
-    );
-
-
-    box.querySelector(
-        ".lb-next"
-    ).addEventListener(
-        "click",
-        showNextImage
-    );
-
-
-    box.addEventListener(
-        "click",
-        e => {
-
-            if (e.target === box)
-                closeLightbox();
-        }
-    );
-
-
-    document.addEventListener(
-        "keydown",
-        e => {
-
-            if (
-                !box.classList.contains(
-                    "show"
-                )
-            ) return;
-
-            if (e.key === "Escape")
-                closeLightbox();
-
-            if (e.key === "ArrowLeft")
-                showPreviousImage();
-
-            if (e.key === "ArrowRight")
-                showNextImage();
-        }
-    );
-}
-
-
-function openLightbox(image) {
-
-    const box =
-        document.getElementById(
-            "siteLightbox"
-        );
-
-    if (!box) return;
-
-
-    lightboxImages =
-        Array.from(
-            document.querySelectorAll(
-                ".gallery img, " +
-                ".product-gallery img, " +
-                ".pooja-products-grid img, " +
-                ".about-bappa, " +
-                "[data-lightbox]"
-            )
-        );
-
-
-    currentImageIndex =
-        Math.max(
-            0,
-            lightboxImages.indexOf(image)
-        );
-
-
-    updateLightbox();
-
-    box.classList.add("show");
-
-    document.body.classList.add(
-        "no-scroll"
-    );
-}
-
-
-function updateLightbox() {
-
-    const box =
-        document.getElementById(
-            "siteLightbox"
-        );
-
-    if (
-        !box ||
-        !lightboxImages.length
-    ) return;
-
-
-    const image =
-        lightboxImages[
-            currentImageIndex
-        ];
-
-
-    document.getElementById(
-        "lbImage"
-    ).src = image.src;
-
-
-    document.getElementById(
-        "lbImage"
-    ).alt =
-        image.alt || "Image";
-
-
-    document.getElementById(
-        "lbCaption"
-    ).textContent =
-        image.dataset.caption ||
-        image.alt ||
-        "";
-
-
-    const showArrows =
-        lightboxImages.length > 1;
-
-
-    box.querySelector(
-        ".lb-prev"
-    ).style.display =
-        showArrows ? "grid" : "none";
-
-
-    box.querySelector(
-        ".lb-next"
-    ).style.display =
-        showArrows ? "grid" : "none";
-}
-
-
-function closeLightbox() {
-
-    const box =
-        document.getElementById(
-            "siteLightbox"
-        );
-
-    if (!box) return;
-
-
-    box.classList.remove("show");
-
-    document.body.classList.remove(
-        "no-scroll"
-    );
-}
-
-
-function showPreviousImage() {
-
-    if (!lightboxImages.length)
-        return;
-
-
-    currentImageIndex =
-        (
-            currentImageIndex -
-            1 +
-            lightboxImages.length
-        ) %
-        lightboxImages.length;
-
-
-    updateLightbox();
-}
-
-
-function showNextImage() {
-
-    if (!lightboxImages.length)
-        return;
-
-
-    currentImageIndex =
-        (
-            currentImageIndex +
-            1
-        ) %
-        lightboxImages.length;
-
-
-    updateLightbox();
-}
-
-
-/* =========================================================
-   GALLERY IMAGE ERROR HANDLING
-========================================================= */
-
-function setupGalleryImages() {
-
-    document
-        .querySelectorAll("img")
-        .forEach(image => {
-
-            image.addEventListener(
-                "error",
-                () => {
-
-                    image.dataset.imageError =
-                        "true";
-                }
-            );
-
-        });
-}
-
-
-/* =========================================================
-   PAGE READY
-========================================================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-        setupMobileMenu();
-
-        setupBackToTop();
-
-        setupBookingForm();
-
-        setupPoojaBookingForm();
-
-        setupImageLightbox();
-
-        setupGalleryImages();
-
-        setMinimumBookingDate();
-
-    }
-);
+</html>
