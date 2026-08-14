@@ -1625,3 +1625,215 @@ textarea {
   }
 
 }
+/* =========================================================
+   COMPACT POOJA ARTICLES PAGE
+   ========================================================= */
+
+/* Smaller hero */
+.pooja-page .pooja-hero {
+  min-height: 180px;
+  margin: 0;
+}
+
+.pooja-page .pooja-hero-overlay {
+  padding: 20px 15px;
+}
+
+.pooja-page .pooja-hero-overlay h1 {
+  font-size: 30px;
+  margin: 5px 0;
+}
+
+.pooja-page .pooja-hero-overlay > p:not(.eyebrow) {
+  font-size: 13px;
+  margin: 5px auto 12px;
+}
+
+.pooja-page .pooja-hero .hero-actions {
+  gap: 7px;
+}
+
+.pooja-page .pooja-hero .btn {
+  padding: 7px 13px;
+  font-size: 12px;
+}
+
+
+/* Reduce section spacing */
+.pooja-page .section {
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+
+
+/* Smaller section headings */
+.pooja-page .section-heading {
+  margin-bottom: 18px;
+}
+
+.pooja-page .section-heading h2 {
+  font-size: 25px;
+  margin: 5px 0 8px;
+}
+
+.pooja-page .section-heading p {
+  font-size: 14px;
+}
+
+
+/* Compact product grid */
+.pooja-page .pooja-products-grid {
+  gap: 15px;
+}
+
+
+/* Smaller product cards */
+.pooja-page .pooja-product-card {
+  border-radius: 12px;
+}
+
+
+/* Smaller product images */
+.pooja-page .pooja-product-card img {
+  height: 180px;
+  object-fit: cover;
+}
+
+
+/* Smaller product information */
+.pooja-page .product-info {
+  padding: 14px;
+}
+
+.pooja-page .product-info h2 {
+  font-size: 19px;
+  margin: 4px 0 7px;
+}
+
+.pooja-page .product-info p {
+  font-size: 13px;
+  line-height: 1.45;
+  margin: 5px 0;
+}
+
+.pooja-page .price-line {
+  font-size: 14px !important;
+  font-weight: 700;
+}
+
+
+/* Compact slogans */
+.pooja-page .slogans-section {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.pooja-page .slogan-grid {
+  gap: 12px;
+}
+
+.pooja-page .slogan-card {
+  padding: 16px;
+}
+
+.pooja-page .slogan-card h3 {
+  font-size: 17px;
+}
+
+.pooja-page .slogan-card p {
+  font-size: 13px;
+}
+
+
+/* Compact booking section */
+.pooja-page .pooja-booking {
+  gap: 18px;
+}
+
+.pooja-page .pooja-booking .card {
+  padding: 18px;
+}
+
+.pooja-page .pooja-booking label {
+  font-size: 13px;
+}
+
+.pooja-page .pooja-booking input,
+.pooja-page .pooja-booking select,
+.pooja-page .pooja-booking textarea {
+  padding: 9px 10px;
+  font-size: 13px;
+}
+
+
+/* Product rows more compact */
+.pooja-page .pooja-item-row {
+  gap: 8px;
+  padding: 10px;
+}
+
+
+/* Compact payment card */
+.pooja-page .pooja-payment {
+  padding: 18px;
+}
+
+.pooja-page .pooja-payment h2 {
+  font-size: 20px;
+}
+
+.pooja-page .pooja-payment .qr {
+  max-width: 180px;
+}
+
+
+/* Mobile */
+@media (max-width: 700px) {
+
+  .pooja-page .pooja-hero {
+    min-height: 160px;
+  }
+
+  .pooja-page .pooja-hero-overlay {
+    padding: 18px 12px;
+  }
+
+  .pooja-page .pooja-hero-overlay h1 {
+    font-size: 26px;
+  }
+
+  .pooja-page .pooja-hero-overlay > p:not(.eyebrow) {
+    font-size: 12px;
+  }
+
+  .pooja-page .pooja-hero .btn {
+    padding: 7px 10px;
+    font-size: 11px;
+  }
+
+  .pooja-page .section {
+    padding-top: 22px;
+    padding-bottom: 22px;
+  }
+
+  .pooja-page .section-heading h2 {
+    font-size: 22px;
+  }
+
+  .pooja-page .pooja-product-card img {
+    height: 160px;
+  }
+
+  .pooja-page .product-info {
+    padding: 12px;
+  }
+
+  .pooja-page .product-info h2 {
+    font-size: 17px;
+  }
+
+  .pooja-page .product-info p {
+    font-size: 12px;
+  }
+
+}
