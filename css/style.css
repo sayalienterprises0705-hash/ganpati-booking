@@ -1947,3 +1947,66 @@ textarea {
   }
 
 }
+/* =========================================================
+   UNIVERSAL WELCOME MARQUEE
+   Works on all pages
+   ========================================================= */
+
+.marquee,
+.welcome-bar {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+}
+
+.marquee {
+  padding: 9px 0;
+}
+
+.marquee-track {
+  display: inline-block;
+  white-space: nowrap;
+  padding-left: 100%;
+  animation: sbJoshiMarquee 18s linear infinite;
+}
+
+.marquee:not(:has(.marquee-track)) {
+  animation: sbJoshiMarquee 18s linear infinite;
+}
+
+.welcome-bar {
+  padding: 9px 0;
+  border: 0;
+  background: transparent;
+}
+
+.welcome-bar {
+  color: inherit;
+}
+
+@keyframes sbJoshiMarquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* Keep marquee smooth on mobile */
+
+@media (max-width: 600px) {
+
+  .marquee-track {
+    animation-duration: 14s;
+  }
+
+  .marquee {
+    font-size: 13px;
+  }
+
+}
