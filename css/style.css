@@ -1837,3 +1837,113 @@ textarea {
   }
 
 }
+/* =========================================================
+   POOJA PAGE - QR LEFT / BOOKING FORM RIGHT
+   ========================================================= */
+
+.pooja-page .pooja-booking {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.pooja-page .pooja-payment {
+  position: sticky;
+  top: 20px;
+  text-align: center;
+}
+
+.pooja-page .pooja-payment .qr {
+  width: 220px;
+  max-width: 100%;
+  height: auto;
+  margin: 10px auto 15px;
+  display: block;
+}
+
+.pooja-page .pooja-booking > form.card {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* Smaller overall page */
+
+.pooja-page .section {
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+
+.pooja-page .pooja-hero {
+  min-height: 180px;
+}
+
+.pooja-page .pooja-hero-overlay {
+  padding: 22px 15px;
+}
+
+.pooja-page .pooja-hero-overlay h1 {
+  font-size: 30px;
+  margin: 5px 0;
+}
+
+
+/* Three product columns on desktop */
+
+@media (min-width: 900px) {
+
+  .pooja-page .pooja-products-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+}
+
+
+/* Tablet */
+
+@media (max-width: 899px) {
+
+  .pooja-page .pooja-booking {
+    grid-template-columns: 280px minmax(0, 1fr);
+    gap: 18px;
+  }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  .pooja-page .pooja-booking {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .pooja-page .pooja-payment {
+    position: static;
+    width: 100%;
+    box-sizing: border-box;
+    order: 1;
+  }
+
+  .pooja-page .pooja-booking > form.card {
+    order: 2;
+  }
+
+  .pooja-page .pooja-payment .qr {
+    width: 190px;
+  }
+
+  .pooja-page .pooja-hero {
+    min-height: 160px;
+  }
+
+  .pooja-page .pooja-hero-overlay h1 {
+    font-size: 26px;
+  }
+
+}
