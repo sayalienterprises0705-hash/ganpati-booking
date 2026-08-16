@@ -1,215 +1,245 @@
-(() => {
-  "use strict";
-
-  const OWNER_WHATSAPP = "918856874068";
-  const prices = {
-    "Eco Ganpati": {"10":1800,"12":2500,"15":4000},
-    "Traditional Ganpati": {"10":2500,"12":3500,"15":5000},
-    "Premium Ganpati": {"10":4000,"12":6000,"15":9000}
-  };
-
-  const $ = (id) => document.getElementById(id);
-  const money = (n) => n ? "₹" + Number(n).toLocaleString("en-IN") : "—";
-
-  function makeBookingId() {
-    const d = new Date();
-    const stamp = String(d.getFullYear()).slice(-2) + String(d.getMonth()+1).padStart(2,"0") + String(d.getDate()).padStart(2,"0");
-    return "SBJ" + stamp + Math.floor(1000 + Math.random()*9000);
-  }
-
+document.addEventListener("DOMContentLoaded", () => {
   // Mobile navigation
-  const menu = document.querySelector(".menu-toggle");
-  const nav = document.querySelector(".site-nav");
-  if (menu && nav) {
-    menu.addEventListener("click", () => {
-      const open = nav.classList.toggle("open");
-      menu.setAttribute("aria-expanded", String(open));
+  const menuToggle = document.querySelector(".menu-toggle");
+  const siteNav = document.querySelector(".site-nav");
+
+  if (menuToggle && siteNav) {
+    menuToggle.addEventListener("click", () => {
+      const isOpen = siteNav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    });
+
+    // Close the mobile menu after selecting a page
+    siteNav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        siteNav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open menu");
+      });
     });
   }
 
-  // Back to top
-  const topBtn = document.querySelector(".top-btn");
-  if (topBtn) {
-    const updateTop = () => { topBtn.style.display = window.scrollY > 300 ? "block" : "none"; };
-    window.addEventListener("scroll", updateTop);
-    topBtn.addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
-    updateTop();
-  }
-
-  // Home hero slider
-  const slides = [...document.querySelectorAll(".hero-slide")];
-  const dots = document.querySelector(".slider-dots");
-  if (slides.length && dots) {
-    let index = 0;
-    slides.forEach((_, i) => {
-      const b = document.createElement("button");
-      b.setAttribute("aria-label", `Show slide ${i+1}`);
-      b.addEventListener("click", () => showSlide(i));
-      dots.appendChild(b);
+  // Back-to-top button
+  const topButton = document.querySelector(".top-btn");
+  if (topButton) {
+    topButton.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
-    const dotEls = [...dots.children];
-    function showSlide(i) {
-      index = (i + slides.length) % slides.length;
-      slides.forEach((s,n) => s.classList.toggle("active", n === index));
-      dotEls.forEach((d,n) => d.classList.toggle("active", n === index));
-    }
-    showSlide(0);
-    setInterval(() => showSlide(index + 1), 5000);
   }
 
-  // Price page
-  const priceMurti = $("priceMurti"), priceSize = $("priceSize"), displayPrice = $("displayPrice");
-  function updatePricePage() {
-    if (!priceMurti || !priceSize || !displayPrice) return;
-    const value = prices[priceMurti.value]?.[priceSize.value];
-    displayPrice.textContent = value ? money(value) : "—";
+  // Ganpati booking form
+  const bookingForm = document.getElementById("bookingForm");
+
+  if (bookingForm) {
+    bookingForm.addEventListener("submit", event => {
+      event.preventDefault();
+
+      if (!bookingForm.checkValidity()) {
+        bookingForm.reportValidity();
+        return;
+      }
+
+      const value = id => {
+        const element = document.getElementById(id);
+        return element ? element.value.trim() : "";
+      };
+
+      const message = `🙏 NEW GANPATI BOOKING
+
+Customer Name: ${value("customerName")}
+Contact Number: ${value("mobile")}
+Email: ${value("email") || "Not provided"}
+Murti Type: ${value("murtiType")}
+Murti Size: ${value("murtiSize")}
+Price: ${value("price") || "To be confirmed"}
+Quantity: ${value("quantity")}
+Payment Option: ${value("paymentMode")}
+Advance Amount: ${value("advance")}
+Delivery / Collection: ${value("delivery")}
+Required Date: ${value("bookingDate")}
+Address: ${value("address")}
+Special Note: ${value("note") || "None"}
+
+Status: Pending manual confirmation
+
+S.B. Joshi Enterprises
+1237 Matruchaya Apartment, Krantivir Vasudev Balvant Phadke Road,
+Opp. Khunya Murlidhar Mandir, Sadashiv Peth, Pune 411030`;
+
+      const msg = document.getElementById("msg");
+      if (msg) msg.textContent = "Opening WhatsApp…";
+
+      window.open(
+        "https://wa.me/91885687068?text=" + encodeURIComponent(message),
+        "_blank",
+        "noopener"
+      );
+    });
   }
-  priceMurti?.addEventListener("change", updatePricePage);
-  priceSize?.addEventListener("change", updatePricePage);
 
-  // Booking page
-  const form = $("bookingForm");
-  if (form) {
-    const id = makeBookingId();
-    $("bookingId").value = id;
-    $("summaryId").textContent = id;
-    sessionStorage.setItem("lastBookingId", id);
+  // Pooja Articles catalogue
+  const POOJA_CATALOG = [
+    { category: "Agarbatti", image: "agarbatti.svg", name: "Agarbatti", description: "Devotional incense sticks for a fragrant Ganesh puja.", price: "₹ —" },
+    { category: "Dhup", image: "dhup.svg", name: "Dhup", description: "Traditional dhoop for a calm and auspicious pooja atmosphere.", price: "₹ —" },
+    { category: "Kapoor", image: "kapoor.svg", name: "Kapoor", description: "Camphor for a bright, traditional Ganesh aarti.", price: "₹ —" },
+    { category: "Wati", image: "wati.svg", name: "Wati", description: "Cotton wicks for diyas used during puja and aarti.", price: "₹ —" },
+    { category: "Attar", image: "attar.svg", name: "Attar", description: "Fragrant attar for traditional devotional use.", price: "₹ —" },
+    { category: "Javnijod", image: "javnijod.svg", name: "Javnijod", description: "Traditional pooja samagri used for auspicious rituals.", price: "₹ —" },
+    { category: "Vastramal", image: "vastramal.svg", name: "Vastramal", description: "Traditional pooja/decorative material for Ganesh festival rituals.", price: "₹ —" },
+    { category: "Halad", image: "halad.svg", name: "Halad", description: "Auspicious turmeric used in traditional pooja ceremonies.", price: "₹ —" },
+    { category: "Kunku", image: "kunku.svg", name: "Kunku", description: "Traditional kumkum for Ganesh puja and auspicious occasions.", price: "₹ —" }
+  ];
 
-    // Prefill murti from gallery link
-    const params = new URLSearchParams(location.search);
-    const requestedMurti = params.get("murti");
-    if (requestedMurti && [...$("murti").options].some(o => o.value === requestedMurti)) {
-      $("murti").value = requestedMurti;
-    }
+  function renderPoojaProducts() {
+    const target = document.getElementById("productCategories");
+    if (!target) return;
 
-    const updateSummary = () => {
-      const murti = $("murti").value;
-      const size = $("size").value;
-      const qty = Math.max(1, Number($("quantity").value || 1));
-      const unit = prices[murti]?.[size] || 0;
-      const total = unit * qty;
-      $("price").value = total ? String(total) : "";
-      $("summaryId").textContent = id;
-      $("summaryName").textContent = $("customerName").value.trim() || "—";
-      $("summaryMurti").textContent = murti || "—";
-      $("summarySize").textContent = size ? size + " Inch" : "—";
-      $("summaryQty").textContent = qty;
-      $("summaryPrice").textContent = total ? money(total) : "—";
-      $("summaryPayment").textContent = $("paymentMode").value || "—";
+    const groups = {};
+    POOJA_CATALOG.forEach(product => {
+      if (!groups[product.category]) groups[product.category] = [];
+      groups[product.category].push(product);
+    });
+
+    target.innerHTML = Object.entries(groups).map(([category, items]) => `
+      <section class="pooja-category">
+        <div class="category-title">
+          <h3>${category}</h3>
+          <span>Ganesh Pooja Essential</span>
+        </div>
+        <div class="product-gallery">
+          ${items.map(product => `
+            <article class="product-card">
+              <img src="images/${product.image}" alt="${product.name} pooja article">
+              <div class="product-info">
+                <p class="eyebrow">${product.category}</p>
+                <h2>${product.name}</h2>
+                <p>${product.description}</p>
+                <p class="price-line"><strong>Price:</strong> ${product.price}</p>
+                <p class="size-line"><strong>Available sizes:</strong> 100 gm / 200 gm</p>
+                <button type="button" class="btn choose-pooja" data-product="${product.name}">
+                  Choose for Booking
+                </button>
+              </div>
+            </article>
+          `).join("")}
+        </div>
+      </section>
+    `).join("");
+
+    target.querySelectorAll(".choose-pooja").forEach(button => {
+      button.addEventListener("click", () => {
+        const select = document.querySelector(".poojaProduct");
+        if (select) {
+          select.value = button.dataset.product;
+          document.getElementById("poojaBooking")?.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    });
+  }
+
+  function setupPoojaBooking() {
+    const form = document.getElementById("poojaBookingForm");
+    if (!form) return;
+
+    const fillProduct = select => {
+      select.innerHTML = POOJA_CATALOG
+        .map(product => `<option value="${product.name}">${product.name} — ${product.category}</option>`)
+        .join("");
     };
 
-    ["customerName","murti","size","quantity","paymentMode"].forEach(id => {
-      $(id)?.addEventListener("input", updateSummary);
-      $(id)?.addEventListener("change", updateSummary);
+    const first = form.querySelector(".poojaProduct");
+    if (first) fillProduct(first);
+
+    const addButton = document.getElementById("addPoojaItem");
+    const rows = document.getElementById("itemRows");
+
+    addButton?.addEventListener("click", () => {
+      if (!rows) return;
+
+      const row = document.createElement("div");
+      row.className = "pooja-item-row";
+      row.innerHTML = `
+        <label>Product Name *
+          <select class="poojaProduct" required></select>
+        </label>
+        <label>Qty *
+          <input class="poojaQty" type="number" min="1" value="1" required>
+        </label>
+        <label>Size *
+          <select class="poojaSize" required>
+            <option value="100 gm">100 gm</option>
+            <option value="200 gm">200 gm</option>
+          </select>
+        </label>
+        <button type="button" class="remove-item" aria-label="Remove item">×</button>
+      `;
+
+      rows.appendChild(row);
+      fillProduct(row.querySelector(".poojaProduct"));
     });
-    updateSummary();
 
-    // Don't allow dates in the past
-    const date = $("date");
-    if (date) {
-      const now = new Date();
-      const local = new Date(now.getTime() - now.getTimezoneOffset()*60000).toISOString().slice(0,10);
-      date.min = local;
-    }
+    rows?.addEventListener("click", event => {
+      if (event.target.classList.contains("remove-item")) {
+        const allRows = rows.querySelectorAll(".pooja-item-row");
+        if (allRows.length > 1) {
+          event.target.closest(".pooja-item-row").remove();
+        }
+      }
+    });
 
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const msg = $("formMessage");
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+
       if (!form.checkValidity()) {
         form.reportValidity();
-        msg.textContent = "Please complete all required fields.";
         return;
       }
 
-      const mobile = $("mobile").value.replace(/\D/g, "");
-      if (!/^\d{10}$/.test(mobile)) {
-        msg.textContent = "Please enter a valid 10-digit mobile number.";
-        $("mobile").focus();
-        return;
-      }
+      const value = id => (document.getElementById(id)?.value || "").trim();
 
-      updateSummary();
-      const murti = $("murti").value;
-      const size = $("size").value;
-      const qty = Number($("quantity").value);
-      const total = prices[murti]?.[size] ? prices[murti][size] * qty : 0;
-      const advance = Number($("advance").value || 0);
-      const note = $("note").value.trim() || "None";
-      const address = $("address").value.trim();
+      const items = [...form.querySelectorAll(".pooja-item-row")]
+        .map((row, index) => {
+          const product = row.querySelector(".poojaProduct")?.value || "";
+          const qty = row.querySelector(".poojaQty")?.value || "";
+          const size = row.querySelector(".poojaSize")?.value || "";
+          return `${index + 1}. ${product} — ${qty} × ${size}`;
+        })
+        .join("\n");
 
-      const text =
-`🛕 *NEW GANPATI BOOKING*
+      const delivery = value("poojaDelivery");
+      const address = value("poojaAddress") ||
+        (delivery.startsWith("Shop") ? "Not required — Shop Pickup" : "Not provided");
 
-━━━━━━━━━━━━━━
-🆔 *Booking ID:* ${id}
+      const message = `🙏 NEW POOJA ARTICLE BOOKING
 
-👤 *Name:* ${$("customerName").value.trim()}
-📞 *Mobile:* ${mobile}
-📧 *Email:* ${$("email").value.trim() || "Not provided"}
+Customer Name: ${value("poojaName")}
+Contact No: ${value("poojaMobile")}
 
-🙏 *Murti:* ${murti}
-📏 *Size:* ${size} Inch
-🔢 *Quantity:* ${qty}
-💵 *Total Price:* ${money(total)}
-💰 *Advance:* ${money(advance)}
-💳 *Payment:* ${$("paymentMode").value}
+Selected Products:
+${items}
 
-🚚 *Delivery:* ${$("delivery").value}
-📅 *Date:* ${$("date").value}
-📍 *Address:* ${address}
-📝 *Note:* ${note}
+Delivery Mode: ${delivery}
+Address: ${address}
+Note: ${value("poojaNote") || "None"}
 
-⏳ *Status:* Payment/Booking Pending Approval
+Status: Pending manual confirmation
 
-━━━━━━━━━━━━━━
+S.B. Joshi Enterprises
+1237 Matruchaya Apartment, Krantivir Vasudev Balvant Phadke Road,
+Opp. Khunya Murlidhar Mandir, Sadashiv Peth, Pune 411030`;
 
-🙏 *CUSTOMER CONFIRMATION MESSAGE*
+      const messageElement = document.getElementById("poojaMsg");
+      if (messageElement) messageElement.textContent = "Opening WhatsApp…";
 
-Dear ${$("customerName").value.trim()},
-
-Thank you for your booking request with *S.B. Joshi Enterprises*.
-
-🆔 Booking ID: ${id}
-🙏 Murti: ${murti}
-📏 Size: ${size} Inch
-🔢 Quantity: ${qty}
-💵 Total: ${money(total)}
-
-⏳ *Booking Status: Pending Approval*
-
-Your booking will be confirmed after our team reviews the request.
-
-📞 8856874068
-
-Thank you 🙏
-*S.B. Joshi Enterprises*`;
-
-      sessionStorage.setItem("lastBookingId", id);
-      const wa = `https://wa.me/${OWNER_WHATSAPP}?text=${encodeURIComponent(text)}`;
-      msg.textContent = "Opening WhatsApp… Please press Send there to submit your request.";
-      window.open(wa, "_blank", "noopener");
-
-      // Navigate only after opening the WhatsApp window.
-      setTimeout(() => {
-        location.href = `thankyou.html?id=${encodeURIComponent(id)}`;
-      }, 700);
+      window.open(
+        "https://wa.me/91885687068?text=" + encodeURIComponent(message),
+        "_blank",
+        "noopener"
+      );
     });
   }
 
-  // Contact form -> WhatsApp
-  const contactForm = $("contactForm");
-  if (contactForm) {
-    contactForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      if (!contactForm.checkValidity()) { contactForm.reportValidity(); return; }
-      const name = $("contactName").value.trim();
-      const mobile = $("contactMobile").value.replace(/\D/g, "");
-      const message = $("contactMessage").value.trim();
-      const status = $("contactMessageStatus");
-      if (!/^\d{10}$/.test(mobile)) { status.textContent = "Enter a valid 10-digit mobile number."; return; }
-      const text = `Hello S.B. Joshi Enterprises,\n\nName: ${name}\nMobile: ${mobile}\n\nMessage:\n${message}`;
-      window.open(`https://wa.me/${OWNER_WHATSAPP}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
-      status.textContent = "Opening WhatsApp…";
-    });
-  }
-})();
+  renderPoojaProducts();
+  setupPoojaBooking();
+});
