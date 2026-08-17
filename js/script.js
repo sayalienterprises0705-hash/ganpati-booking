@@ -1,16 +1,13 @@
 /* =========================================================
    S.B. JOSHI ENTERPRISES - WEBSITE JAVASCRIPT
-   Fixed mobile menu + Ganpati WhatsApp booking
+   Mobile menu + Ganpati WhatsApp booking
    ========================================================= */
-
 (function () {
   "use strict";
 
   const WHATSAPP_NUMBER = "91885687068";
 
-  function byId(id) {
-    return document.getElementById(id);
-  }
+  function byId(id) { return document.getElementById(id); }
 
   function normalizeMobile(value) {
     let digits = String(value || "").replace(/\D/g, "");
@@ -23,21 +20,64 @@
     return /^[6-9]\d{9}$/.test(normalizeMobile(value));
   }
 
+  function installMobileMenuStyles() {
+    if (document.getElementById("sbj-mobile-menu-styles")) return;
+    const style = document.createElement("style");
+    style.id = "sbj-mobile-menu-styles";
+    style.textContent = `
+      @media (max-width: 900px) {
+        .site-header { position: relative; z-index: 2000; }
+        .menu-toggle { display: block !important; cursor: pointer; }
+        .site-nav { display: none !important; }
+        .site-nav.open {
+          display: flex !important;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          z-index: 2100;
+          flex-direction: column;
+          gap: 0 !important;
+          padding: 8px 12px !important;
+          background: #fff8f0;
+          border-top: 1px solid #ead7c6;
+          box-shadow: 0 12px 25px rgba(59,33,24,.18);
+        }
+        .site-nav.open a {
+          display: block !important;
+          width: 100%;
+          padding: 13px 14px !important;
+          border-bottom: 1px solid #ead7c6;
+        }
+      }
+      @media (min-width: 901px) {
+        .menu-toggle { display: none !important; }
+        .site-nav { display: flex !important; }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
   function setupMobileMenu() {
+    installMobileMenuStyles();
     const toggle = document.querySelector(".menu-toggle");
     const nav = document.querySelector(".site-nav");
     if (!toggle || !nav) return;
 
-    const closeMenu = function () {
+    function closeMenu() {
       nav.classList.remove("open");
       toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Open menu");
       document.body.classList.remove("no-scroll");
-    };
+    }
 
     toggle.addEventListener("click", function (event) {
+      event.preventDefault();
       event.stopPropagation();
-      const open = nav.classList.toggle("open");
+      const open = !nav.classList.contains("open");
+      nav.classList.toggle("open", open);
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
       document.body.classList.toggle("no-scroll", open);
     });
 
@@ -51,10 +91,6 @@
 
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape") closeMenu();
-    });
-
-    window.addEventListener("resize", function () {
-      if (window.innerWidth > 900) closeMenu();
     });
   }
 
@@ -70,9 +106,7 @@
   function setupBackToTop() {
     const button = document.querySelector(".top-btn");
     if (!button) return;
-    const update = function () {
-      button.classList.toggle("show", window.scrollY > 400);
-    };
+    function update() { button.classList.toggle("show", window.scrollY > 400); }
     window.addEventListener("scroll", update, { passive: true });
     button.addEventListener("click", function () {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -83,7 +117,6 @@
   function setupBookingForm() {
     const form = byId("bookingForm");
     if (!form) return;
-
     const messageBox = byId("msg");
 
     form.addEventListener("submit", function (event) {
@@ -102,16 +135,10 @@
       }
 
       const photo = byId("finalPhoto");
-      const photoName = photo && photo.files && photo.files.length
-        ? photo.files[0].name
-        : "Not provided";
+      const photoName = photo?.files?.length ? photo.files[0].name : "Not provided";
+      const value = id => String(byId(id)?.value || "").trim();
 
-      const value = function (id) {
-        const el = byId(id);
-        return el ? String(el.value || "").trim() : "";
-      };
-
-      const lines = [
+      const message = [
         "🙏 *GANPATI BAPPA BOOKING REQUEST* 🙏",
         "",
         "*S.B. Joshi Enterprises*",
@@ -132,20 +159,18 @@
         "Final Idol Photo: " + photoName,
         "",
         "Booking Status: Pending manual confirmation",
-        "",
         "Please check availability and confirm this booking. 🙏"
-      ];
+      ].join("\n");
 
-      const message = lines.join("\n");
       const whatsappUrl = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
 
       if (messageBox) {
-        messageBox.textContent = "Opening WhatsApp with your booking details... Please press Send to submit the order.";
+        messageBox.textContent = "Opening WhatsApp with your booking details. Please press Send to submit the order.";
       }
 
-      // Direct wa.me link is the most reliable mobile-compatible method.
-      // WhatsApp does not allow a website to silently send a message.
-      window.location.href = whatsappUrl;
+      // A website cannot silently send WhatsApp messages. This opens the
+      // business chat with the complete booking message pre-filled.
+      window.location.assign(whatsappUrl);
     });
   }
 
